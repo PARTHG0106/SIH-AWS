@@ -1,0 +1,11 @@
+{
+  "requested_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Goodwin_Creek_MS/1997/",
+  "retrieved_at_utc": "2026-09-28T11:55:49.055805+00:00",
+  "final_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Goodwin_Creek_MS/1997/",
+  "status": 200,
+  "content_type": "text/html;charset=ISO-8859-1",
+  "last_modified": null,
+  "sha256": "12b942fb5d1cdd7f5a9ca065feae7cbc95d92acfc14281b33613ad211d20949a",
+  "bytes": 114802,
+  "local_path": "docs/research/surfrad_events_20260928/downloads/12b942fb5d1cdd7f5a9ca065feae7cbc95d92acfc14281b33613ad211d20949a.html"
+}

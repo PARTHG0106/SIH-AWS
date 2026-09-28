@@ -1,0 +1,11 @@
+{
+  "requested_url": "https://gml.noaa.gov/grad/cgi-bin/surfcals?site=Fort%20Peck",
+  "retrieved_at_utc": "2026-09-28T11:50:00.741542+00:00",
+  "final_url": "https://gml.noaa.gov/grad/cgi-bin/surfcals?site=Fort%20Peck",
+  "status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "last_modified": null,
+  "sha256": "fb4ddbd8add609746b0737538d4ee7709adefd6bdb9182d297e488176ec8ad34",
+  "bytes": 11827,
+  "local_path": "docs/research/surfrad_events_20260928/downloads/fb4ddbd8add609746b0737538d4ee7709adefd6bdb9182d297e488176ec8ad34.html"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "krishnagupta02468/skyguard-ai-training-smoke-sih26073",
+  "title": "SkyGuard AI - Training SMOKE (SIH26073)",
+  "code_file": "aws_anomaly_training_smoke.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "machine_shape": "NvidiaRtxPro6000",
+  "dataset_sources": [
+    "krishnagupta02468/skyguard-sih26073-processed"
+  ],
+  "competition_sources": [
+    "arc-prize-2026-arc-agi-3"
+  ],
+  "kernel_sources": [],
+  "model_sources": [],
+  "category_ids": []
+}

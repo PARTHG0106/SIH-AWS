@@ -1,0 +1,353 @@
+{
+  "report_version": 1,
+  "created_at_utc": "2026-09-25T11:45:55.629685+00:00",
+  "processed_dir": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\processed",
+  "status": "blocked",
+  "eligible": false,
+  "required_observed_inputs": [
+    "temperature_c",
+    "pressure_hpa",
+    "relative_humidity_pct"
+  ],
+  "blockers": [
+    {
+      "code": "injected_dataset",
+      "message": "injection_events.parquet identifies a legacy injected-data bundle; removing its labels does not restore original values.",
+      "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\processed\\injection_events.parquet"
+    },
+    {
+      "code": "legacy_dataset",
+      "message": "Metadata identifies a legacy dataset/parser requiring a real-observation rebuild.",
+      "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\processed\\source_metadata.json"
+    },
+    {
+      "code": "derived_relative_humidity",
+      "message": "Required RH is derived from temperature/dew point; it is not independently measured RH.",
+      "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\processed\\source_metadata.json"
+    },
+    {
+      "code": "sea_level_pressure",
+      "message": "Required pressure_hpa is sea-level pressure, not verified station pressure.",
+      "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\processed\\source_metadata.json"
+    },
+    {
+      "code": "reanalysis_input",
+      "message": "The RH input policy includes reanalysis instead of original sensor observations.",
+      "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\processed\\source_metadata.json"
+    },
+    {
+      "code": "training_contract_missing",
+      "message": "No field-level training evidence index exists; source names and column names cannot establish real-data eligibility.",
+      "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\processed\\training_contract.json"
+    },
+    {
+      "code": "provider_verifier_unimplemented",
+      "message": "Real-data migration is unfinished: no verified provider-specific raw-to-processed admission adapter is implemented. An edited manifest cannot enable training."
+    }
+  ],
+  "evidence": [
+    {
+      "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\processed\\source_metadata.json",
+      "sha256": "45382b392ddd821133a2293bd16ad02f25423537a9fa150312edb1506b5441ff",
+      "kind": "metadata_file"
+    }
+  ],
+  "files": [
+    {
+      "name": "injection_events.parquet",
+      "bytes": 118582,
+      "modified_at_utc": "2026-09-19T06:44:17.958665+00:00"
+    },
+    {
+      "name": "source_metadata.json",
+      "bytes": 653,
+      "modified_at_utc": "2026-09-20T11:06:14.205222+00:00"
+    },
+    {
+      "name": "splits.json",
+      "bytes": 68845,
+      "modified_at_utc": "2026-09-19T11:37:51.268013+00:00"
+    },
+    {
+      "name": "station_catalog.json",
+      "bytes": 99048,
+      "modified_at_utc": "2026-09-19T11:37:51.261355+00:00"
+    },
+    {
+      "name": "station_stats.json",
+      "bytes": 305729,
+      "modified_at_utc": "2026-09-19T06:44:17.975350+00:00"
+    },
+    {
+      "name": "test_labeled.csv.gz",
+      "bytes": 216594178,
+      "modified_at_utc": "2026-09-19T06:44:17.901121+00:00"
+    },
+    {
+      "name": "test_labeled.parquet",
+      "bytes": 157046492,
+      "modified_at_utc": "2026-09-19T06:42:09.227356+00:00"
+    },
+    {
+      "name": "train_clean.csv.gz",
+      "bytes": 997986763,
+      "modified_at_utc": "2026-09-19T06:40:47.913180+00:00"
+    },
+    {
+      "name": "train_clean.parquet",
+      "bytes": 720006180,
+      "modified_at_utc": "2026-09-19T06:28:39.362771+00:00"
+    },
+    {
+      "name": "val_labeled.csv.gz",
+      "bytes": 130715393,
+      "modified_at_utc": "2026-09-19T06:42:04.637287+00:00"
+    },
+    {
+      "name": "val_labeled.parquet",
+      "bytes": 94101931,
+      "modified_at_utc": "2026-09-19T06:40:51.267061+00:00"
+    }
+  ],
+  "label_policy": {
+    "unknown_allowed": true,
+    "unknown_is_normal": false,
+    "provider_qc_is_hardware_fault_truth": false,
+    "supervised_fault_accuracy_eligible": false
+  },
+  "verification": {
+    "observations_loaded": false,
+    "raw_to_processed_lineage_verified": false,
+    "provider_measurement_semantics_verified": false,
+    "verified_provider_adapters": []
+  },
+  "required_migration": [
+    "Verify actual provider documents, terms, raw sample fields, and independent RH/station-pressure measurement semantics.",
+    "Rebuild native observations preserving missingness, original QC/measurement codes, and field-level raw-file/row/timestamp lineage.",
+    "Implement and test a provider-specific verifier that checks every retained value and immutable raw/processed hashes.",
+    "Preserve unknown labels; validate any supervised labels against independent review records before fitting or reporting accuracy.",
+    "Use chronological station|source splits and select models/thresholds without test labels."
+  ],
+  "required_evidence_roles": [
+    "acquisition_manifest",
+    "raw_file_manifest",
+    "field_lineage",
+    "provider_documentation",
+    "usage_terms",
+    "processed_file_manifest"
+  ],
+  "required_field_lineage": [
+    "provider",
+    "source_product_version",
+    "original_station_id",
+    "raw_file_sha256",
+    "original_row",
+    "original_timestamp",
+    "raw_field",
+    "raw_unit",
+    "raw_measurement_codes",
+    "raw_quality_codes",
+    "measurement_origin",
+    "unit_conversion"
+  ],
+  "local_inventory": {
+    "scope": "data/raw, data/interim, data/processed, Kaggle ZIP indexes; no network or dataset generation",
+    "does_not_establish_remote_dataset_freshness": true,
+    "filesystem_timestamp_cutoff_utc": "2026-09-23T00:00:00+00:00",
+    "timestamps_are_acquisition_evidence": false,
+    "raw_sources": {
+      "nab": {
+        "files": 59,
+        "bytes": 9935225,
+        "files_modified_since_audit": 0,
+        "latest_modified_at_utc": "2026-09-16T10:20:02.349112+00:00",
+        "latest_modified_file": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\raw\\nab\\NAB\\data\\realTweets\\Twitter_volume_UPS.csv",
+        "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\raw\\nab\\NAB\\data"
+      },
+      "nasa_smap_msl": {
+        "files": 0,
+        "bytes": 0,
+        "files_modified_since_audit": 0,
+        "latest_modified_at_utc": null,
+        "latest_modified_file": null,
+        "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\raw\\nasa_smap_msl"
+      },
+      "ncpor": {
+        "files": 0,
+        "bytes": 0,
+        "files_modified_since_audit": 0,
+        "latest_modified_at_utc": null,
+        "latest_modified_file": null,
+        "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\raw\\ncpor"
+      },
+      "noaa_isd": {
+        "files": 4530,
+        "bytes": 4614662026,
+        "files_modified_since_audit": 0,
+        "latest_modified_at_utc": "2026-09-19T06:09:19.474740+00:00",
+        "latest_modified_file": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\raw\\noaa_isd\\_download_report.json",
+        "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\raw\\noaa_isd"
+      },
+      "openmeteo": {
+        "files": 21,
+        "bytes": 86182929,
+        "files_modified_since_audit": 0,
+        "latest_modified_at_utc": "2026-09-16T13:56:13.895279+00:00",
+        "latest_modified_file": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\raw\\openmeteo\\42027099999.csv",
+        "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\raw\\openmeteo"
+      }
+    },
+    "noaa_native_headers": {
+      "files": 4526,
+      "bytes": 4611746619,
+      "files_modified_since_audit": 0,
+      "latest_modified_at_utc": "2026-09-19T06:09:19.472431+00:00",
+      "latest_modified_file": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\raw\\noaa_isd\\2016\\43372099999.csv",
+      "distinct_filename_station_ids": 425,
+      "files_by_year": {
+        "2013": 151,
+        "2014": 129,
+        "2015": 362,
+        "2016": 386,
+        "2017": 383,
+        "2018": 391,
+        "2019": 394,
+        "2020": 389,
+        "2021": 387,
+        "2022": 379,
+        "2023": 396,
+        "2024": 396,
+        "2025": 383
+      },
+      "files_with_TMP": 4526,
+      "files_with_DEW": 4526,
+      "files_with_SLP": 4526,
+      "files_with_MA1": 2754,
+      "RH_prefixed_headers": {},
+      "header_read_failures": [],
+      "interpretation": "Header/file inventory only. Column presence does not establish nonmissing observations, independent measured RH, station pressure, instrument type, fault truth, or eligible training rows."
+    },
+    "processed_candidates": [
+      {
+        "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\processed",
+        "files": 11,
+        "bytes": 2317043794,
+        "files_modified_since_audit": 0,
+        "latest_modified_at_utc": "2026-09-20T11:06:14.205222+00:00",
+        "latest_modified_file": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\processed\\source_metadata.json"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\interim",
+        "files": 446,
+        "bytes": 155969467,
+        "files_modified_since_audit": 0,
+        "latest_modified_at_utc": "2026-09-19T06:21:08.908695+00:00",
+        "latest_modified_file": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\interim\\openmeteo\\openmeteo_43333099999.parquet"
+      }
+    ],
+    "archives": [
+      {
+        "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\kaggle_upload\\skyguard-sih26073.zip",
+        "files": 1,
+        "bytes": 857958821,
+        "files_modified_since_audit": 0,
+        "latest_modified_at_utc": "2026-09-19T14:47:39.954427+00:00",
+        "latest_modified_file": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\kaggle_upload\\skyguard-sih26073.zip",
+        "entries": 135,
+        "processed_parquet_entries": [
+          "data/processed/injection_events.parquet",
+          "data/processed/test_labeled.parquet",
+          "data/processed/train_clean.parquet",
+          "data/processed/val_labeled.parquet"
+        ],
+        "metadata": [
+          {
+            "entry": "MANIFEST.json"
+          }
+        ]
+      },
+      {
+        "path": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\kaggle_staging\\skyguard-sih26073.zip",
+        "files": 1,
+        "bytes": 110330,
+        "files_modified_since_audit": 1,
+        "latest_modified_at_utc": "2026-09-25T09:19:16.366748+00:00",
+        "latest_modified_file": "C:\\Users\\Admin\\Desktop\\SIH-Automatic_Weather_Stations\\data\\kaggle_staging\\skyguard-sih26073.zip",
+        "entries": 50,
+        "processed_parquet_entries": [],
+        "metadata": [
+          {
+            "entry": "MANIFEST.json",
+            "parser_version": "isd-qc-anomaly-labels-v3",
+            "bundle_role": "online_builder_source",
+            "processed_data_included": false,
+            "source_roles": {
+              "noaa_isd": "primary_observation; AWS-compatible surface-station proxy; RH derived from NOAA dewpoint",
+              "openmeteo": "reference_reanalysis; not physical AWS sensor ground truth",
+              "nab": "generic univariate anomaly benchmark; not AWS weather labels"
+            }
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "builder_run_log": {
+    "path": "C:\\Users\\Admin\\.codex\\attachments\\c8021535-73bc-443a-9f53-9c9d8f15677e\\Pasted text.txt",
+    "sha256": "db0f06d13c2d3705cde77ced2fc4fe92d65226d7a8e832163f993353201b3b8a",
+    "bytes": 48189,
+    "evidence_kind": "user_supplied_builder_run_log",
+    "verification_scope": "Log content inspected locally. Remote raw files, processed arrays, and manifest contents were not downloaded or verified by this check.",
+    "reported": {
+      "source_manifest_sha256": "0e7c7c1e3699483df319a559441c0a80194a24ff772a67a7a05122ddf21ef134",
+      "build_id": "20260925T105454Z-0e7c7c1e3699",
+      "build_utc": "2026-09-25T10:54:54.246517+00:00",
+      "parser_version": "isd-qc-anomaly-labels-v3",
+      "fault_injector_version": "sensor-swap-view-alias-fix-v3",
+      "label_provenance": {
+        "real_qc_source": "NOAA ISD per-observation QC codes 2/3/6/7 (Suspect/Erroneous)",
+        "real_qc_points_by_split": {
+          "val": 3486,
+          "test": 6173
+        },
+        "synthetic_points_by_split": {
+          "val": 107872,
+          "test": 161622
+        },
+        "real_qc_points_by_channel": {
+          "val": {
+            "pressure_hpa": 410,
+            "relative_humidity_pct": 1041,
+            "temperature_c": 2178
+          },
+          "test": {
+            "temperature_c": 3840,
+            "pressure_hpa": 434,
+            "relative_humidity_pct": 2047
+          }
+        },
+        "train_rows_excluded_as_real_qc_anomalies": 29098,
+        "synthetic_fraction_by_split": {
+          "val": 0.9687,
+          "test": 0.9632
+        }
+      },
+      "processed_written_line": "1406.7s\t517\tprocessed written: {'train_clean.parquet': 690, 'source_metadata.json': 0, 'test_labeled.parquet': 151, 'real_qc_events.parquet': 0, 'injection_events.parquet': 0, 'splits.json': 0, 'station_stats.json': 0, 'station_catalog.json': 0, 'val_labeled.parquet': 90}"
+    },
+    "evidence_lines": {
+      "source_manifest_sha256": 23,
+      "build_id": 24,
+      "build_utc": 24,
+      "parser_version": 25,
+      "fault_injector_version": 26,
+      "label_provenance": 529,
+      "processed_written_line": 530
+    },
+    "interpretation": [
+      "A newer remote builder run can exist while the repository's local processed files remain older; local timestamps do not determine remote freshness.",
+      "The intended workflow is source-only dataset -> online data builder -> processed dataset -> training notebook. A source-only ZIP is expected at the first stage.",
+      "Provider suspect/erroneous QC counts are quality evidence, not independently confirmed hardware-fault labels; derived RH does not establish a measured humidity sensor.",
+      "An observed newer build does not by itself establish real-only eligibility; injected observations and labels remain ineligible under the current policy."
+    ]
+  }
+}

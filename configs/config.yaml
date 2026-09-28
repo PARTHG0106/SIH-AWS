@@ -1,0 +1,122 @@
+# =============================================================================
+# SIH26073 — AWS Anomaly Detection — Master configuration
+# =============================================================================
+# Every path is relative to the project root. On Kaggle the notebook maps
+# these to /kaggle/input/... via its own bootstrap cell; nothing else changes.
+
+project:
+  name: "aws-anomaly-detector"
+  version: "1.0.0"
+  random_seed: 42
+
+paths:
+  raw_dir: "data/raw"
+  interim_dir: "data/interim"
+  processed_dir: "data/processed"
+  artifacts_dir: "artifacts"
+  staging_dir: "data/kaggle_staging"
+
+# ---------------------------------------------------------------------------
+# Unified schema used by every data source after parsing.
+# All timestamps UTC. Units: degC, hPa, m/s, degrees, mm, W/m^2.
+# ---------------------------------------------------------------------------
+schema:
+  # Measured AWS inputs per SIH26073 (the ONLY channels detectors may read)
+  measured: [temperature_c, pressure_hpa, relative_humidity_pct]
+  # Physics-derived from the measured three (Magnus/Tetens/WMO tendency)
+  derived: [dewpoint_c, td_spread, es_hpa, vpd_hpa, press_tendency_3h]
+  # Optional non-detection context columns present in the raw data
+  auxiliary: [wind_speed_ms, wind_direction_deg, precipitation_mm, solar_radiation_wm2]
+  index: [station_id, timestamp]
+
+# ---------------------------------------------------------------------------
+# Download jobs
+# ---------------------------------------------------------------------------
+download:
+  noaa_isd:
+    enabled: true
+    base_url: "https://www.ncei.noaa.gov/data/global-hourly/access"
+    years: [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
+    timeout_s: 120
+    max_workers: 8
+  openmeteo:
+    enabled: true
+    base_url: "https://archive-api.open-meteo.com/v1/archive"
+    start_date: "2019-01-01"
+    end_date: "2025-12-31"
+    hourly_variables:
+      - temperature_2m
+      - relative_humidity_2m
+      - dew_point_2m
+      - surface_pressure
+      - pressure_msl
+      - wind_speed_10m
+      - wind_direction_10m
+      - wind_gusts_10m
+      - precipitation
+      - shortwave_radiation
+    timeout_s: 180
+  nab:
+    enabled: true
+    repo_url: "https://github.com/numenta/NAB.git"
+
+# ---------------------------------------------------------------------------
+# Anomaly injection (synthetic faults, with ground-truth labels)
+# Aligned with real AWS failure modes (WMO CIMO guide + IMD maintenance logs).
+# ---------------------------------------------------------------------------
+injection:
+  target_anomaly_fraction: 0.04      # ~4% of points anomalous
+  min_segment_len: 3                 # hours
+  max_segment_len: 168               # up to a week
+  faults:
+    spike:            { weight: 0.16 }
+    drift:            { weight: 0.14 }
+    bias:             { weight: 0.14 }
+    stuck:            { weight: 0.16 }
+    dropout:          { weight: 0.12 }
+    noise_burst:      { weight: 0.10 }
+    clipping:         { weight: 0.08 }
+    scale_error:      { weight: 0.06 }
+    sensor_swap:      { weight: 0.04 }
+
+# ---------------------------------------------------------------------------
+# Models
+# ---------------------------------------------------------------------------
+models:
+  qc_rules:
+    enabled: true
+  isolation_forest:
+    enabled: true
+    n_estimators: 400
+    max_samples: 65536
+    contamination: 0.03
+    n_jobs: -1
+  lstm_autoencoder:
+    enabled: true
+    window: 168               # one week of hourly context
+    stride: 1
+    hidden_size: 64
+    num_layers: 2
+    dropout: 0.1
+    epochs: 30
+    batch_size: 256
+    lr: 0.001
+    patience: 5
+    train_fraction: 0.7       # chronological
+    val_fraction: 0.15
+  ensemble:
+    weights: { qc: 0.25, iforest: 0.35, lstm_ae: 0.40 }   # re-calibrated on validation set
+
+# ---------------------------------------------------------------------------
+# Thresholding / scoring
+# ---------------------------------------------------------------------------
+thresholds:
+  method: "pot"               # Peaks-Over-Threshold (EVT); fallback "quantile"
+  quantile: 0.995
+  pot:
+    initial_quantile: 0.98
+    risk_level: 0.001
+
+evaluation:
+  metrics: [pointwise, point_adjust, range_wise]
+  holdout_stations: 0.2       # fraction of stations never seen in training

@@ -1,0 +1,11 @@
+{
+  "requested_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/stations.tsv",
+  "retrieved_at_utc": "2026-09-28T11:50:40.068474+00:00",
+  "final_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/stations.tsv",
+  "status": 200,
+  "content_type": "text/tab-separated-values",
+  "last_modified": "Sun, 27 Sep 2026 14:23:01 GMT",
+  "sha256": "036cb5c72fa3623879c89a1bf88992291d0420dd74ab84a40229437b03c713e0",
+  "bytes": 37147,
+  "local_path": "docs/research/surfrad_events_20260928/downloads/036cb5c72fa3623879c89a1bf88992291d0420dd74ab84a40229437b03c713e0.txt"
+}

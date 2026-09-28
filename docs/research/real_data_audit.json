@@ -1,0 +1,417 @@
+{
+  "audit_version": 1,
+  "created_at_utc": "2026-09-23T02:52:18.193560+00:00",
+  "result": "NOT_ELIGIBLE_FOR_REAL_ONLY_HEADLINE_RESULTS",
+  "external_verification": "blocked: sandbox socket access denied; browser and elevated-request approval reviews timed out",
+  "scope": "all NOAA CSV file headers; detailed records only for the three named 2024 samples that exist",
+  "noaa_file_inventory": {
+    "station_year_csv_files": 4526,
+    "distinct_filename_station_ids": 425,
+    "bytes": 4611746619,
+    "files_by_year": {
+      "2013": 151,
+      "2014": 129,
+      "2015": 362,
+      "2016": 386,
+      "2017": 383,
+      "2018": 391,
+      "2019": 394,
+      "2020": 389,
+      "2021": 387,
+      "2022": 379,
+      "2023": 396,
+      "2024": 396,
+      "2025": 383
+    },
+    "files_with_each_column": {
+      "AA1": 4064,
+      "AA2": 343,
+      "AJ1": 53,
+      "AW1": 115,
+      "AW2": 54,
+      "AW3": 3,
+      "AY1": 3672,
+      "AY2": 3667,
+      "AZ1": 1960,
+      "AZ2": 1959,
+      "CALL_SIGN": 4526,
+      "CIG": 4526,
+      "DATE": 4526,
+      "DEW": 4526,
+      "ED1": 338,
+      "ELEVATION": 4526,
+      "EQD": 4019,
+      "GA1": 4432,
+      "GA2": 4049,
+      "GA3": 3469,
+      "GA4": 1516,
+      "GA5": 176,
+      "GA6": 4,
+      "GE1": 4303,
+      "GF1": 4499,
+      "HL1": 3,
+      "IA1": 214,
+      "IA2": 3,
+      "KA1": 4265,
+      "KA2": 2496,
+      "LATITUDE": 4526,
+      "LONGITUDE": 4526,
+      "MA1": 2754,
+      "MD1": 4297,
+      "ME1": 729,
+      "MW1": 3841,
+      "MW2": 540,
+      "MW3": 81,
+      "MW4": 1,
+      "NAME": 4526,
+      "OC1": 641,
+      "OD1": 157,
+      "OD2": 6,
+      "OD3": 1,
+      "QUALITY_CONTROL": 4526,
+      "REM": 4526,
+      "REPORT_TYPE": 4526,
+      "SA1": 7,
+      "SLP": 4526,
+      "SOURCE": 4526,
+      "STATION": 4526,
+      "TMP": 4526,
+      "UA1": 76,
+      "UG1": 2,
+      "UG2": 16,
+      "VIS": 4526,
+      "WA1": 2,
+      "WND": 4526
+    },
+    "header_read_failures": []
+  },
+  "noaa_record_samples": [
+    {
+      "path": "data/raw/noaa_isd/2024/42182099999.csv",
+      "sha256": "e54a28af2334907e83670210345a49565e9443eb0a5b935b3aa1095a6b3e9356",
+      "bytes": 1108487,
+      "rows": 2888,
+      "station_ids": [
+        "42182099999"
+      ],
+      "first_timestamp_as_published": "2024-01-01T00:00:00",
+      "last_timestamp_as_published": "2024-12-31T21:00:00",
+      "unique_timestamp_strings": 2860,
+      "duplicate_timestamp_rows": 28,
+      "blank_timestamps": 0,
+      "report_type_counts": {
+        "FM-12": 2756,
+        "FM-15": 132
+      },
+      "published_columns": [
+        "STATION",
+        "DATE",
+        "SOURCE",
+        "LATITUDE",
+        "LONGITUDE",
+        "ELEVATION",
+        "NAME",
+        "REPORT_TYPE",
+        "CALL_SIGN",
+        "QUALITY_CONTROL",
+        "WND",
+        "CIG",
+        "VIS",
+        "TMP",
+        "DEW",
+        "SLP",
+        "AA1",
+        "AY1",
+        "AY2",
+        "GA1",
+        "GA2",
+        "GA3",
+        "GA4",
+        "GE1",
+        "GF1",
+        "KA1",
+        "KA2",
+        "MA1",
+        "MD1",
+        "MW1",
+        "OC1",
+        "OD1",
+        "REM",
+        "EQD"
+      ],
+      "MA1_nonempty_rows": 132,
+      "MA1_note": "Additional pressure field observed; not decoded without its source specification.",
+      "present_nonsentinel_counts": {
+        "TMP": 2887,
+        "DEW": 2887,
+        "SLP": 2756
+      },
+      "missing_counts": {
+        "SLP": 132,
+        "TMP": 1,
+        "DEW": 1
+      },
+      "malformed_counts": {},
+      "quality_code_counts_all_rows": {
+        "TMP": {
+          "1": 2860,
+          "2": 27,
+          "9": 1
+        },
+        "DEW": {
+          "1": 2883,
+          "2": 4,
+          "9": 1
+        },
+        "SLP": {
+          "1": 2756,
+          "9": 132
+        }
+      },
+      "interpretation": "Provider QC information only; no sensor-fault ground truth assigned.",
+      "live_origin_reverified": false
+    },
+    {
+      "path": "data/raw/noaa_isd/2024/42027099999.csv",
+      "sha256": "665d817d48312f1fa7e3d09796538812e8ef441cf1764416e2b682a76d0eeaa9",
+      "bytes": 1124091,
+      "rows": 2745,
+      "station_ids": [
+        "42027099999"
+      ],
+      "first_timestamp_as_published": "2024-01-01T00:00:00",
+      "last_timestamp_as_published": "2024-12-31T21:00:00",
+      "unique_timestamp_strings": 2745,
+      "duplicate_timestamp_rows": 0,
+      "blank_timestamps": 0,
+      "report_type_counts": {
+        "FM-12": 2745
+      },
+      "published_columns": [
+        "STATION",
+        "DATE",
+        "SOURCE",
+        "LATITUDE",
+        "LONGITUDE",
+        "ELEVATION",
+        "NAME",
+        "REPORT_TYPE",
+        "CALL_SIGN",
+        "QUALITY_CONTROL",
+        "WND",
+        "CIG",
+        "VIS",
+        "TMP",
+        "DEW",
+        "SLP",
+        "AA1",
+        "AY1",
+        "AY2",
+        "AZ1",
+        "AZ2",
+        "GA1",
+        "GA2",
+        "GA3",
+        "GE1",
+        "GF1",
+        "KA1",
+        "KA2",
+        "MA1",
+        "MD1",
+        "ME1",
+        "MW1",
+        "REM",
+        "EQD"
+      ],
+      "MA1_nonempty_rows": 2741,
+      "MA1_note": "Additional pressure field observed; not decoded without its source specification.",
+      "present_nonsentinel_counts": {
+        "TMP": 2743,
+        "DEW": 2745
+      },
+      "missing_counts": {
+        "SLP": 2745,
+        "TMP": 2
+      },
+      "malformed_counts": {},
+      "quality_code_counts_all_rows": {
+        "TMP": {
+          "1": 2740,
+          "2": 3,
+          "9": 2
+        },
+        "DEW": {
+          "1": 2745
+        },
+        "SLP": {
+          "9": 2745
+        }
+      },
+      "interpretation": "Provider QC information only; no sensor-fault ground truth assigned.",
+      "live_origin_reverified": false
+    },
+    {
+      "path": "data/raw/noaa_isd/2024/42809099999.csv",
+      "sha256": "892c73442039be244d250f2c34937830873eab41b3bd457b03d00a268b8004cd",
+      "bytes": 8471367,
+      "rows": 19635,
+      "station_ids": [
+        "42809099999"
+      ],
+      "first_timestamp_as_published": "2024-01-01T00:00:00",
+      "last_timestamp_as_published": "2024-12-31T23:30:00",
+      "unique_timestamp_strings": 16874,
+      "duplicate_timestamp_rows": 2761,
+      "blank_timestamps": 0,
+      "report_type_counts": {
+        "FM-12": 2766,
+        "FM-15": 16838,
+        "FM-16": 31
+      },
+      "published_columns": [
+        "STATION",
+        "DATE",
+        "SOURCE",
+        "LATITUDE",
+        "LONGITUDE",
+        "ELEVATION",
+        "NAME",
+        "REPORT_TYPE",
+        "CALL_SIGN",
+        "QUALITY_CONTROL",
+        "WND",
+        "CIG",
+        "VIS",
+        "TMP",
+        "DEW",
+        "SLP",
+        "AA1",
+        "AY1",
+        "AY2",
+        "AZ1",
+        "AZ2",
+        "ED1",
+        "GA1",
+        "GA2",
+        "GA3",
+        "GA4",
+        "GA5",
+        "GE1",
+        "GF1",
+        "KA1",
+        "KA2",
+        "MA1",
+        "MD1",
+        "MW1",
+        "MW2",
+        "OC1",
+        "OD1",
+        "REM",
+        "EQD"
+      ],
+      "MA1_nonempty_rows": 16376,
+      "MA1_note": "Additional pressure field observed; not decoded without its source specification.",
+      "present_nonsentinel_counts": {
+        "TMP": 19631,
+        "DEW": 19630,
+        "SLP": 2763
+      },
+      "missing_counts": {
+        "SLP": 16872,
+        "DEW": 5,
+        "TMP": 4
+      },
+      "malformed_counts": {},
+      "quality_code_counts_all_rows": {
+        "TMP": {
+          "1": 19584,
+          "2": 14,
+          "5": 33,
+          "9": 4
+        },
+        "DEW": {
+          "1": 19582,
+          "2": 15,
+          "5": 33,
+          "9": 5
+        },
+        "SLP": {
+          "1": 2763,
+          "9": 16872
+        }
+      },
+      "interpretation": "Provider QC information only; no sensor-fault ground truth assigned.",
+      "live_origin_reverified": false
+    }
+  ],
+  "missing_requested_sample_files": [],
+  "other_local_sources": {
+    "openmeteo": {
+      "files": 21,
+      "bytes": 86182929
+    },
+    "ncpor": {
+      "files": 0,
+      "bytes": 0
+    },
+    "nasa_smap_msl": {
+      "files": 0,
+      "bytes": 0
+    },
+    "nab": {
+      "csv_files": 58,
+      "bytes": 9932226
+    }
+  },
+  "existing_processed_metadata": {
+    "status": "legacy_local_snapshot",
+    "parser_version": "unknown_local_snapshot_requires_rebuild",
+    "source_roles": {
+      "noaa_isd": "primary_observation; RH derived from NOAA dewpoint when absent",
+      "openmeteo": "reference_reanalysis; not physical AWS sensor ground truth",
+      "nab": "generic univariate anomaly benchmark; not AWS weather labels"
+    },
+    "rh_policy": "NOAA ISD RH is derived from TMP+DEW; Open-Meteo RH is reanalysis",
+    "pressure_policy": "NOAA ISD SLP and Open-Meteo pressure_msl are sea-level pressure",
+    "warning": "Checked-in Parquets predate the duplicate-report parser fix; rebuild on Kaggle before quoting metrics."
+  },
+  "archived_documentation": [
+    {
+      "path": "_verify_ghcnh/ghcnh-columns.pdf",
+      "bytes": 94658,
+      "sha256": "2eb051a2919be41a57c5c49ae6aa0f077194fe1983417a2e8ba4fbbaf16ea7b5",
+      "verification": "local archived copy; not fetched in this audit"
+    },
+    {
+      "path": "_verify_ghcnh/ghcnh_COLS.txt",
+      "bytes": 44399,
+      "sha256": "4ed56834beb7d4798dfe8d4a60bc6a8ee7410aecdfbda3af0447ba459056b7b9",
+      "verification": "local archived copy; not fetched in this audit"
+    },
+    {
+      "path": "_verify_ghcnh/ghcnh_DOC.txt",
+      "bytes": 35224,
+      "sha256": "a38a49cf34f835e9bf1b89df1515c5ca58a96ffe8ad833dcaf014382782f4c2c",
+      "verification": "local archived copy; not fetched in this audit"
+    },
+    {
+      "path": "_verify_ghcnh/ghcnh_DOCUMENTATION.pdf",
+      "bytes": 423879,
+      "sha256": "df5694efdc2d498f006a343165bae65701d14809174b9bed660149bd4fe591b7",
+      "verification": "local archived copy; not fetched in this audit"
+    }
+  ],
+  "blocking_findings": [
+    "Validation/test builders inject manufactured fault values and labels.",
+    "Preprocessing fills short gaps by interpolation.",
+    "NOAA RH is calculated from TMP/DEW in the existing builder, not a separately observed RH channel.",
+    "Existing pressure_hpa is NOAA SLP (sea-level pressure), not station pressure.",
+    "QC suspect/erroneous flags do not identify confirmed hardware fault causes.",
+    "Rows without a QC flag are not verified fault-free negatives.",
+    "Open-Meteo is reanalysis and must not supply primary sensor observations or truth.",
+    "Existing processed metadata identifies a legacy snapshot requiring rebuild.",
+    "Live dashboard and latency scripts generate random weather observations.",
+    "Live origin, licensing and replacement-source samples could not be independently verified this session."
+  ],
+  "sensor_fault_ground_truth_available": "not established"
+}

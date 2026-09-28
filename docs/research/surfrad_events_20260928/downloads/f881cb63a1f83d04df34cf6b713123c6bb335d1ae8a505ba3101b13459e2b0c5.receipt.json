@@ -1,0 +1,11 @@
+{
+  "requested_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Bondville_IL/README_SURFRAD.txt",
+  "retrieved_at_utc": "2026-09-28T11:48:20.658984+00:00",
+  "final_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Bondville_IL/README_SURFRAD.txt",
+  "status": 200,
+  "content_type": "text/plain; charset=UTF-8",
+  "last_modified": "Mon, 24 Jun 2024 16:50:45 GMT",
+  "sha256": "ed3e5c16f169a9def997877e6037735977f2761c9c3c39d493c8f3127e82f3a6",
+  "bytes": 24941,
+  "local_path": "docs/research/surfrad_events_20260928/downloads/ed3e5c16f169a9def997877e6037735977f2761c9c3c39d493c8f3127e82f3a6.txt"
+}

@@ -1,0 +1,101 @@
+[
+  {
+    "url": "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/air_temperature/DESCRIPTION_obsgermany_climate_hourly_air_temperature_en.pdf",
+    "retrieved_at_utc": "2026-09-26T02:18:53.1168389Z",
+    "path": "docs/research/dwd_20260926/air_temperature_description_en.pdf",
+    "bytes": 32617,
+    "sha256": "2b70224e4801da68c601bc95c145d221194ac5572b3d7ebb9a1a14abfe90d2d8",
+    "status_code": 200,
+    "transport": "HTTPS; Windows system certificate validation enabled via Invoke-WebRequest",
+    "content_type": "application/pdf",
+    "last_modified_header": "Mon, 06 May 2024 19:25:17 GMT"
+  },
+  {
+    "url": "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/pressure/DESCRIPTION_obsgermany_climate_hourly_pressure_en.pdf",
+    "retrieved_at_utc": "2026-09-26T02:18:56.860047Z",
+    "path": "docs/research/dwd_20260926/pressure_description_en.pdf",
+    "bytes": 31940,
+    "sha256": "acd99fc5f001f236078e9169866d334f894e7717d5c2b62457470351da44bfb8",
+    "status_code": 200,
+    "transport": "HTTPS; Windows system certificate validation enabled via Invoke-WebRequest",
+    "content_type": "application/pdf",
+    "last_modified_header": "Mon, 06 May 2024 19:25:17 GMT"
+  },
+  {
+    "url": "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/air_temperature/historical/",
+    "retrieved_at_utc": "2026-09-26T02:19:00.5319875Z",
+    "path": "docs/research/dwd_20260926/temperature_historical_index.html",
+    "bytes": 99831,
+    "sha256": "7117206672bc865b34864ca1dc01933038eadfd563e1966f11ed27ba4cffb193",
+    "status_code": 200,
+    "transport": "HTTPS; Windows system certificate validation enabled via Invoke-WebRequest",
+    "content_type": "text/html",
+    "last_modified_header": ""
+  },
+  {
+    "url": "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/pressure/historical/",
+    "retrieved_at_utc": "2026-09-26T02:19:02.6935314Z",
+    "path": "docs/research/dwd_20260926/pressure_historical_index.html",
+    "bytes": 49273,
+    "sha256": "97c2a68f5e3470f10d50dd803e1a3c6068b777299d6b68cce0aaf21391cb1fbb",
+    "status_code": 200,
+    "transport": "HTTPS; Windows system certificate validation enabled via Invoke-WebRequest",
+    "content_type": "text/html",
+    "last_modified_header": ""
+  },
+  {
+    "url": "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/air_temperature/historical/stundenwerte_TU_00433_19510101_20251231_hist.zip",
+    "retrieved_at_utc": "2026-09-26T02:20:08.7386955Z",
+    "path": "data/raw/dwd_verified_research/stundenwerte_TU_00433_19510101_20251231_hist.zip",
+    "bytes": 3091672,
+    "sha256": "ee67c7cf45b820ff3c28ac579fc3d3ce790ca41468709a45bd30ad8717de1267",
+    "status_code": 200,
+    "transport": "HTTPS; Windows system certificate validation enabled via Invoke-WebRequest",
+    "content_type": "application/zip",
+    "last_modified_header": "Wed, 10 Jun 2026 23:05:05 GMT"
+  },
+  {
+    "url": "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/pressure/historical/stundenwerte_P0_00433_19490101_20251231_hist.zip",
+    "retrieved_at_utc": "2026-09-26T02:20:16.774325Z",
+    "path": "data/raw/dwd_verified_research/stundenwerte_P0_00433_19490101_20251231_hist.zip",
+    "bytes": 2912971,
+    "sha256": "134459da3e3a1deb6aedc4771987dcdce97db9fb57649683a437f33337608beb",
+    "status_code": 200,
+    "transport": "HTTPS; Windows system certificate validation enabled via Invoke-WebRequest",
+    "content_type": "application/zip",
+    "last_modified_header": "Wed, 10 Jun 2026 23:05:05 GMT"
+  },
+  {
+    "url": "https://opendata.dwd.de/climate_environment/CDC/Terms_of_use.txt",
+    "retrieved_at_utc": "2026-09-26T02:21:55.4732687Z",
+    "path": "docs/research/dwd_20260926/Terms_of_use.txt",
+    "bytes": 143,
+    "sha256": "85a0a5765c179c025c664603f76a5c27584cd716a4ae332c8147a111ea39ae73",
+    "status_code": 200,
+    "transport": "HTTPS; Windows system certificate validation enabled via Invoke-WebRequest",
+    "content_type": "text/plain",
+    "last_modified_header": "Fri, 10 May 2024 05:05:08 GMT"
+  },
+  {
+    "url": "https://opendata.dwd.de/climate_environment/CDC/Terms_of_use.pdf",
+    "retrieved_at_utc": "2026-09-26T02:21:57.2745429Z",
+    "path": "docs/research/dwd_20260926/Terms_of_use.pdf",
+    "bytes": 61006,
+    "sha256": "7c47afd5346c60584662d7ca007b2228bc9c3622dc1936484aa3498bbc96d1d3",
+    "status_code": 200,
+    "transport": "HTTPS; Windows system certificate validation enabled via Invoke-WebRequest",
+    "content_type": "application/pdf",
+    "last_modified_header": "Wed, 15 May 2024 15:05:20 GMT"
+  },
+  {
+    "url": "https://opendata.dwd.de/climate_environment/CDC/Readme_intro_CDC_ftp.txt",
+    "retrieved_at_utc": "2026-09-26T02:21:58.8219730Z",
+    "path": "docs/research/dwd_20260926/Readme_intro_CDC_ftp.txt",
+    "bytes": 11979,
+    "sha256": "d089c08524b09c23ca9ef6dca44a0177a73cb33918d969ab5cb984d2c93fc1d2",
+    "status_code": 200,
+    "transport": "HTTPS; Windows system certificate validation enabled via Invoke-WebRequest",
+    "content_type": "text/plain",
+    "last_modified_header": "Tue, 11 Aug 2020 13:05:06 GMT"
+  }
+]

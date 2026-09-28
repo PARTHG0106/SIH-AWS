@@ -1,0 +1,13 @@
+Stations_ID;Stationsname;Geo. Laenge [Grad];Geo. Breite [Grad];Stationshoehe [m];Geberhoehe ueber Grund [m];Von_Datum;Bis_Datum;Geraetetyp Name;Messverfahren;eor;
+433;Berlin-Tempelhof;13.39;52.48;48.2;2;19510101;19510228;Hygrograph nach Frankenberg;Feuchteregistrierung, konv.;eor;
+433;Berlin-Tempelhof;13.39;52.48;48;2;19510301;19570430;Hygrograph nach Frankenberg;Feuchteregistrierung, konv.;eor;
+433;Berlin-Tempelhof;13.42;52.47;51;2;19570501;19700909;Hygrograph nach Frankenberg;Feuchteregistrierung, konv.;eor;
+433;Berlin-Tempelhof;13.4;52.47;47.72;2;19700910;19950531;Hygrograph nach Frankenberg;Feuchteregistrierung, konv.;eor;
+433;Berlin-Tempelhof;13.4;52.47;47.72;2;19940103;20081126;Lithium_Chlorid-Taupunktfühler;Feuchtemessung, elektr.;eor;
+433;Berlin-Tempelhof;13.4;52.47;47.72;2;19950601;20081031;Thermohygrograph;Temperatur- und Feuchtereg., konv.;eor;
+433;Berlin-Tempelhof;13.4;52.47;47.72;2;20081127;20140917;Feuchtesonde HMP45D;Feuchtemessung, elektr.;eor;
+433;Berlin-Tempelhof;13.4;52.47;47.72;2;20140918;20190523;EE33;Feuchtemessung, elektr.;eor;
+433;Berlin-Tempelhof;13.4;52.47;47.72;2;20190528;20220912;EE33;Feuchtemessung, elektr.;eor;
+433;Berlin-Tempelhof;13.4;52.47;47.74;2;20220913;20260419;EE33;Feuchtemessung, elektr.;eor;
+433;Berlin-Tempelhof;13.4;52.47;47.74;2;20250923;20250925;Feuchtesonde HMP45D;Feuchtemessung, elektr.;eor;
+generiert: 22.04.2026 --  Deutscher Wetterdienst  --

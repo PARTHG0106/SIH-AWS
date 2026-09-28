@@ -1,0 +1,488 @@
+{
+  "created_at_utc": "2026-09-26T02:23:37.174619+00:00",
+  "station": {
+    "id": "00433",
+    "published_numeric_id": "433",
+    "name": "Berlin-Tempelhof"
+  },
+  "decision": "NOT_YET_ELIGIBLE_FOR_STRICT_ORIGINAL_THREE_CHANNEL_TRAINING",
+  "viable_for_strict_real_observation_training_now": false,
+  "live_access_verified": true,
+  "scope": "Two official DWD product descriptions, CDC terms, station00433 historical TU/P0 ZIPs and contained instrument/parameter metadata; sample counts cover all published2024 records in these two archives.",
+  "provider": "Deutscher Wetterdienst (DWD), Climate Data Center",
+  "licence": "CC BY 4.0, explicitly stated in both product PDFs and official CDC Terms_of_use.txt/PDF (May2024).",
+  "attribution": "Deutscher Wetterdienst (DWD), Climate Data Center; Hourly station observations of 2m air temperature and humidity for Germany / Hourly station observations of pressure for Germany; descriptions v24.03; exact archive URLs, retrieval times and hashes in retrieval_manifest.json. Preserve attribution and identify processing changes in derived outputs.",
+  "verified_export_schema": {
+    "temperature": {
+      "product": "TU",
+      "raw_field": "TT_TU",
+      "unit": "degC"
+    },
+    "humidity": {
+      "product": "TU",
+      "raw_field": "RF_TU",
+      "unit": "percent",
+      "independent_exported_measurement_origin_verified": false
+    },
+    "station_pressure": {
+      "product": "P0",
+      "raw_field": "P0",
+      "unit": "hPa"
+    },
+    "sea_level_pressure_excluded": {
+      "product": "P0",
+      "raw_field": "P",
+      "unit": "hPa"
+    },
+    "join_keys_if_eligible": [
+      "STATIONS_ID",
+      "MESS_DATUM"
+    ],
+    "timestamp_format": "YYYYMMDDHH; metadata establish UTC for sampled2024 TU and P0; old TU timestamps before1995-02-01 are MEZ and must not be silently treated as UTC.",
+    "delimiter": ";",
+    "row_end_marker": "eor",
+    "whitespace": "strip surrounding field whitespace for parsing; preserve original bytes",
+    "provider_quality": "QN_9 (TU), QN_8 (P0) are report-level quality-processing stages; no QB columns in either actual product."
+  },
+  "verified_station_instrument_history": {
+    "temperature": "PT100 electronic air temperature since1994-01-03,2m height; station-height changes separately dated in metadata.",
+    "station_pressure": "Digitalbarometer AIR-DB1994-01-03..2015-09-23; PTB330 since2015-09-24.",
+    "humidity": "Lithium_Chlorid-Taupunktfuehler(dew-point probe)1994-01-03..2008-11-26; HMP45D2008-11-27..2014-09-17; EE332014-09-18..2019-05-23 and2019-05-28 onward, with later metadata intervals and a short2025 HMP45D overlap."
+  },
+  "blocking_findings": [
+    "Actual modern TU parameter metadata say RF_TU is generated from SYNOP reports. The inspected materials do not establish whether the exported humidity value is preserved from the humidity sensor or recomputed via dew point; an installed RH probe alone does not prove field-level export lineage.",
+    "All 8784 sampled 2024 records in each product have QN3, defined as automatic control and correction. Official docs distinguish QB2 corrected and QB4 added/calculated, but actual files lack QB. The downloaded data therefore cannot identify and exclude edited/calculated individual values under the strict acceptance policy.",
+    "No independent hardware-fault or reviewed-normal labels were supplied in these archives. QN codes cannot become binary fault ground truth."
+  ],
+  "allowed_next_step": "Resolve exact hourly RF_TU export origin and obtain per-value originality/edit information, or verify a different product that preserves direct channels and flags. Do not implement a training admission adapter that assumes these missing semantics.",
+  "samples": [
+    {
+      "archive": "data/raw/dwd_verified_research/stundenwerte_P0_00433_19490101_20251231_hist.zip",
+      "sha256": "134459da3e3a1deb6aedc4771987dcdce97db9fb57649683a437f33337608beb",
+      "members": [
+        {
+          "name": "Metadaten_Geraete_Luftdruck_Stationshoehe_00433.html",
+          "bytes": 4093,
+          "sha256": "f82a24239acd4569c894429606919877e403e774d950bb9d2406ebedcabca5fb"
+        },
+        {
+          "name": "Metadaten_Geraete_Luftdruck_Stationshoehe_00433.txt",
+          "bytes": 843,
+          "sha256": "a84db4b1a2417803f6bec63de4db50459c729849e410a9d241948adc73b4748a"
+        },
+        {
+          "name": "Metadaten_Stationsname_Betreibername_00433.html",
+          "bytes": 1636,
+          "sha256": "6816ad664be8d55728cce9a16d7692de2426ef2de9152cfc4924a6304e27f7ba"
+        },
+        {
+          "name": "Metadaten_Stationsname_Betreibername_00433.txt",
+          "bytes": 238,
+          "sha256": "c913853b76ee1a08594f869b0283713e63092a9f4ab866fd74f45f5cea8cbc82"
+        },
+        {
+          "name": "Metadaten_Parameter_p0_stunde_00433.html",
+          "bytes": 4753,
+          "sha256": "b6e3de85a77706133c84235a1e3a382f0452885e89bfc3b2aa5f0f2df37f4079"
+        },
+        {
+          "name": "Metadaten_Parameter_p0_stunde_00433.txt",
+          "bytes": 1143,
+          "sha256": "22c604281b0101785b6d3412955d8e403397a766b032feb6edb60c029ff0c1bb"
+        },
+        {
+          "name": "Metadaten_Geraete_Luftdruck_Reduziert_00433.html",
+          "bytes": 5671,
+          "sha256": "3cbd1a3436f2abc453b8e7d441eb8499fc1540a76d4a500de9315c458f3b34e2"
+        },
+        {
+          "name": "Metadaten_Geraete_Luftdruck_Reduziert_00433.txt",
+          "bytes": 1151,
+          "sha256": "2a0fcf3ffbb6b35fc161a1e8e815241a51fe6a4c25309246ed876c310c5d4452"
+        },
+        {
+          "name": "Metadaten_Geographie_00433.txt",
+          "bytes": 637,
+          "sha256": "6ed493f2261c941c9b4945688c04709d9f9b2ee727432f1f3e286c4a11c9fd5b"
+        },
+        {
+          "name": "Metadaten_Fehldaten_00433_19490101_20251231.html",
+          "bytes": 595535,
+          "sha256": "6a610c03a20f4cbc445e7754dadad4352e62cf7d2c218c87bdafd1c9966a7b14"
+        },
+        {
+          "name": "Metadaten_Fehldaten_00433_19490101_20251231.txt",
+          "bytes": 239391,
+          "sha256": "522dd4533a114ccb0b110f74b8c7b1bc74a49f7fd397b776d057c2cbdaae1726"
+        },
+        {
+          "name": "Metadaten_Fehlwerte_00433_19490101_20251231.txt",
+          "bytes": 238788,
+          "sha256": "a628aeb6a4a307c4a68bfdcb22f10deae3eec2f49d843a2853d81fc466290297"
+        },
+        {
+          "name": "produkt_p0_stunde_19490101_20251231_00433.txt",
+          "bytes": 29948885,
+          "sha256": "e58b7325435f3b1781c5321b8f7ce12472d80cb3da4a6e759ef4f2cddfed71ef"
+        }
+      ],
+      "products": [
+        {
+          "member": "produkt_p0_stunde_19490101_20251231_00433.txt",
+          "sha256": "e58b7325435f3b1781c5321b8f7ce12472d80cb3da4a6e759ef4f2cddfed71ef",
+          "header_as_published": [
+            "STATIONS_ID",
+            "MESS_DATUM",
+            "QN_8",
+            "   P",
+            "  P0",
+            "eor"
+          ],
+          "header_after_whitespace_trim": [
+            "STATIONS_ID",
+            "MESS_DATUM",
+            "QN_8",
+            "P",
+            "P0",
+            "eor"
+          ],
+          "rows_by_year": {
+            "1949": 8759,
+            "1950": 8760,
+            "1951": 8760,
+            "1952": 8784,
+            "1953": 8760,
+            "1954": 8760,
+            "1955": 8760,
+            "1956": 8784,
+            "1957": 8759,
+            "1958": 8760,
+            "1959": 8760,
+            "1960": 8784,
+            "1961": 8760,
+            "1962": 8760,
+            "1963": 8760,
+            "1964": 8784,
+            "1965": 8760,
+            "1966": 8760,
+            "1967": 8760,
+            "1968": 8784,
+            "1969": 8760,
+            "1970": 8760,
+            "1971": 2920,
+            "1972": 2928,
+            "1973": 2920,
+            "1974": 2920,
+            "1975": 2920,
+            "1976": 2928,
+            "1977": 2920,
+            "1978": 2920,
+            "1979": 2919,
+            "1980": 2928,
+            "1981": 8728,
+            "1982": 8712,
+            "1983": 8698,
+            "1984": 8750,
+            "1985": 8730,
+            "1986": 8719,
+            "1987": 8741,
+            "1988": 8765,
+            "1989": 8682,
+            "1990": 8715,
+            "1991": 8679,
+            "1992": 8774,
+            "1993": 8740,
+            "1994": 8745,
+            "1995": 8750,
+            "1996": 8779,
+            "1997": 8752,
+            "1998": 8716,
+            "1999": 8759,
+            "2000": 8784,
+            "2001": 8760,
+            "2002": 8759,
+            "2003": 8760,
+            "2004": 8784,
+            "2005": 8760,
+            "2006": 8760,
+            "2007": 8760,
+            "2008": 8779,
+            "2009": 8760,
+            "2010": 8760,
+            "2011": 8760,
+            "2012": 8784,
+            "2013": 8760,
+            "2014": 8760,
+            "2015": 8760,
+            "2016": 8784,
+            "2017": 8760,
+            "2018": 8760,
+            "2019": 8760,
+            "2020": 8784,
+            "2021": 8760,
+            "2022": 8760,
+            "2023": 8760,
+            "2024": 8784,
+            "2025": 8760
+          },
+          "qn_counts_full_product": {
+            "1": 431842,
+            "3": 184075
+          },
+          "rows_2024": 8784,
+          "unique_timestamp_strings_2024": 8784,
+          "qn_counts_2024": {
+            "3": 8784
+          },
+          "raw_minus999_counts_2024": {
+            "P": 4
+          },
+          "numeric_nonminus999_counts_2024": {
+            "P": 8780,
+            "P0": 8784
+          },
+          "rows_2024_with_required_fields_nonminus999": 8784,
+          "qb_columns_present": [],
+          "original_value_examples_2024": [
+            {
+              "STATIONS_ID": "433",
+              "MESS_DATUM": "2024010100",
+              "QN_8": "3",
+              "P": "1004.8",
+              "P0": "998.9",
+              "eor": "eor"
+            },
+            {
+              "STATIONS_ID": "433",
+              "MESS_DATUM": "2024010101",
+              "QN_8": "3",
+              "P": "1004.7",
+              "P0": "998.8",
+              "eor": "eor"
+            }
+          ],
+          "count_caveat": "Counts are raw published values, not accepted independent unedited measurements or fault-free labels."
+        }
+      ],
+      "metadata": [
+        "docs/research/dwd_20260926/original_metadata/stundenwerte_P0_00433_19490101_20251231_hist/Metadaten_Geraete_Luftdruck_Stationshoehe_00433.txt",
+        "docs/research/dwd_20260926/original_metadata/stundenwerte_P0_00433_19490101_20251231_hist/Metadaten_Stationsname_Betreibername_00433.txt",
+        "docs/research/dwd_20260926/original_metadata/stundenwerte_P0_00433_19490101_20251231_hist/Metadaten_Parameter_p0_stunde_00433.txt",
+        "docs/research/dwd_20260926/original_metadata/stundenwerte_P0_00433_19490101_20251231_hist/Metadaten_Geraete_Luftdruck_Reduziert_00433.txt",
+        "docs/research/dwd_20260926/original_metadata/stundenwerte_P0_00433_19490101_20251231_hist/Metadaten_Geographie_00433.txt",
+        "docs/research/dwd_20260926/original_metadata/stundenwerte_P0_00433_19490101_20251231_hist/Metadaten_Fehldaten_00433_19490101_20251231.txt",
+        "docs/research/dwd_20260926/original_metadata/stundenwerte_P0_00433_19490101_20251231_hist/Metadaten_Fehlwerte_00433_19490101_20251231.txt"
+      ]
+    },
+    {
+      "archive": "data/raw/dwd_verified_research/stundenwerte_TU_00433_19510101_20251231_hist.zip",
+      "sha256": "ee67c7cf45b820ff3c28ac579fc3d3ce790ca41468709a45bd30ad8717de1267",
+      "members": [
+        {
+          "name": "Metadaten_Stationsname_Betreibername_00433.html",
+          "bytes": 1636,
+          "sha256": "2d99c2af804f9b6575913ce5beba9221e60fe427443ccae030f3a4adf553386b"
+        },
+        {
+          "name": "Metadaten_Stationsname_Betreibername_00433.txt",
+          "bytes": 238,
+          "sha256": "d4858e7e8eab540c241874496792ffd42b7492733493d178d9626140b94fe03d"
+        },
+        {
+          "name": "Metadaten_Parameter_tu_stunde_00433.html",
+          "bytes": 5123,
+          "sha256": "0826631ba40c1a32813fcaecdb9309ee3cbc1a066894adcd1e5e589a45e62bed"
+        },
+        {
+          "name": "Metadaten_Parameter_tu_stunde_00433.txt",
+          "bytes": 1513,
+          "sha256": "11758c78101a86e5851390e875a7ee7f2fefa8221e9079ce2e380c576a320ed9"
+        },
+        {
+          "name": "Metadaten_Geraete_Lufttemperatur_00433.html",
+          "bytes": 4468,
+          "sha256": "834cf4a952c3d0e01555f648c0f56c690cb875adc1a2cc509e37bb810a76d060"
+        },
+        {
+          "name": "Metadaten_Geraete_Lufttemperatur_00433.txt",
+          "bytes": 820,
+          "sha256": "bfae9e88ed5a7a033968c8d2a408087262d65b1c37a75d33a9158c9f0ee366ef"
+        },
+        {
+          "name": "Metadaten_Geraete_Rel_Feuchte_00433.html",
+          "bytes": 7182,
+          "sha256": "d6d897dabbaaec3b8f418333def644315b933f31f3b977969ebff114f528c3c9"
+        },
+        {
+          "name": "Metadaten_Geraete_Rel_Feuchte_00433.txt",
+          "bytes": 1411,
+          "sha256": "67970a31512574dbb311411c9a6579de5789a77531a66fa5af4fbc0dc0d62fad"
+        },
+        {
+          "name": "Metadaten_Geographie_00433.txt",
+          "bytes": 637,
+          "sha256": "6ed493f2261c941c9b4945688c04709d9f9b2ee727432f1f3e286c4a11c9fd5b"
+        },
+        {
+          "name": "Metadaten_Fehldaten_00433_19510101_20251231.html",
+          "bytes": 33035,
+          "sha256": "88e9db8d69c255820308065eebbaf1ba276619207f37294b2e49637dabf5a44e"
+        },
+        {
+          "name": "Metadaten_Fehldaten_00433_19510101_20251231.txt",
+          "bytes": 13266,
+          "sha256": "cd882d03dd3e925b997a6a65adb9f79c8fe9f7133f2f8a3b8722c7861b29f202"
+        },
+        {
+          "name": "Metadaten_Fehlwerte_00433_19510101_20251231.txt",
+          "bytes": 12663,
+          "sha256": "956f318748a65352fdc7d5bd88fe6da2a3a9ff6d5e8ea767c727eb26f3128830"
+        },
+        {
+          "name": "produkt_tu_stunde_19510101_20251231_00433.txt",
+          "bytes": 27304927,
+          "sha256": "22557301a3f7d95131437f82ef2b1153dbbb79d7d2b07606a54f1233f4eb6f16"
+        }
+      ],
+      "products": [
+        {
+          "member": "produkt_tu_stunde_19510101_20251231_00433.txt",
+          "sha256": "22557301a3f7d95131437f82ef2b1153dbbb79d7d2b07606a54f1233f4eb6f16",
+          "header_as_published": [
+            "STATIONS_ID",
+            "MESS_DATUM",
+            "QN_9",
+            "TT_TU",
+            "RF_TU",
+            "eor"
+          ],
+          "header_after_whitespace_trim": [
+            "STATIONS_ID",
+            "MESS_DATUM",
+            "QN_9",
+            "TT_TU",
+            "RF_TU",
+            "eor"
+          ],
+          "rows_by_year": {
+            "1951": 8759,
+            "1952": 8784,
+            "1953": 8760,
+            "1954": 8760,
+            "1955": 8760,
+            "1956": 8784,
+            "1957": 8760,
+            "1958": 8760,
+            "1959": 8760,
+            "1960": 8784,
+            "1961": 8760,
+            "1962": 8760,
+            "1963": 8760,
+            "1964": 8784,
+            "1965": 8760,
+            "1966": 8760,
+            "1967": 8760,
+            "1968": 8784,
+            "1969": 8760,
+            "1970": 8760,
+            "1971": 1,
+            "1981": 8759,
+            "1982": 8760,
+            "1983": 8760,
+            "1984": 8784,
+            "1985": 8760,
+            "1986": 8760,
+            "1987": 8760,
+            "1988": 8784,
+            "1989": 8760,
+            "1990": 8760,
+            "1991": 8760,
+            "1992": 8784,
+            "1993": 8760,
+            "1994": 8760,
+            "1995": 8760,
+            "1996": 8784,
+            "1997": 8017,
+            "1998": 8758,
+            "1999": 8760,
+            "2000": 8784,
+            "2001": 8760,
+            "2002": 8760,
+            "2003": 8760,
+            "2004": 8784,
+            "2005": 8760,
+            "2006": 8760,
+            "2007": 8759,
+            "2008": 8778,
+            "2009": 8759,
+            "2010": 8739,
+            "2011": 8760,
+            "2012": 8784,
+            "2013": 8698,
+            "2014": 8760,
+            "2015": 8692,
+            "2016": 8784,
+            "2017": 8760,
+            "2018": 8760,
+            "2019": 8760,
+            "2020": 8784,
+            "2021": 8760,
+            "2022": 8760,
+            "2023": 8760,
+            "2024": 8784,
+            "2025": 8760
+          },
+          "qn_counts_full_product": {
+            "1": 24,
+            "10": 82458,
+            "3": 311077,
+            "5": 175320
+          },
+          "rows_2024": 8784,
+          "unique_timestamp_strings_2024": 8784,
+          "qn_counts_2024": {
+            "3": 8784
+          },
+          "raw_minus999_counts_2024": {
+            "TT_TU": 4,
+            "RF_TU": 4
+          },
+          "numeric_nonminus999_counts_2024": {
+            "TT_TU": 8780,
+            "RF_TU": 8780
+          },
+          "rows_2024_with_required_fields_nonminus999": 8780,
+          "qb_columns_present": [],
+          "original_value_examples_2024": [
+            {
+              "STATIONS_ID": "433",
+              "MESS_DATUM": "2024010100",
+              "QN_9": "3",
+              "TT_TU": "5.8",
+              "RF_TU": "82.0",
+              "eor": "eor"
+            },
+            {
+              "STATIONS_ID": "433",
+              "MESS_DATUM": "2024010101",
+              "QN_9": "3",
+              "TT_TU": "5.8",
+              "RF_TU": "82.0",
+              "eor": "eor"
+            }
+          ],
+          "count_caveat": "Counts are raw published values, not accepted independent unedited measurements or fault-free labels."
+        }
+      ],
+      "metadata": [
+        "docs/research/dwd_20260926/original_metadata/stundenwerte_TU_00433_19510101_20251231_hist/Metadaten_Stationsname_Betreibername_00433.txt",
+        "docs/research/dwd_20260926/original_metadata/stundenwerte_TU_00433_19510101_20251231_hist/Metadaten_Parameter_tu_stunde_00433.txt",
+        "docs/research/dwd_20260926/original_metadata/stundenwerte_TU_00433_19510101_20251231_hist/Metadaten_Geraete_Lufttemperatur_00433.txt",
+        "docs/research/dwd_20260926/original_metadata/stundenwerte_TU_00433_19510101_20251231_hist/Metadaten_Geraete_Rel_Feuchte_00433.txt",
+        "docs/research/dwd_20260926/original_metadata/stundenwerte_TU_00433_19510101_20251231_hist/Metadaten_Geographie_00433.txt",
+        "docs/research/dwd_20260926/original_metadata/stundenwerte_TU_00433_19510101_20251231_hist/Metadaten_Fehldaten_00433_19510101_20251231.txt",
+        "docs/research/dwd_20260926/original_metadata/stundenwerte_TU_00433_19510101_20251231_hist/Metadaten_Fehlwerte_00433_19510101_20251231.txt"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "requested_url": "https://www.ncei.noaa.gov/products/land-based-station/us-climate-reference-network",
+  "retrieved_at_utc": "2026-09-28T11:50:41.975335+00:00",
+  "final_url": "https://www.ncei.noaa.gov/products/land-based-station/us-climate-reference-network",
+  "status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "last_modified": "Mon, 28 Sep 2026 01:05:29 GMT",
+  "sha256": "e851c00cdbd57175d783e3d69dadb5771af82939e9872ebcf19a0191b86fcc34",
+  "bytes": 38359,
+  "local_path": "docs/research/surfrad_events_20260928/downloads/e851c00cdbd57175d783e3d69dadb5771af82939e9872ebcf19a0191b86fcc34.html"
+}

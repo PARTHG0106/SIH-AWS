@@ -1,0 +1,11 @@
+{
+  "requested_url": "https://gml.noaa.gov/grad/surfrad/bondvill.html",
+  "retrieved_at_utc": "2026-09-28T11:48:44.107815+00:00",
+  "final_url": "https://gml.noaa.gov/grad/surfrad/bondvill.html",
+  "status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "last_modified": null,
+  "sha256": "8061f5628db81ddde26861d650e322a6f2411082ad4998f80b5c277618428b0f",
+  "bytes": 22426,
+  "local_path": "docs/research/surfrad_events_20260928/downloads/8061f5628db81ddde26861d650e322a6f2411082ad4998f80b5c277618428b0f.html"
+}

@@ -1,0 +1,11 @@
+{
+  "requested_url": "https://gml.noaa.gov/grad/surfrad/",
+  "retrieved_at_utc": "2026-09-28T11:48:19.595750+00:00",
+  "final_url": "https://gml.noaa.gov/grad/surfrad/",
+  "status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "last_modified": null,
+  "sha256": "b41b9c9b220ef685901ef44c4682228516d27cea004bda87db891f800f6f4062",
+  "bytes": 34646,
+  "local_path": "docs/research/surfrad_events_20260928/downloads/b41b9c9b220ef685901ef44c4682228516d27cea004bda87db891f800f6f4062.html"
+}

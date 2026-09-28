@@ -1,0 +1,11 @@
+{
+  "requested_url": "https://gml.noaa.gov/grad/cgi-bin/surfcals?site=Goodwin",
+  "retrieved_at_utc": "2026-09-28T11:50:01.781738+00:00",
+  "final_url": "https://gml.noaa.gov/grad/cgi-bin/surfcals?site=Goodwin",
+  "status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "last_modified": null,
+  "sha256": "71e5c8d4f38a5b4515b223939f001970aea8e0f2143ec6f0f4271036619c74bd",
+  "bytes": 14574,
+  "local_path": "docs/research/surfrad_events_20260928/downloads/71e5c8d4f38a5b4515b223939f001970aea8e0f2143ec6f0f4271036619c74bd.html"
+}

@@ -1,0 +1,11 @@
+{
+  "requested_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/README.txt",
+  "retrieved_at_utc": "2026-09-28T11:50:38.886851+00:00",
+  "final_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/README.txt",
+  "status": 200,
+  "content_type": "text/plain",
+  "last_modified": "Tue, 06 Oct 2020 20:40:28 GMT",
+  "sha256": "4ace9cbbb3d63c98d8bbcf909e626d98ee4cc2ab8c1e4e59eece88eeec665872",
+  "bytes": 21821,
+  "local_path": "docs/research/surfrad_events_20260928/downloads/4ace9cbbb3d63c98d8bbcf909e626d98ee4cc2ab8c1e4e59eece88eeec665872.txt"
+}

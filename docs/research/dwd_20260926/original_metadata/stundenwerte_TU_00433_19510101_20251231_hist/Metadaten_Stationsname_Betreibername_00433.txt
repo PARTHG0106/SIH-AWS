@@ -1,0 +1,7 @@
+Stations_ID;Stationsname;Von_Datum;Bis_Datum
+   433;Berlin-Tempelhof;19180401;
+
+Stations_ID;Betreibername;Von_Datum;Bis_Datum
+   433;Wetterdienst;19180401;19521110
+   433;DWD;19521111;
+generiert: 22.04.2026 --  Deutscher Wetterdienst  --

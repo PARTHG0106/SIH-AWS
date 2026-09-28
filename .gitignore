@@ -1,0 +1,28 @@
+# data (large & regenerable via scripts / Kaggle builder — releases, raw,
+# processed, native-minute pulls, pytest temp dirs all live under data/)
+data/
+
+# environments / caches
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+
+# local editor / agent config (not shareable)
+.claude/
+
+# scratch / duplicate verification copies of GHCNh docs (keep ghcnh_DOCUMENTATION.pdf)
+_ghcnh_DOC*
+ghcnh_doc_tmp.txt
+_verify_ghcnh/
+
+# trained artifacts (Kaggle produces them)
+artifacts*/
+out*/
+
+# misc logs
+*.log
+
+# Kaggle API token - never commit/share
+kaggle-krishna.json

@@ -1,0 +1,10 @@
+{
+  "url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Bondville_IL/2024/",
+  "final_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Bondville_IL/2024/",
+  "retrieved_at_utc": "2026-09-26T02:22:44.513984+00:00",
+  "content_type": "text/html;charset=ISO-8859-1",
+  "provider_last_modified": null,
+  "bytes": 109782,
+  "sha256": "5a8cfa55d08c3ff6d69abe63767eaf570f18258bdaa2a8dd432e40b41cc281ec",
+  "file": "5a8cfa55d08c3ff6d69abe63767eaf570f18258bdaa2a8dd432e40b41cc281ec.raw"
+}

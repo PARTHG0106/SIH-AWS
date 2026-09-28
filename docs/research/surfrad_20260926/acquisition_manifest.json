@@ -1,0 +1,79 @@
+{
+  "files": [
+    {
+      "url": "https://gml.noaa.gov/grad/surfrad/",
+      "retrieved_at_utc": "2026-09-26T02:16:33.415480+00:00",
+      "local_path": "docs\\research\\surfrad_20260926\\overview.html",
+      "final_url": "https://gml.noaa.gov/grad/surfrad/",
+      "http_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "bytes": 34646,
+      "sha256": "b41b9c9b220ef685901ef44c4682228516d27cea004bda87db891f800f6f4062"
+    },
+    {
+      "url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/",
+      "retrieved_at_utc": "2026-09-26T02:16:33.421170+00:00",
+      "local_path": "docs\\research\\surfrad_20260926\\archive_index.html",
+      "final_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/",
+      "http_status": 200,
+      "content_type": "text/html;charset=ISO-8859-1",
+      "last_modified": null,
+      "bytes": 11657,
+      "sha256": "92eb7550c62481b46c879a4a6b5b7797b4a8fb2075030bcff204f98215c90f9c"
+    },
+    {
+      "url": "https://gml.noaa.gov/grad/surfrad/readme.html",
+      "retrieved_at_utc": "2026-09-26T02:16:33.425841+00:00",
+      "local_path": "docs\\research\\surfrad_20260926\\readme.html",
+      "error": {
+        "type": "HTTPError",
+        "message": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "url": "https://gml.noaa.gov/grad/surfrad/overview.html",
+      "retrieved_at_utc": "2026-09-26T02:17:01.435293+00:00",
+      "local_path": "docs\\research\\surfrad_20260926\\network_overview.html",
+      "final_url": "https://gml.noaa.gov/grad/surfrad/overview.html",
+      "http_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "bytes": 38996,
+      "sha256": "c0f29ff21e4bd2d2c05a679a46435fdc627067f9f4280f2b8a00063c861f60fc"
+    },
+    {
+      "url": "https://gml.noaa.gov/grad/surfrad/sitepage.html",
+      "retrieved_at_utc": "2026-09-26T02:17:01.441922+00:00",
+      "local_path": "docs\\research\\surfrad_20260926\\sitepage.html",
+      "final_url": "https://gml.noaa.gov/grad/surfrad/sitepage.html",
+      "http_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "bytes": 29070,
+      "sha256": "9c99d41ea173b84272f31d3dd14de46e13928b5fa3ad16481c22529bd1d3e2af"
+    },
+    {
+      "url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Bondville_IL/",
+      "retrieved_at_utc": "2026-09-26T02:17:01.446206+00:00",
+      "local_path": "docs\\research\\surfrad_20260926\\bondville_index.html",
+      "final_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Bondville_IL/",
+      "http_status": 200,
+      "content_type": "text/html;charset=ISO-8859-1",
+      "last_modified": null,
+      "bytes": 11782,
+      "sha256": "f0ebde7b9a74ba0fe45e589f4614a64185adc2b5c7512756f87a0fb50a062046"
+    },
+    {
+      "url": "https://gml.noaa.gov/about/disclaimer.html",
+      "retrieved_at_utc": "2026-09-26T02:17:01.447202+00:00",
+      "local_path": "docs\\research\\surfrad_20260926\\disclaimer.html",
+      "final_url": "https://gml.noaa.gov/about/disclaimer.html",
+      "http_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "bytes": 23944,
+      "sha256": "657e14026cea7e71431d1fbd1920d2d671bbd289009bb8e3ed8bb26e17ea7dec"
+    }
+  ]
+}

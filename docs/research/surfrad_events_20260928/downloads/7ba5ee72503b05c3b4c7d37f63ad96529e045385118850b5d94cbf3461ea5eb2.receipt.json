@@ -1,0 +1,11 @@
+{
+  "requested_url": "https://gml.noaa.gov/grad/cgi-bin/surfcals?site=Bondville",
+  "retrieved_at_utc": "2026-09-28T11:49:59.572732+00:00",
+  "final_url": "https://gml.noaa.gov/grad/cgi-bin/surfcals?site=Bondville",
+  "status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "last_modified": null,
+  "sha256": "95a31b4bb0a6bd866befb7f2f9d18cd9795ca0585bdbb8176d7048d434f913f8",
+  "bytes": 17127,
+  "local_path": "docs/research/surfrad_events_20260928/downloads/95a31b4bb0a6bd866befb7f2f9d18cd9795ca0585bdbb8176d7048d434f913f8.html"
+}

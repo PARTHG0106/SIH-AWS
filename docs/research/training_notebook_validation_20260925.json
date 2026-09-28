@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-25",
+  "notebook": "kaggle/aws_anomaly_training.ipynb",
+  "generator": "kaggle/build_notebook.py",
+  "training_source_sha256": "68a511efe440ef6e3cbcaebb9510963df4517a588621cb789335da4de83f5cbe",
+  "source_execution": "src/awsad in the selected processed dataset; no embedded replacement source",
+  "nbformat_schema_validation": "passed",
+  "compiled_code_cells": 7,
+  "source_files_verified_against_local_raw_bytes": 18,
+  "required_sources_verified": [
+    "src/awsad/evaluation/metrics.py",
+    "src/awsad/evaluation/calibration.py",
+    "src/awsad/evaluation/thresholds.py",
+    "src/awsad/data/training_contract.py"
+  ],
+  "focused_tests": {
+    "command": "python -m pytest tests/test_training_notebook.py -q",
+    "result": "4 passed",
+    "elapsed_seconds": 1.01,
+    "coverage": [
+      "Expected hashes cover transitive training and preflight imports",
+      "Stale processed source is refused before importing it",
+      "Matching source still refuses legacy data before numpy/pandas/torch imports",
+      "Fast disables deep heads; standard omits the 168-step head; full enables all"
+    ],
+    "fixtures": "Test-only metadata and temporary source copies; no observations or training datasets were constructed"
+  },
+  "training_run_started": false,
+  "dataset_eligibility_certified": false,
+  "accuracy_improvement_measured": false
+}

@@ -1,0 +1,978 @@
+{
+  "retrieved_at_utc": "2026-09-25T11:46:45.486962+00:00",
+  "read_only": true,
+  "download_max_bytes": 2000000,
+  "allowed_download_names": [
+    "MANIFEST.json",
+    "source_metadata.json",
+    "splits.json"
+  ],
+  "datasets": [
+    {
+      "dataset": "krishnagupta02468/skyguard-sih26073",
+      "pinned_dataset": "krishnagupta02468/skyguard-sih26073/17",
+      "status": {
+        "status": "ready",
+        "current_version_number": 17
+      },
+      "files": [
+        {
+          "name": "MANIFEST.json",
+          "total_bytes": 5118,
+          "creation_date": "2026-09-25 09:22:52.581000"
+        },
+        {
+          "name": "README.md",
+          "total_bytes": 9212,
+          "creation_date": "2026-09-25 09:22:52.667000"
+        },
+        {
+          "name": "configs/config.yaml",
+          "total_bytes": 4310,
+          "creation_date": "2026-09-25 09:22:52.577000"
+        },
+        {
+          "name": "docs/ARCHITECTURE.md",
+          "total_bytes": 6344,
+          "creation_date": "2026-09-25 09:22:52.603000"
+        },
+        {
+          "name": "docs/DATASET_AUDIT.md",
+          "total_bytes": 7290,
+          "creation_date": "2026-09-25 09:22:52.604000"
+        },
+        {
+          "name": "docs/DATA_SOURCES.md",
+          "total_bytes": 4909,
+          "creation_date": "2026-09-25 09:22:52.605000"
+        },
+        {
+          "name": "docs/KAGGLE_GUIDE.md",
+          "total_bytes": 5739,
+          "creation_date": "2026-09-25 09:22:52.643000"
+        },
+        {
+          "name": "docs/LICENSES.md",
+          "total_bytes": 1571,
+          "creation_date": "2026-09-25 09:22:52.593000"
+        },
+        {
+          "name": "docs/REAL_DATA_RESEARCH.md",
+          "total_bytes": 20340,
+          "creation_date": "2026-09-25 09:22:52.619000"
+        },
+        {
+          "name": "docs/USE_CASES.md",
+          "total_bytes": 3026,
+          "creation_date": "2026-09-25 09:22:52.615000"
+        },
+        {
+          "name": "docs/VERIFICATION_REPORT.md",
+          "total_bytes": 4209,
+          "creation_date": "2026-09-25 09:22:52.591000"
+        },
+        {
+          "name": "docs/research/real_data_audit.json",
+          "total_bytes": 11226,
+          "creation_date": "2026-09-25 09:22:52.656000"
+        },
+        {
+          "name": "requirements.txt",
+          "total_bytes": 378,
+          "creation_date": "2026-09-25 09:22:52.583000"
+        },
+        {
+          "name": "src/awsad/__init__.py",
+          "total_bytes": 167,
+          "creation_date": "2026-09-25 09:22:53.456000"
+        },
+        {
+          "name": "src/awsad/correction.py",
+          "total_bytes": 2582,
+          "creation_date": "2026-09-25 09:22:52.634000"
+        },
+        {
+          "name": "src/awsad/data/download_noaa_isd.py",
+          "total_bytes": 3545,
+          "creation_date": "2026-09-25 09:22:52.666000"
+        },
+        {
+          "name": "src/awsad/data/download_openmeteo.py",
+          "total_bytes": 4606,
+          "creation_date": "2026-09-25 09:22:52.674000"
+        },
+        {
+          "name": "src/awsad/data/parse_isd.py",
+          "total_bytes": 7602,
+          "creation_date": "2026-09-25 09:22:52.717000"
+        },
+        {
+          "name": "src/awsad/data/parse_openmeteo.py",
+          "total_bytes": 3198,
+          "creation_date": "2026-09-25 09:22:52.668000"
+        },
+        {
+          "name": "src/awsad/data/stations.py",
+          "total_bytes": 9200,
+          "creation_date": "2026-09-25 09:22:52.691000"
+        },
+        {
+          "name": "src/awsad/evaluation/metrics.py",
+          "total_bytes": 7893,
+          "creation_date": "2026-09-25 09:22:52.681000"
+        },
+        {
+          "name": "src/awsad/evaluation/nab.py",
+          "total_bytes": 3140,
+          "creation_date": "2026-09-25 09:22:52.709000"
+        },
+        {
+          "name": "src/awsad/evaluation/thresholds.py",
+          "total_bytes": 1580,
+          "creation_date": "2026-09-25 09:22:52.720000"
+        },
+        {
+          "name": "src/awsad/explain.py",
+          "total_bytes": 6308,
+          "creation_date": "2026-09-25 09:22:52.699000"
+        },
+        {
+          "name": "src/awsad/health.py",
+          "total_bytes": 1862,
+          "creation_date": "2026-09-25 09:22:52.681000"
+        },
+        {
+          "name": "src/awsad/inference.py",
+          "total_bytes": 3558,
+          "creation_date": "2026-09-25 09:22:52.642000"
+        },
+        {
+          "name": "src/awsad/models/ensemble.py",
+          "total_bytes": 4951,
+          "creation_date": "2026-09-25 09:22:52.711000"
+        },
+        {
+          "name": "src/awsad/models/fault_classifier.py",
+          "total_bytes": 4496,
+          "creation_date": "2026-09-25 09:22:52.745000"
+        },
+        {
+          "name": "src/awsad/models/isolation_forest.py",
+          "total_bytes": 1992,
+          "creation_date": "2026-09-25 09:22:52.724000"
+        },
+        {
+          "name": "src/awsad/models/lstm_autoencoder.py",
+          "total_bytes": 14302,
+          "creation_date": "2026-09-25 09:22:52.729000"
+        },
+        {
+          "name": "src/awsad/models/lstm_forecaster.py",
+          "total_bytes": 10225,
+          "creation_date": "2026-09-25 09:22:52.729000"
+        },
+        {
+          "name": "src/awsad/models/spatial.py",
+          "total_bytes": 5872,
+          "creation_date": "2026-09-25 09:22:52.731000"
+        },
+        {
+          "name": "src/awsad/models/statistical.py",
+          "total_bytes": 6889,
+          "creation_date": "2026-09-25 09:22:52.731000"
+        },
+        {
+          "name": "src/awsad/models/transformer_ae.py",
+          "total_bytes": 10686,
+          "creation_date": "2026-09-25 09:22:52.733000"
+        },
+        {
+          "name": "src/awsad/preprocessing/anomaly_injection.py",
+          "total_bytes": 13104,
+          "creation_date": "2026-09-25 09:22:52.766000"
+        },
+        {
+          "name": "src/awsad/preprocessing/features.py",
+          "total_bytes": 9744,
+          "creation_date": "2026-09-25 09:22:52.777000"
+        },
+        {
+          "name": "src/awsad/preprocessing/qc_rules.py",
+          "total_bytes": 6412,
+          "creation_date": "2026-09-25 09:22:52.743000"
+        },
+        {
+          "name": "src/awsad/streaming.py",
+          "total_bytes": 7536,
+          "creation_date": "2026-09-25 09:22:52.659000"
+        },
+        {
+          "name": "src/awsad/train_pipeline.py",
+          "total_bytes": 42559,
+          "creation_date": "2026-09-25 09:22:52.665000"
+        },
+        {
+          "name": "src/awsad/utils/config.py",
+          "total_bytes": 1212,
+          "creation_date": "2026-09-25 09:22:52.744000"
+        }
+      ],
+      "inventory_complete": true
+    },
+    {
+      "dataset": "krishnagupta02468/skyguard-sih26073-processed",
+      "pinned_dataset": "krishnagupta02468/skyguard-sih26073-processed/8",
+      "status": {
+        "status": "ready",
+        "current_version_number": 8
+      },
+      "files": [
+        {
+          "name": "awsad_bundle_v3/MANIFEST.json",
+          "total_bytes": 158637,
+          "creation_date": "2026-09-25 11:19:47.578000"
+        },
+        {
+          "name": "awsad_bundle_v3/README.md",
+          "total_bytes": 9212,
+          "creation_date": "2026-09-25 11:19:47.706000"
+        },
+        {
+          "name": "awsad_bundle_v3/configs/config.yaml",
+          "total_bytes": 4310,
+          "creation_date": "2026-09-25 11:19:47.521000"
+        },
+        {
+          "name": "awsad_bundle_v3/data/processed/injection_events.parquet",
+          "total_bytes": 116489,
+          "creation_date": "2026-09-25 11:19:48.079000"
+        },
+        {
+          "name": "awsad_bundle_v3/data/processed/real_qc_events.parquet",
+          "total_bytes": 99129,
+          "creation_date": "2026-09-25 11:19:47.980000"
+        },
+        {
+          "name": "awsad_bundle_v3/data/processed/source_metadata.json",
+          "total_bytes": 3375,
+          "creation_date": "2026-09-25 11:19:47.523000"
+        },
+        {
+          "name": "awsad_bundle_v3/data/processed/splits.json",
+          "total_bytes": 402124,
+          "creation_date": "2026-09-25 11:19:47.533000"
+        },
+        {
+          "name": "awsad_bundle_v3/data/processed/station_catalog.json",
+          "total_bytes": 95037,
+          "creation_date": "2026-09-25 11:19:47.586000"
+        },
+        {
+          "name": "awsad_bundle_v3/data/processed/station_stats.json",
+          "total_bytes": 245494,
+          "creation_date": "2026-09-25 11:19:47.644000"
+        },
+        {
+          "name": "awsad_bundle_v3/data/processed/test_labeled.parquet",
+          "total_bytes": 158560984,
+          "creation_date": "2026-09-25 11:19:52.848000"
+        },
+        {
+          "name": "awsad_bundle_v3/data/processed/train_clean.parquet",
+          "total_bytes": 724151306,
+          "creation_date": "2026-09-25 11:20:12.611000"
+        },
+        {
+          "name": "awsad_bundle_v3/data/processed/val_labeled.parquet",
+          "total_bytes": 95108989,
+          "creation_date": "2026-09-25 11:20:02.628000"
+        },
+        {
+          "name": "awsad_bundle_v3/docs/ARCHITECTURE.md",
+          "total_bytes": 6344,
+          "creation_date": "2026-09-25 11:19:47.660000"
+        },
+        {
+          "name": "awsad_bundle_v3/docs/DATASET_AUDIT.md",
+          "total_bytes": 7290,
+          "creation_date": "2026-09-25 11:19:47.677000"
+        },
+        {
+          "name": "awsad_bundle_v3/docs/DATA_SOURCES.md",
+          "total_bytes": 4909,
+          "creation_date": "2026-09-25 11:19:47.698000"
+        },
+        {
+          "name": "awsad_bundle_v3/docs/KAGGLE_GUIDE.md",
+          "total_bytes": 5739,
+          "creation_date": "2026-09-25 11:19:47.761000"
+        },
+        {
+          "name": "awsad_bundle_v3/docs/LICENSES.md",
+          "total_bytes": 1571,
+          "creation_date": "2026-09-25 11:19:47.854000"
+        },
+        {
+          "name": "awsad_bundle_v3/docs/REAL_DATA_RESEARCH.md",
+          "total_bytes": 20340,
+          "creation_date": "2026-09-25 11:19:47.781000"
+        },
+        {
+          "name": "awsad_bundle_v3/docs/USE_CASES.md",
+          "total_bytes": 3026,
+          "creation_date": "2026-09-25 11:19:47.811000"
+        },
+        {
+          "name": "awsad_bundle_v3/docs/VERIFICATION_REPORT.md",
+          "total_bytes": 4209,
+          "creation_date": "2026-09-25 11:19:47.810000"
+        },
+        {
+          "name": "awsad_bundle_v3/docs/research/real_data_audit.json",
+          "total_bytes": 11226,
+          "creation_date": "2026-09-25 11:19:47.853000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/LICENSE.txt",
+          "total_bytes": 1056,
+          "creation_date": "2026-09-25 11:19:47.818000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/README.md",
+          "total_bytes": 2931,
+          "creation_date": "2026-09-25 11:19:47.806000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/artificialNoAnomaly/art_daily_no_noise.csv",
+          "total_bytes": 116776,
+          "creation_date": "2026-09-25 11:20:00.680000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/artificialNoAnomaly/art_daily_perfect_square_wave.csv",
+          "total_bytes": 100816,
+          "creation_date": "2026-09-25 11:20:00.673000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/artificialNoAnomaly/art_daily_small_noise.csv",
+          "total_bytes": 140187,
+          "creation_date": "2026-09-25 11:20:00.683000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/artificialNoAnomaly/art_flatline.csv",
+          "total_bytes": 100816,
+          "creation_date": "2026-09-25 11:20:00.661000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/artificialNoAnomaly/art_noisy.csv",
+          "total_bytes": 140916,
+          "creation_date": "2026-09-25 11:20:00.667000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/artificialWithAnomaly/art_daily_flatmiddle.csv",
+          "total_bytes": 140292,
+          "creation_date": "2026-09-25 11:20:00.689000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/artificialWithAnomaly/art_daily_jumpsdown.csv",
+          "total_bytes": 140814,
+          "creation_date": "2026-09-25 11:20:00.673000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/artificialWithAnomaly/art_daily_jumpsup.csv",
+          "total_bytes": 140548,
+          "creation_date": "2026-09-25 11:20:00.683000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/artificialWithAnomaly/art_daily_nojump.csv",
+          "total_bytes": 140478,
+          "creation_date": "2026-09-25 11:20:00.689000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/artificialWithAnomaly/art_increase_spike_density.csv",
+          "total_bytes": 96869,
+          "creation_date": "2026-09-25 11:20:00.674000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/artificialWithAnomaly/art_load_balancer_spikes.csv",
+          "total_bytes": 101603,
+          "creation_date": "2026-09-25 11:20:00.656000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/ec2_cpu_utilization_24ae8d.csv",
+          "total_bytes": 105367,
+          "creation_date": "2026-09-25 11:20:00.657000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/ec2_cpu_utilization_53ea38.csv",
+          "total_bytes": 116041,
+          "creation_date": "2026-09-25 11:20:00.676000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/ec2_cpu_utilization_5f5533.csv",
+          "total_bytes": 119229,
+          "creation_date": "2026-09-25 11:20:00.737000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/ec2_cpu_utilization_77c1ca.csv",
+          "total_bytes": 106007,
+          "creation_date": "2026-09-25 11:20:00.668000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/ec2_cpu_utilization_825cc2.csv",
+          "total_bytes": 113675,
+          "creation_date": "2026-09-25 11:20:00.662000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/ec2_cpu_utilization_ac20cd.csv",
+          "total_bytes": 116980,
+          "creation_date": "2026-09-25 11:20:00.653000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/ec2_cpu_utilization_c6585a.csv",
+          "total_bytes": 104962,
+          "creation_date": "2026-09-25 11:20:00.669000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/ec2_cpu_utilization_fe7f93.csv",
+          "total_bytes": 115788,
+          "creation_date": "2026-09-25 11:20:00.703000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/ec2_disk_write_bytes_1ef3de.csv",
+          "total_bytes": 116626,
+          "creation_date": "2026-09-25 11:20:00.650000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/ec2_disk_write_bytes_c0d644.csv",
+          "total_bytes": 101626,
+          "creation_date": "2026-09-25 11:20:00.682000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/ec2_network_in_257a54.csv",
+          "total_bytes": 117236,
+          "creation_date": "2026-09-25 11:20:00.672000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/ec2_network_in_5abac7.csv",
+          "total_bytes": 120827,
+          "creation_date": "2026-09-25 11:20:00.679000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/elb_request_count_8c0756.csv",
+          "total_bytes": 101052,
+          "creation_date": "2026-09-25 11:20:00.713000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/grok_asg_anomaly.csv",
+          "total_bytes": 131065,
+          "creation_date": "2026-09-25 11:20:00.704000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/iio_us-east-1_i-a2eb1cd9_NetworkIn.csv",
+          "total_bytes": 37339,
+          "creation_date": "2026-09-25 11:20:00.660000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/rds_cpu_utilization_cc0c53.csv",
+          "total_bytes": 117806,
+          "creation_date": "2026-09-25 11:20:00.668000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAWSCloudwatch/rds_cpu_utilization_e47b3b.csv",
+          "total_bytes": 113599,
+          "creation_date": "2026-09-25 11:20:00.674000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAdExchange/exchange-2_cpc_results.csv",
+          "total_bytes": 58887,
+          "creation_date": "2026-09-25 11:20:00.659000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAdExchange/exchange-2_cpm_results.csv",
+          "total_bytes": 58313,
+          "creation_date": "2026-09-25 11:20:00.664000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAdExchange/exchange-3_cpc_results.csv",
+          "total_bytes": 55474,
+          "creation_date": "2026-09-25 11:20:00.670000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAdExchange/exchange-3_cpm_results.csv",
+          "total_bytes": 54949,
+          "creation_date": "2026-09-25 11:20:00.883000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAdExchange/exchange-4_cpc_results.csv",
+          "total_bytes": 60212,
+          "creation_date": "2026-09-25 11:20:00.664000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realAdExchange/exchange-4_cpm_results.csv",
+          "total_bytes": 58931,
+          "creation_date": "2026-09-25 11:20:00.654000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realKnownCause/ambient_temperature_system_failure.csv",
+          "total_bytes": 233321,
+          "creation_date": "2026-09-25 11:20:00.684000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realKnownCause/cpu_utilization_asg_misconfiguration.csv",
+          "total_bytes": 539274,
+          "creation_date": "2026-09-25 11:20:00.675000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realKnownCause/ec2_request_latency_system_failure.csv",
+          "total_bytes": 123428,
+          "creation_date": "2026-09-25 11:20:00.650000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realKnownCause/machine_temperature_system_failure.csv",
+          "total_bytes": 732223,
+          "creation_date": "2026-09-25 11:20:00.702000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realKnownCause/nyc_taxi.csv",
+          "total_bytes": 265771,
+          "creation_date": "2026-09-25 11:20:00.673000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realKnownCause/rogue_agent_key_hold.csv",
+          "total_bytes": 55527,
+          "creation_date": "2026-09-25 11:20:00.652000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realKnownCause/rogue_agent_key_updown.csv",
+          "total_bytes": 138333,
+          "creation_date": "2026-09-25 11:20:00.673000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTraffic/TravelTime_387.csv",
+          "total_bytes": 59846,
+          "creation_date": "2026-09-25 11:20:00.662000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTraffic/TravelTime_451.csv",
+          "total_bytes": 51918,
+          "creation_date": "2026-09-25 11:20:00.661000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTraffic/occupancy_6005.csv",
+          "total_bytes": 59122,
+          "creation_date": "2026-09-25 11:20:00.665000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTraffic/occupancy_t4013.csv",
+          "total_bytes": 62609,
+          "creation_date": "2026-09-25 11:20:00.696000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTraffic/speed_6005.csv",
+          "total_bytes": 57538,
+          "creation_date": "2026-09-25 11:20:00.697000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTraffic/speed_7578.csv",
+          "total_bytes": 25928,
+          "creation_date": "2026-09-25 11:20:00.679000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTraffic/speed_t4013.csv",
+          "total_bytes": 57400,
+          "creation_date": "2026-09-25 11:20:00.665000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTweets/Twitter_volume_AAPL.csv",
+          "total_bytes": 368111,
+          "creation_date": "2026-09-25 11:20:00.706000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTweets/Twitter_volume_AMZN.csv",
+          "total_bytes": 364666,
+          "creation_date": "2026-09-25 11:20:00.679000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTweets/Twitter_volume_CRM.csv",
+          "total_bytes": 350820,
+          "creation_date": "2026-09-25 11:20:00.677000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTweets/Twitter_volume_CVS.csv",
+          "total_bytes": 348802,
+          "creation_date": "2026-09-25 11:20:00.660000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTweets/Twitter_volume_FB.csv",
+          "total_bytes": 359760,
+          "creation_date": "2026-09-25 11:20:00.721000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTweets/Twitter_volume_GOOG.csv",
+          "total_bytes": 361270,
+          "creation_date": "2026-09-25 11:20:00.708000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTweets/Twitter_volume_IBM.csv",
+          "total_bytes": 351268,
+          "creation_date": "2026-09-25 11:20:00.686000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTweets/Twitter_volume_KO.csv",
+          "total_bytes": 355283,
+          "creation_date": "2026-09-25 11:20:00.665000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTweets/Twitter_volume_PFE.csv",
+          "total_bytes": 348926,
+          "creation_date": "2026-09-25 11:20:00.674000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/data/realTweets/Twitter_volume_UPS.csv",
+          "total_bytes": 350182,
+          "creation_date": "2026-09-25 11:20:00.680000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/labels/combined_labels.json",
+          "total_bytes": 7015,
+          "creation_date": "2026-09-25 11:19:47.832000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/labels/combined_windows.json",
+          "total_bytes": 15359,
+          "creation_date": "2026-09-25 11:19:47.829000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/labels/combined_windows_tiny.json",
+          "total_bytes": 828,
+          "creation_date": "2026-09-25 11:19:47.888000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/labels/raw/AL_labels_v0.8.json",
+          "total_bytes": 2388,
+          "creation_date": "2026-09-25 11:19:47.943000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/labels/raw/AL_labels_v1.0.json",
+          "total_bytes": 3584,
+          "creation_date": "2026-09-25 11:19:47.908000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/labels/raw/CB_labels_v0.8.json",
+          "total_bytes": 2192,
+          "creation_date": "2026-09-25 11:19:47.900000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/labels/raw/CB_labels_v1.0.json",
+          "total_bytes": 3581,
+          "creation_date": "2026-09-25 11:19:47.944000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/labels/raw/SA_labels_v0.8.json",
+          "total_bytes": 2271,
+          "creation_date": "2026-09-25 11:19:47.907000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/labels/raw/SA_labels_v1.0.json",
+          "total_bytes": 3544,
+          "creation_date": "2026-09-25 11:19:47.925000"
+        },
+        {
+          "name": "awsad_bundle_v3/nab/labels/raw/known_labels_v1.0.json",
+          "total_bytes": 2196,
+          "creation_date": "2026-09-25 11:19:47.865000"
+        },
+        {
+          "name": "awsad_bundle_v3/provenance/source_manifest.json",
+          "total_bytes": 5118,
+          "creation_date": "2026-09-25 11:19:47.953000"
+        },
+        {
+          "name": "awsad_bundle_v3/requirements.txt",
+          "total_bytes": 378,
+          "creation_date": "2026-09-25 11:19:47.940000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/__init__.py",
+          "total_bytes": 167,
+          "creation_date": "2026-09-25 11:19:47.964000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/correction.py",
+          "total_bytes": 2582,
+          "creation_date": "2026-09-25 11:19:47.800000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/data/download_noaa_isd.py",
+          "total_bytes": 3545,
+          "creation_date": "2026-09-25 11:19:47.906000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/data/download_openmeteo.py",
+          "total_bytes": 4606,
+          "creation_date": "2026-09-25 11:19:47.939000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/data/parse_isd.py",
+          "total_bytes": 7602,
+          "creation_date": "2026-09-25 11:19:47.922000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/data/parse_openmeteo.py",
+          "total_bytes": 3198,
+          "creation_date": "2026-09-25 11:19:47.769000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/data/stations.py",
+          "total_bytes": 9200,
+          "creation_date": "2026-09-25 11:19:47.852000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/evaluation/metrics.py",
+          "total_bytes": 7893,
+          "creation_date": "2026-09-25 11:19:47.941000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/evaluation/nab.py",
+          "total_bytes": 3140,
+          "creation_date": "2026-09-25 11:19:47.951000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/evaluation/thresholds.py",
+          "total_bytes": 1580,
+          "creation_date": "2026-09-25 11:19:47.747000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/explain.py",
+          "total_bytes": 6308,
+          "creation_date": "2026-09-25 11:19:47.780000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/health.py",
+          "total_bytes": 1862,
+          "creation_date": "2026-09-25 11:19:47.957000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/inference.py",
+          "total_bytes": 3558,
+          "creation_date": "2026-09-25 11:19:47.941000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/models/ensemble.py",
+          "total_bytes": 4951,
+          "creation_date": "2026-09-25 11:19:47.690000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/models/fault_classifier.py",
+          "total_bytes": 4496,
+          "creation_date": "2026-09-25 11:19:47.784000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/models/isolation_forest.py",
+          "total_bytes": 1992,
+          "creation_date": "2026-09-25 11:19:47.982000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/models/lstm_autoencoder.py",
+          "total_bytes": 14302,
+          "creation_date": "2026-09-25 11:19:47.941000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/models/lstm_forecaster.py",
+          "total_bytes": 10225,
+          "creation_date": "2026-09-25 11:19:47.979000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/models/spatial.py",
+          "total_bytes": 5872,
+          "creation_date": "2026-09-25 11:19:47.633000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/models/statistical.py",
+          "total_bytes": 6889,
+          "creation_date": "2026-09-25 11:19:47.688000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/models/transformer_ae.py",
+          "total_bytes": 10686,
+          "creation_date": "2026-09-25 11:19:47.985000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/preprocessing/anomaly_injection.py",
+          "total_bytes": 13104,
+          "creation_date": "2026-09-25 11:19:47.989000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/preprocessing/features.py",
+          "total_bytes": 9744,
+          "creation_date": "2026-09-25 11:19:47.612000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/preprocessing/qc_rules.py",
+          "total_bytes": 6412,
+          "creation_date": "2026-09-25 11:19:47.644000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/streaming.py",
+          "total_bytes": 7536,
+          "creation_date": "2026-09-25 11:19:48.022000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/train_pipeline.py",
+          "total_bytes": 42559,
+          "creation_date": "2026-09-25 11:19:47.987000"
+        },
+        {
+          "name": "awsad_bundle_v3/src/awsad/utils/config.py",
+          "total_bytes": 1212,
+          "creation_date": "2026-09-25 11:19:48.016000"
+        }
+      ],
+      "inventory_complete": true
+    }
+  ],
+  "downloads": [
+    {
+      "remote_file": "MANIFEST.json",
+      "listed_bytes": 5118,
+      "dataset": "krishnagupta02468/skyguard-sih26073/17",
+      "local_path": "download_1\\MANIFEST.json",
+      "bytes": 5118,
+      "sha256": "0e7c7c1e3699483df319a559441c0a80194a24ff772a67a7a05122ddf21ef134",
+      "top_level_keys": [
+        "built_at",
+        "bundle_role",
+        "contents",
+        "license",
+        "next_step",
+        "parser_version",
+        "processed_data_included",
+        "project",
+        "schema_version",
+        "sha256",
+        "source_roles",
+        "sources"
+      ],
+      "built_at": "2026-09-25T09:19:16.329978+00:00",
+      "parser_version": "isd-qc-anomaly-labels-v3"
+    },
+    {
+      "remote_file": "awsad_bundle_v3/MANIFEST.json",
+      "listed_bytes": 158637,
+      "dataset": "krishnagupta02468/skyguard-sih26073-processed/8",
+      "local_path": "download_2\\MANIFEST.json",
+      "bytes": 158637,
+      "sha256": "74a563e6f77674f296a0f979833e88f2e369234bb730ed21fd9a2a21ee7307be",
+      "top_level_keys": [
+        "build_id",
+        "build_utc",
+        "bundle_layout",
+        "bundle_role",
+        "catalog",
+        "derived_value_policy",
+        "discovered_noaa_station_count",
+        "eligible_headline_group_count",
+        "eligible_headline_groups",
+        "eligible_station_count",
+        "event_counts_by_split",
+        "fault_taxonomy",
+        "faults_by_split",
+        "group_count",
+        "group_counts",
+        "group_counts_by_split",
+        "groups_by_split",
+        "holdout_count",
+        "holdout_stations",
+        "label_provenance",
+        "nab_available",
+        "parser_version",
+        "project",
+        "schema_version",
+        "sha256",
+        "source",
+        "source_bundle",
+        "source_bundle_role",
+        "source_manifest_sha256",
+        "source_roles",
+        "source_root",
+        "station_count",
+        "validation_contract"
+      ],
+      "build_id": "20260925T105454Z-0e7c7c1e3699",
+      "source_manifest_sha256": "0e7c7c1e3699483df319a559441c0a80194a24ff772a67a7a05122ddf21ef134",
+      "parser_version": "isd-qc-anomaly-labels-v3"
+    },
+    {
+      "remote_file": "awsad_bundle_v3/data/processed/source_metadata.json",
+      "listed_bytes": 3375,
+      "dataset": "krishnagupta02468/skyguard-sih26073-processed/8",
+      "local_path": "download_3\\source_metadata.json",
+      "bytes": 3375,
+      "sha256": "0712edd9b691c701d9a1a992c84117eb2f94c9d59b5b6f2fe0067c68db3f9158",
+      "top_level_keys": [
+        "build_id",
+        "build_utc",
+        "derived_value_policy",
+        "label_provenance",
+        "parser_version",
+        "pressure_policy",
+        "rh_policy",
+        "schema_version",
+        "source_manifest_roles",
+        "source_manifest_sha256",
+        "source_roles",
+        "status"
+      ],
+      "build_id": "20260925T105454Z-0e7c7c1e3699",
+      "source_manifest_sha256": "0e7c7c1e3699483df319a559441c0a80194a24ff772a67a7a05122ddf21ef134",
+      "parser_version": "isd-qc-anomaly-labels-v3"
+    },
+    {
+      "remote_file": "awsad_bundle_v3/data/processed/splits.json",
+      "listed_bytes": 402124,
+      "dataset": "krishnagupta02468/skyguard-sih26073-processed/8",
+      "local_path": "download_4\\splits.json",
+      "bytes": 402124,
+      "sha256": "ac126bc162f4806f3c311dc6890342fa0870cf2aaa611356788112e9d157b8fd",
+      "top_level_keys": [
+        "build_id",
+        "build_utc",
+        "catalog_file",
+        "derived_value_policy",
+        "discovered_noaa_station_count",
+        "eligibility",
+        "eligible_headline_groups",
+        "eligible_station_ids",
+        "event_counts_by_split",
+        "fault_taxonomy",
+        "faults_by_split",
+        "finite_counts_by_split",
+        "group_count",
+        "group_counts",
+        "group_counts_by_split",
+        "groups",
+        "groups_by_split",
+        "holdout_fraction",
+        "holdout_seed",
+        "holdout_selection",
+        "holdout_stations",
+        "label_provenance",
+        "network_minimums",
+        "parser_version",
+        "persisted_groups_by_split",
+        "schema_version",
+        "source_manifest_sha256",
+        "source_roles",
+        "station_count",
+        "station_ids",
+        "stations",
+        "test_end",
+        "train_end",
+        "val_end"
+      ],
+      "build_id": "20260925T105454Z-0e7c7c1e3699",
+      "source_manifest_sha256": "0e7c7c1e3699483df319a559441c0a80194a24ff772a67a7a05122ddf21ef134",
+      "parser_version": "isd-qc-anomaly-labels-v3"
+    }
+  ]
+}

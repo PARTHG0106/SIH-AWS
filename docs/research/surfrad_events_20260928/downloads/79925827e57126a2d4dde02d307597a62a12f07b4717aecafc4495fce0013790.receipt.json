@@ -1,0 +1,11 @@
+{
+  "requested_url": "https://gml.noaa.gov/grad/surfrad/problems.html",
+  "retrieved_at_utc": "2026-09-28T11:48:16.075258+00:00",
+  "final_url": "https://gml.noaa.gov/grad/surfrad/problems.html",
+  "status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "last_modified": null,
+  "sha256": "81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355",
+  "bytes": 83269,
+  "local_path": "docs/research/surfrad_events_20260928/downloads/81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355.html"
+}

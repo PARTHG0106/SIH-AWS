@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "status": "fresh_online_builder",
+  "build_id": "20260925T105454Z-0e7c7c1e3699",
+  "build_utc": "2026-09-25T10:54:54.246517+00:00",
+  "source_manifest_sha256": "0e7c7c1e3699483df319a559441c0a80194a24ff772a67a7a05122ddf21ef134",
+  "parser_version": "isd-qc-anomaly-labels-v3",
+  "source_roles": {
+    "noaa_isd": "primary_observation; AWS-compatible surface-station proxy; RH derived from NOAA dewpoint",
+    "openmeteo": "reference_reanalysis; not physical AWS sensor ground truth",
+    "nab": "generic univariate anomaly benchmark; not AWS weather labels"
+  },
+  "source_manifest_roles": {
+    "noaa_isd": "primary_observation; AWS-compatible surface-station proxy; RH derived from NOAA dewpoint",
+    "openmeteo": "reference_reanalysis; not physical AWS sensor ground truth",
+    "nab": "generic univariate anomaly benchmark; not AWS weather labels"
+  },
+  "label_provenance": {
+    "real_qc_source": "NOAA ISD per-observation QC codes 2/3/6/7 (Suspect/Erroneous)",
+    "real_qc_points_by_split": {
+      "val": 3486,
+      "test": 6173
+    },
+    "synthetic_points_by_split": {
+      "val": 107872,
+      "test": 161622
+    },
+    "real_qc_points_by_channel": {
+      "val": {
+        "pressure_hpa": 410,
+        "relative_humidity_pct": 1041,
+        "temperature_c": 2178
+      },
+      "test": {
+        "temperature_c": 3840,
+        "pressure_hpa": 434,
+        "relative_humidity_pct": 2047
+      }
+    },
+    "train_rows_excluded_as_real_qc_anomalies": 29098,
+    "synthetic_fraction_by_split": {
+      "val": 0.9687,
+      "test": 0.9632
+    }
+  },
+  "derived_value_policy": {
+    "gap_fill_max_hours": 6,
+    "gap_fill_strip_threshold": 0.1,
+    "rh_derivation": "100% of NOAA RH is Magnus-derived from dewpoint (retained, disclosed)",
+    "by_split": {
+      "train": {
+        "temperature_c": {
+          "imputed_fraction": 0.37586,
+          "imputed_points": 11220428,
+          "action": "retained"
+        },
+        "pressure_hpa": {
+          "imputed_fraction": 0.36698,
+          "imputed_points": 10955459,
+          "action": "retained"
+        },
+        "relative_humidity_pct": {
+          "imputed_fraction": 0.37533,
+          "imputed_points": 11204624,
+          "action": "retained"
+        }
+      },
+      "val": {
+        "temperature_c": {
+          "imputed_fraction": 0.37619,
+          "imputed_points": 1425996,
+          "action": "retained"
+        },
+        "pressure_hpa": {
+          "imputed_fraction": 0.36861,
+          "imputed_points": 1397281,
+          "action": "retained"
+        },
+        "relative_humidity_pct": {
+          "imputed_fraction": 0.37588,
+          "imputed_points": 1424826,
+          "action": "retained"
+        }
+      },
+      "test": {
+        "temperature_c": {
+          "imputed_fraction": 0.3916,
+          "imputed_points": 2325819,
+          "action": "retained"
+        },
+        "pressure_hpa": {
+          "imputed_fraction": 0.37922,
+          "imputed_points": 2252275,
+          "action": "retained"
+        },
+        "relative_humidity_pct": {
+          "imputed_fraction": 0.39093,
+          "imputed_points": 2321843,
+          "action": "retained"
+        }
+      }
+    }
+  },
+  "rh_policy": "NOAA ISD RH is derived from TMP+DEW; Open-Meteo RH is reanalysis",
+  "pressure_policy": "NOAA ISD SLP and Open-Meteo pressure_msl are sea-level pressure"
+}

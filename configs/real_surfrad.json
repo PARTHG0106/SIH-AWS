@@ -1,0 +1,20 @@
+{
+  "horizon_minutes": [60],
+  "context_lags_minutes": [0, 60, 180, 1440],
+  "thinning_minutes": 60,
+  "train_end": "2024-09-01T00:00:00Z",
+  "validation_end": "2024-11-01T00:00:00Z",
+  "test_end": "2025-01-01T00:00:00Z",
+  "holdout_station_ids": ["gwn"],
+  "max_train_rows": 20000,
+  "max_validation_rows": 10000,
+  "max_iter": 80,
+  "max_cpu_threads": 4,
+  "max_leaf_nodes": 15,
+  "min_samples_leaf": 20,
+  "learning_rate": 0.05,
+  "l2_regularization": 3.0,
+  "anomaly_quantile": 0.995,
+  "random_seed": 42,
+  "evaluate_test": false
+}

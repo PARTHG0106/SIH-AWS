@@ -1,0 +1,16 @@
+# Core (mirrors versions verified in Kaggle's image; install only what's missing)
+numpy>=2.0
+pandas>=2.2
+scipy>=1.13
+scikit-learn>=1.5
+joblib>=1.4
+PyYAML>=6.0
+tqdm>=4.66
+pyarrow>=17.0          # parquet IO (preinstalled on Kaggle)
+matplotlib>=3.9
+
+# Deep learning — preinstalled on Kaggle; locally: pip install torch (CPU wheel)
+# torch>=2.4
+
+# Demo dashboard
+streamlit>=1.36

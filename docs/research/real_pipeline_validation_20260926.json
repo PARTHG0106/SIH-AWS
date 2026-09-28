@@ -1,0 +1,37 @@
+{
+  "date": "2026-09-26",
+  "scope": "Real-observation forecasting pipeline and guarded local runner software validation",
+  "source_sha256": {
+    "src/awsad/real_observation_pipeline.py": "7a438153e20ad66422d7ab6bc93c4d3af420f5d46dfcf39332092371f67d5c3e",
+    "scripts/run_real_observation_train.py": "9c2bccb10f59307a928faa345eb373f1a6fcd6d1f0647a7fd5936f850810588f",
+    "tests/test_real_observation_pipeline.py": "d4c2e4c6261fe8f5cf4633912608f202757b70e4105a503dbe0836aebf9f7657"
+  },
+  "tests": {
+    "command": "python -m pytest tests/test_real_observation_pipeline.py -q",
+    "result": "10 passed",
+    "elapsed_seconds": 7.37,
+    "warnings": 0,
+    "verified_behaviors": [
+      "Exact actual-timestamp features are prefix invariant at one-hour and 24-hour forecast horizons",
+      "Missing native reports are not replaced by positional lags or filled observations",
+      "Provider QC never appears among model predictors",
+      "Selection-only runs ignore even invalid test target values and QC",
+      "Station holdouts are excluded from model fitting, residual scaling and threshold calibration",
+      "Group scales and thresholds reproduce from the saved train/validation observation IDs",
+      "Missing readings and unknown labels remain missing/unknown in scored records",
+      "QC-rejected observed targets can be scored without being treated as hardware fault truth",
+      "Residual HGB targets equal traced measured future values minus measured forecast-origin values",
+      "Residual predictions add modelled change to the original observed origin; fixed shrinkage is explicit",
+      "Unverified input is refused by the CLI before model imports"
+    ],
+    "fixtures": "Synthetic software-test fixtures only, confined to tests and temporary test outputs"
+  },
+  "real_dataset_training_run_performed_by_this_validation": false,
+  "provider_source_eligibility_certified_by_this_validation": false,
+  "fault_accuracy_claim": null,
+  "notes": [
+    "The caller must pass the registered provider verifier before real training.",
+    "Selection reports forecast errors and empirical alert fractions, not confirmed fault accuracy or false-positive rates.",
+    "Measured accuracy improvements require a separate final run on verified original observations."
+  ]
+}
