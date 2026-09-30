@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
+import joblib
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.inspection import permutation_importance
 from sklearn.metrics import classification_report, confusion_matrix, f1_score
@@ -48,7 +49,8 @@ def _injected_table(cfg, models, thresholds, cache_dir, seed, target_fraction):
     return np.vstack(X), np.concatenate(y)
 
 
-def train_fault_classifier(artifact_dir, cache_dir, *, seed: int = 26073, target_fraction: float = 0.08) -> dict:
+def train_fault_classifier(artifact_dir, cache_dir, *, seed: int = 26073, target_fraction: float = 0.08,
+                           model_out=None) -> dict:
     cfg, models, thresholds = load_detector(artifact_dir)
     X, y = _injected_table(cfg, models, thresholds, cache_dir, seed, target_fraction)
     labels = sorted(set(y))
@@ -56,6 +58,8 @@ def train_fault_classifier(artifact_dir, cache_dir, *, seed: int = 26073, target
     clf = HistGradientBoostingClassifier(max_iter=250, learning_rate=0.08, max_leaf_nodes=31,
                                          l2_regularization=1.0, random_state=seed)
     clf.fit(Xtr, ytr)
+    if model_out is not None:
+        joblib.dump({"model": clf, "features": FEATURE_NAMES, "labels": labels}, model_out)
     pred = clf.predict(Xte)
     fault_labels = [l for l in labels if l != "normal"]
     report = classification_report(yte, pred, labels=labels, output_dict=True, zero_division=0)
@@ -89,3 +93,25 @@ def _shap_global(clf, X, seed):
                       key=lambda d: -d["mean_abs_shap"])
     except Exception as exc:  # noqa: BLE001 - explainability is best-effort
         return {"unavailable": str(exc)}
+
+
+class FaultTyper:
+    """Loads the trained classifier to SUGGEST a fault type for scored rows.
+
+    Trained on synthetic injected faults; applied to real candidates it is a typing
+    SUGGESTION for triage, never a confirmed hardware-fault label.
+    """
+
+    def __init__(self, model, features, labels):
+        self.model, self.features, self.labels = model, list(features), list(labels)
+
+    @classmethod
+    def load(cls, path):
+        blob = joblib.load(path)
+        return cls(blob["model"], blob["features"], blob["labels"])
+
+    def classify(self, scored_frame):
+        X = scored_frame.reindex(columns=self.features).to_numpy(float)
+        proba = self.model.predict_proba(X)
+        idx = proba.argmax(axis=1)
+        return self.model.classes_[idx], proba.max(axis=1)

@@ -31,4 +31,5 @@ export const api = {
   indiaCatalog: () => get<InCatalog>("/india/catalog"),
   indiaScenario: (p: Record<string, string>) => get<InScenario>("/india/scenario", p),
   indiaCsvUrl: (p: Record<string, string>) => `/api/india/scenario.csv?${new URLSearchParams(p).toString()}`,
+  benchmark: () => get<any>("/benchmark"),
 };

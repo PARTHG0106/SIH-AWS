@@ -8,6 +8,7 @@ India series stays explicitly synthetic and excluded from real training.
 """
 from __future__ import annotations
 
+import json
 import math
 import os
 import sys
@@ -33,10 +34,23 @@ from app.indian_dashboard import (CHANNELS as IN_CHANNELS, CHANNEL_LABELS as IN_
                                   SCENARIO_LABELS, SOURCE_LABELS, SYNTHETIC_LABEL, APPLIED_LABEL,
                                   scenario_chart_data, scenario_summary)
 from awsad.demo.indian_stations import load_demo_bundle, read_demo_station, simulate_scenario
+from awsad.benchmark.fault_classifier import FaultTyper
 
 USA_DIR = os.environ.get("SKYGUARD_ARTIFACTS", str(ROOT / "artifacts_minute_20260928"))
 INDIA_DIR = os.environ.get("SKYGUARD_INDIAN_DEMO", str(ROOT / "data" / "indian_demo_20260929"))
 DIST = ROOT / "frontend" / "dist"
+BENCH = Path(USA_DIR) / "injection_benchmark"
+_typer_cache: dict = {}
+
+
+def _fault_typer():
+    if "t" not in _typer_cache:
+        path = BENCH / "fault_classifier.joblib"
+        try:
+            _typer_cache["t"] = FaultTyper.load(path) if path.exists() else None
+        except Exception:
+            _typer_cache["t"] = None
+    return _typer_cache["t"]
 
 SERIES_OBS, SERIES_1M, SERIES_60M = "Observed", "Model: 1-minute horizon", "Model: 60-minute horizon"
 
@@ -133,9 +147,16 @@ def usa_window(request):
                              "channels": [], "candidates": [], "gaps": []})
     summary = window_summary(frame)
     channels = [_usa_channel(frame, ch) for ch in USA_CHANNELS]
+    typer = _fault_typer()
+    ftypes = fconf = None
+    if typer is not None:
+        try:
+            ftypes, fconf = typer.classify(frame)
+        except Exception:
+            ftypes = fconf = None
     table, cols = [], [c for c in ["timestamp", "reason_codes", "anomaly_score", "scoring_status",
                                    "split", *USA_CHANNELS] if c in frame]
-    for _, row in frame[boolean_flags(frame["is_candidate"])].iterrows():
+    for idx, row in frame[boolean_flags(frame["is_candidate"])].iterrows():
         record = {}
         for col in cols:
             if col == "timestamp":
@@ -144,6 +165,9 @@ def usa_window(request):
                 record[col] = _num(row[col])
             else:
                 record[col] = None if pd.isna(row[col]) else str(row[col])
+        if ftypes is not None:
+            record["fault_type"] = str(ftypes[idx])
+            record["type_confidence"] = _num(fconf[idx])
         table.append(record)
     gaps = [{"from": _iso(r["last_observed_utc"]), "to": _iso(r["next_observed_utc"]),
              "unreported": int(r["unreported_minute_slots"])} for _, r in missing_intervals(frame).iterrows()]
@@ -241,8 +265,17 @@ def india_scenario_csv(request):
                              headers={"Content-Disposition": f'attachment; filename="{filename}"'})
 
 
+def benchmark(request):
+    payload = {"available": BENCH.exists()}
+    for name in ("metrics", "classifier"):
+        path = BENCH / f"{name}.json"
+        payload[name] = json.loads(path.read_text()) if path.exists() else None
+    return JSONResponse(payload)
+
+
 routes = [
     Route("/api/health", lambda request: JSONResponse({"ok": True})),
+    Route("/api/benchmark", benchmark),
     Route("/api/usa/catalog", usa_catalog),
     Route("/api/usa/events", usa_events),
     Route("/api/usa/window", usa_window),

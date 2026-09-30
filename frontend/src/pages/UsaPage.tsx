@@ -116,19 +116,21 @@ export default function UsaPage({ p }: { p: Palette }) {
                 <h4 style={{ fontFamily: "Inter", marginTop: 6 }}>Candidate reasons in this window</h4>
                 <div className="table-wrap">
                   <table className="data">
-                    <thead><tr><th>Time (UTC)</th><th>Reason codes</th><th>Anomaly score</th></tr></thead>
+                    <thead><tr><th>Time (UTC)</th><th>Reason codes</th><th>Score</th><th>Suggested type</th><th>Conf.</th></tr></thead>
                     <tbody>
                       {win.data.candidates.slice(0, 200).map((r, i) => (
                         <tr key={i}>
                           <td>{(r.timestamp || "").replace("T", " ").replace("Z", "")}</td>
                           <td>{r.reason_codes ?? ""}</td>
                           <td>{r.anomaly_score == null ? "—" : Number(r.anomaly_score).toFixed(3)}</td>
+                          <td>{r.fault_type ?? "—"}</td>
+                          <td>{r.type_confidence == null ? "—" : `${(Number(r.type_confidence) * 100).toFixed(0)}%`}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
-                <p className="caption">Anomaly scores are detector evidence relative to calibrated thresholds — not probabilities of hardware failure.</p>
+                <p className="caption">Anomaly scores are detector evidence relative to calibrated thresholds — not probabilities of hardware failure. "Suggested type" is a classifier trained on synthetic injected faults; it's a triage hint, not a confirmed hardware fault.</p>
               </>
             )}
             <Accordion title="What do these numbers mean?">

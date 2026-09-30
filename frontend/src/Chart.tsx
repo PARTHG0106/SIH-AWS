@@ -75,6 +75,44 @@ export function timeSeriesOption(ch: UsaChannel, p: Palette, show60: boolean): e
   };
 }
 
+export function heatmapOption(matrix: number[][], labels: string[], p: Palette): echarts.EChartsCoreOption {
+  const rowSums = matrix.map((r) => r.reduce((a, b) => a + b, 0) || 1);
+  const data: any[] = [];
+  let max = 0;
+  matrix.forEach((row, i) => row.forEach((v, j) => {
+    const frac = v / rowSums[i];
+    max = Math.max(max, frac);
+    data.push([j, i, frac, v]);
+  }));
+  return {
+    grid: { left: 120, right: 20, top: 20, bottom: 96 },
+    tooltip: { ...tooltip(p, "item"),
+      formatter: (o: any) => `true <b>${labels[o.value[1]]}</b> → pred <b>${labels[o.value[0]]}</b><br/>${o.value[3]} rows (${(o.value[2] * 100).toFixed(0)}%)` },
+    xAxis: { type: "category", data: labels, axisLabel: { color: p.axis, rotate: 45, fontSize: 10 },
+      axisLine: { lineStyle: { color: p.grid } }, splitArea: { show: false } },
+    yAxis: { type: "category", data: labels, axisLabel: { color: p.axis, fontSize: 10 },
+      axisLine: { lineStyle: { color: p.grid } } },
+    visualMap: { min: 0, max: max || 1, show: false, inRange: { color: [p.surface, p.accent] } },
+    series: [{ type: "heatmap", data, label: { show: true, color: p.ink, fontSize: 9,
+      formatter: (o: any) => (o.value[2] > 0.04 ? (o.value[2] * 100).toFixed(0) : "") },
+      itemStyle: { borderColor: p.surface, borderWidth: 1 } }],
+    textStyle: { fontFamily: "Inter" },
+  };
+}
+
+export function barOption(items: { name: string; value: number }[], p: Palette): echarts.EChartsCoreOption {
+  const rows = items.slice().reverse();
+  return {
+    grid: { left: 190, right: 24, top: 8, bottom: 24 },
+    tooltip: { ...tooltip(p, "item"), formatter: (o: any) => `${o.name}: ${o.value.toFixed(3)}` },
+    xAxis: { type: "value", ...AXIS(p), splitLine: { lineStyle: { color: p.grid, type: "dashed" } } },
+    yAxis: { type: "category", data: rows.map((r) => r.name),
+      axisLabel: { color: p.axis, fontSize: 10 }, axisLine: { lineStyle: { color: p.grid } } },
+    series: [{ type: "bar", data: rows.map((r) => r.value), itemStyle: { color: p.accent2, borderRadius: [0, 3, 3, 0] }, barWidth: "62%" }],
+    textStyle: { fontFamily: "Inter" },
+  };
+}
+
 export function scatterOption(ch: InChannel, p: Palette): echarts.EChartsCoreOption {
   const mk = (data: any[], color: string, symbol: string, size: number) => ({
     type: "scatter", data: data.map((d) => [d[0], d[1]]), symbol, symbolSize: size,
