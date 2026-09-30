@@ -35,6 +35,7 @@ from app.indian_dashboard import (CHANNELS as IN_CHANNELS, CHANNEL_LABELS as IN_
                                   scenario_chart_data, scenario_summary)
 from awsad.demo.indian_stations import load_demo_bundle, read_demo_station, simulate_scenario
 from awsad.benchmark.fault_classifier import FaultTyper
+from awsad.station_health import station_health
 
 USA_DIR = os.environ.get("SKYGUARD_ARTIFACTS", str(ROOT / "artifacts_minute_20260928"))
 INDIA_DIR = os.environ.get("SKYGUARD_INDIAN_DEMO", str(ROOT / "data" / "indian_demo_20260929"))
@@ -265,6 +266,19 @@ def india_scenario_csv(request):
                              headers={"Content-Disposition": f'attachment; filename="{filename}"'})
 
 
+def usa_health(request):
+    group = request.query_params.get("group")
+    days = int(request.query_params.get("days", "30"))
+    bundle = _usa_bundle()
+    row = bundle["catalog"].loc[bundle["catalog"]["group"] == group]
+    if row.empty:
+        return JSONResponse({"group": group, "health": None})
+    last = pd.Timestamp(row.iloc[0]["last"])
+    frame = read_observations(bundle, group, (last - pd.Timedelta(days=days)).isoformat(), last.isoformat())
+    health = station_health(frame) if len(frame) else None
+    return JSONResponse({"group": group, "window_days": days, "health": health})
+
+
 def benchmark(request):
     payload = {"available": BENCH.exists()}
     for name in ("metrics", "classifier"):
@@ -279,6 +293,7 @@ routes = [
     Route("/api/usa/catalog", usa_catalog),
     Route("/api/usa/events", usa_events),
     Route("/api/usa/window", usa_window),
+    Route("/api/usa/health", usa_health),
     Route("/api/india/catalog", india_catalog),
     Route("/api/india/scenario", india_scenario),
     Route("/api/india/scenario.csv", india_scenario_csv),

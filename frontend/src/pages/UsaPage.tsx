@@ -43,6 +43,10 @@ export default function UsaPage({ p }: { p: Palette }) {
     () => (group && range ? api.usaWindow(group, range[0], range[1]) : Promise.resolve(null as any)),
     [group, range?.[0], range?.[1]],
   );
+  const health = useAsync(() => (group ? api.usaHealth(group) : Promise.resolve(null as any)), [group]);
+  const stateColor: Record<string, string> = {
+    healthy: p.accent2, watch: "#C79A3A", degraded: p.accent, critical: p.alert,
+  };
   // __USA_BODY__
   if (cat.loading) return <div className="loading">Loading real-observation artifacts…</div>;
   if (cat.error) return <div className="err">Could not load artifacts: {cat.error}</div>;
@@ -91,6 +95,20 @@ export default function UsaPage({ p }: { p: Palette }) {
           {cat.data?.policy ? ` · ${cat.data.policy}` : ""}</p>
         <Banner kind="info">Candidate alerts identify unusual observed behaviour. Hardware-fault status stays
           unknown without independent review; provider QC is separate quality evidence.</Banner>
+        {health.data?.health && (
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center", margin: "8px 0 2px" }}>
+            <span className="caption" style={{ margin: 0 }}>Sensor health · last {health.data.window_days}d:</span>
+            {Object.entries(health.data.health.channels).map(([ch, d]: any) => (
+              <span key={ch} style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "5px 11px",
+                borderRadius: 999, border: "1px solid var(--border)", background: "var(--surface)", fontSize: "0.82rem" }}>
+                <span style={{ width: 9, height: 9, borderRadius: "50%", background: stateColor[d.state] }} />
+                {ch.replace("_", " ").replace("_pct", "").replace("_c", "").replace("_hpa", "")}
+                <b style={{ color: stateColor[d.state], textTransform: "capitalize" }}>{d.state}</b>
+                <span style={{ color: "var(--muted)" }}>{(d.candidate_rate * 100).toFixed(1)}%{d.trend === "worsening" ? " ↑" : d.trend === "improving" ? " ↓" : ""}</span>
+              </span>
+            ))}
+          </div>
+        )}
         {/* __USA_CHARTS__ */}
         {win.loading && <div className="loading">Reading the selected interval…</div>}
         {win.error && <div className="err">{win.error}</div>}

@@ -28,6 +28,7 @@ export const api = {
   usaCatalog: () => get<UsaCatalog>("/usa/catalog"),
   usaEvents: (group: string) => get<{ group: string; events: UsaEvent[] }>("/usa/events", { group }),
   usaWindow: (group: string, start: string, end: string) => get<UsaWindow>("/usa/window", { group, start, end }),
+  usaHealth: (group: string) => get<any>("/usa/health", { group }),
   indiaCatalog: () => get<InCatalog>("/india/catalog"),
   indiaScenario: (p: Record<string, string>) => get<InScenario>("/india/scenario", p),
   indiaCsvUrl: (p: Record<string, string>) => `/api/india/scenario.csv?${new URLSearchParams(p).toString()}`,
