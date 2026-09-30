@@ -96,10 +96,10 @@ def causal_features(frame, horizon, cfg):
             "baseline": blocks[0], "context_ids": ids}
 
 
-def flatline_durations(frame, state=None):
+def flatline_durations(frame, state=None, *, return_quality=False):
     """Elapsed exact-repeat minutes; gaps/missing values reset, never backdate."""
     state = dict(state or {})
-    result = {}
+    result, quality = {}, {}
     times = pd.DatetimeIndex(frame.timestamp)
     for c in CHANNELS:
         values = frame[c].to_numpy(float, na_value=np.nan)
@@ -119,8 +119,16 @@ def flatline_durations(frame, state=None):
             duration[:first_reset[0] if len(first_reset) else len(duration)] += offset
         duration[~np.isfinite(values)] = np.nan
         result[c] = duration
-        state[c] = (str(times[-1]), float(values[-1]), float(duration[-1]))
-    return result, state
+        accepted = frame[c + "__qc_accepted"].fillna(False).to_numpy(bool) & np.isfinite(values)
+        bad = np.cumsum(~accepted)
+        prior_bad = np.where(starts > 0, bad[np.maximum(starts - 1, 0)], 0)
+        good = bad == prior_bad
+        if equal[0] and (len(previous) < 4 or not previous[3]):
+            first_reset = np.flatnonzero(~equal)
+            good[:first_reset[0] if len(first_reset) else len(good)] = False
+        quality[c] = good
+        state[c] = (str(times[-1]), float(values[-1]), float(duration[-1]), bool(good[-1]))
+    return (result, state, quality) if return_quality else (result, state)
 
 
 def fit_forecasters(samples, cfg):
@@ -165,7 +173,7 @@ def compute_signals(frame, models, cfg):
                 if model is not None and ok.any():
                     pred[ok, i] += model.predict(f["X"][ok])
             predictions[h] = pred
-    flat, _ = flatline_durations(frame)
+    flat, _, flat_quality = flatline_durations(frame, return_quality=True)
     gap = frame.timestamp.diff().ne(pd.Timedelta(minutes=1))
     runs = gap.cumsum()
     result, eligibility = {}, {}
@@ -186,7 +194,7 @@ def compute_signals(frame, models, cfg):
         prior_qc = np.r_[False, target_qc[:-1, i]] & ~gap.to_numpy()
         eligibility[c] = {"forecast_residual": target_qc[:, i] & features[1]["accepted"],
                           "abrupt_change": target_qc[:, i] & prior_qc,
-                          "flatline_minutes": target_qc[:, i],
+                          "flatline_minutes": flat_quality[c],
                           "hour_residual": target_qc[:, i] & features[60]["accepted"],
                           "sustained_deviation": sustained_qc}
     return result, eligibility, predictions, features
@@ -198,6 +206,8 @@ def fit_thresholds(calibration, cfg):
     Budget divided across channels/signals controls calibration reference tails;
     it is not a guaranteed false-alarm rate and is not fault probability.
     """
+    if "pooled_seen_groups" not in calibration:
+        raise ValueError("no eligible seen-group calibration observations in the selected view")
     q = 1 - cfg.reference_alert_budget / (len(CHANNELS) * len(SIGNALS))
     thresholds = {}
     for group, channels in calibration.items():

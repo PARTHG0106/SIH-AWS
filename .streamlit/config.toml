@@ -1,0 +1,12 @@
+# Presentation-only Streamlit settings. No [theme] block on purpose: the app
+# themes itself (warm/natural, light + dark aware) from app/theme.py so the
+# viewer's chosen light/dark mode is preserved. Takes effect on next start.
+[server]
+runOnSave = true
+headless = true
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"

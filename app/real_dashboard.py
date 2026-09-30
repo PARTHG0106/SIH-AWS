@@ -5,6 +5,7 @@ Software fixtures for these helpers belong in tests, never in replay artifacts.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -19,10 +20,28 @@ CHANNEL_LABELS = {
     "relative_humidity_pct": "Measured relative humidity (%)",
     "pressure_hpa": "Station pressure (hPa)",
 }
+SIGNAL_LABELS = {
+    "forecast_residual": "1-minute forecast error",
+    "abrupt_change": "Change from previous minute",
+    "flatline_minutes": "Unchanged-value duration",
+    "hour_residual": "60-minute forecast error",
+    "sustained_deviation": "Sustained signed forecast error",
+}
+CHANNEL_UNITS = {"temperature_c": "°C", "relative_humidity_pct": "percentage points", "pressure_hpa": "hPa"}
 REQUIRED_COLUMNS = {
     "timestamp", "group", "station_id", "source", "observation_id",
     "raw_file_sha256", "raw_row_number", *CHANNELS,
     "anomaly_score", "is_candidate", "reason_codes",
+}
+OBSERVED_BASE_COLUMNS = {
+    "timestamp", "group", "station_id", "source", "observation_id", "source_url",
+    "retrieved_at_utc", "native_averaging_seconds", "native_file_version",
+    "timestamp_position", "latitude", "longitude", "elevation_m", "label",
+    "hardware_fault_status", *CHANNELS,
+}
+OBSERVED_FIELD_SUFFIXES = {
+    "raw_value", "raw_qc", "qc_code", "qc_accepted", "qc_rejected", "raw_field",
+    "raw_unit", "provider", "source_product", "measurement_origin", "unit_conversion",
 }
 
 
@@ -36,13 +55,19 @@ def load_bundle(directory: str | Path) -> dict:
     if not root.is_dir():
         raise ValueError(f"Artifacts directory does not exist: {root}")
     metadata = {}
-    for name in ("metrics", "detector", "provenance", "data_provenance", "training_manifest"):
+    for name in ("metrics", "detector", "provenance", "data_provenance", "training_manifest", "independent_review_evaluation"):
         path = root / f"{name}.json"
         if path.is_file():
             try:
                 metadata[name] = json.loads(path.read_text(encoding="utf-8"))
             except (ValueError, OSError) as exc:
                 raise ValueError(f"Cannot read {path.name}: {exc}") from exc
+    evaluation = metadata.get("independent_review_evaluation")
+    if evaluation is not None:
+        for name in ("detector", "provenance"):
+            expected = evaluation.get("inputs", {}).get(f"{name}_sha256")
+            if expected != hashlib.sha256((root / f"{name}.json").read_bytes()).hexdigest():
+                raise ValueError("The completed review evaluation does not match this detector/replay.")
     for name in ("metrics", "detector"):
         if metadata.get(name, {}).get("dataset_policy") != "real_observations_only":
             raise ValueError(
@@ -138,11 +163,20 @@ def chart_series(frame: pd.DataFrame, channel: str, *, include_long_horizon: boo
         values = pd.to_numeric(frame[column], errors="coerce")
         present = values.notna() & np.isfinite(values)
         segments = (gap | ~present | ~present.shift(1, fill_value=False)).cumsum()
-        view = pd.DataFrame({"timestamp": frame["timestamp"], "value": values,
+        view = pd.DataFrame({"timestamp": frame["timestamp"],
+                             "timestamp_utc": frame["timestamp"].dt.strftime("%Y-%m-%d %H:%M:%S UTC"),
+                             "value": values,
                              "series": label, "segment": label + ":" + segments.astype(str)})
         result.append(view.loc[present])
     return pd.concat(result, ignore_index=True) if result else pd.DataFrame(
-        columns=["timestamp", "value", "series", "segment"])
+        columns=["timestamp", "timestamp_utc", "value", "series", "segment"])
+
+
+def observed_record_columns(frame: pd.DataFrame) -> list[str]:
+    """Keep detector signals out of the original-record provenance table."""
+    fields = {f"{channel}__{suffix}" for channel in CHANNELS for suffix in OBSERVED_FIELD_SUFFIXES}
+    return [column for column in frame if column in OBSERVED_BASE_COLUMNS
+            or column.startswith("raw_") or column in fields]
 
 
 def missing_intervals(frame: pd.DataFrame, *, cadence_seconds: int = 60) -> pd.DataFrame:
@@ -169,19 +203,51 @@ def window_summary(frame: pd.DataFrame) -> dict:
             "unreported_slots": int(gaps["unreported_minute_slots"].sum())}
 
 
+def signal_evidence(row: pd.Series, detector: dict) -> pd.DataFrame:
+    """Explain saved signal values against their frozen reference thresholds.
+
+    This reads artifacts only. It never recomputes predictions, changes an
+    alert, or promotes a threshold exceedance to a verified fault.
+    """
+    thresholds = detector.get("thresholds", {})
+    group = row.get("threshold_group")
+    if group is None:
+        group = row.get("group") if row.get("group") in thresholds else "pooled_seen_groups"
+    reference = thresholds.get(group, {})
+    entries = []
+    for channel in CHANNELS:
+        for signal, title in SIGNAL_LABELS.items():
+            value = row.get(f"{channel}__{signal}")
+            calibration = reference.get(channel, {}).get(signal, {})
+            threshold = calibration.get("threshold")
+            known = value is not None and threshold is not None and pd.notna(value) and pd.notna(threshold)
+            known = known and np.isfinite(value) and np.isfinite(threshold)
+            multiple = None
+            if known:
+                multiple = float(value / threshold) if threshold > 0 else (2. if value > 0 else 0.)
+            entries.append({"channel": CHANNEL_LABELS[channel], "check": title,
+                            "signal_value": float(value) if value is not None and pd.notna(value) else None,
+                            "unit": "minutes" if signal == "flatline_minutes" else CHANNEL_UNITS[channel],
+                            "threshold": threshold, "threshold_multiple": multiple,
+                            "crossed": "Yes" if known and value > threshold else ("No" if known else "Unavailable"),
+                            "reference_rows": calibration.get("reference_rows"),
+                            "zero_threshold_marker": bool(known and threshold == 0),
+                            "reference_group": group})
+    return pd.DataFrame(entries)
+
+
 def review_export(bundle: dict, group: str) -> pd.DataFrame:
     """Keep review status unknown unless supplied by a separate review artifact."""
+    from awsad.evaluation.real_events import review_template
+
     path = bundle["root"] / "review_template.csv"
     try:
-        reviews = pd.read_csv(path) if path.is_file() and path.stat().st_size else bundle["events"].copy()
+        reviews = pd.read_csv(path) if path.is_file() and path.stat().st_size else review_template(bundle["events"])
     except pd.errors.EmptyDataError:
-        reviews = bundle["events"].copy()
+        reviews = review_template(bundle["events"])
     if "group" in reviews:
         reviews = reviews.loc[reviews["group"].eq(group)].copy()
     if "review_status" not in reviews:
         reviews["review_status"] = "unknown"
     reviews["review_status"] = reviews["review_status"].fillna("unknown")
-    for column in ("reviewer", "evidence_url_or_path", "evidence_notes"):
-        if column not in reviews:
-            reviews[column] = ""
     return reviews

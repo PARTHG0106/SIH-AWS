@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "research_dates_utc": ["2026-09-28", "2026-09-29"],
+  "dataset_policy": "real_observations_only",
+  "source_manifest": "source_manifest.json",
+  "assessment_scope": {
+    "stations": ["bon", "fpk", "gwn"],
+    "source": "noaa_surfrad",
+    "years": [2023, 2024, 2025],
+    "channels": ["temperature_c", "relative_humidity_pct", "pressure_hpa"],
+    "independently_documented_usable_events_found": 0,
+    "reviewed_background_intervals": 0,
+    "meaning": "No usable in-scope event labels were established by the sources inspected; this is not proof that the stations had no faults."
+  },
+  "benchmark_status": "unverified_no_in_scope_reviewed_truth",
+  "accepted_review_rows": 0,
+  "event_evidence": [
+    {
+      "evidence_id": "surfrad-gwn-rh-chip-1997-1998",
+      "station_id": "gwn",
+      "provider_station_name": "Goodwin Creek",
+      "affected_channels": ["relative_humidity_pct"],
+      "documented_incident_type": "Faulty replacement relative-humidity chip; erroneously low readings",
+      "evidence_status": "provider_incident_documentation_and_two_saved_measurement_samples",
+      "provider_date_strings": {
+        "table": "20 July 1997 through 02 June 1998",
+        "narrative": "July 10, 1997 through June 2, 1998",
+        "archive_reprocessing": "October 5, 1998"
+      },
+      "time_uncertainty": "The table and narrative disagree about July 10 versus July 20. No time of day is given. No precise onset/end UTC timestamps are asserted.",
+      "start_utc": null,
+      "end_utc": null,
+      "archive_treatment": "Provider explicitly says RH values were retained in reprocessed files and assigned bad QC. Two current saved samples confirm nonmissing RH and raw QC=1 in all 480 records on each day.",
+      "benchmark_accepted": false,
+      "exclusion_reasons": ["outside_2023_2025_scope", "native_3_minute_historical_sensor_regime", "full_interval_and_onset_not_reviewed"],
+      "next_step": "Potential separate historical RH case study after a reviewer resolves interval semantics and the full original measurement chain; do not apply the one-minute detector or synthesize missing one-minute records.",
+      "measurement_samples": [
+        {"url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Goodwin_Creek_MS/1997/gwn97202.dat", "sha256": "a45967fb18ecc9c236d19f4021acf9e8cd58ae16adf5fbee61ed9c24bf4280a4", "retrieved_at_utc": "2026-09-29T02:09:25.453735+00:00", "date": "1997-07-21", "rows": 480},
+        {"url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Goodwin_Creek_MS/1998/gwn98152.dat", "sha256": "016560ca5c2c987d2d2caa223fd2f49771a289b7b1b8c3e79fea2efc84ba366f", "retrieved_at_utc": "2026-09-29T02:09:27.131638+00:00", "date": "1998-06-01", "rows": 480}
+      ],
+      "source_quotes": [
+        {"url": "https://gml.noaa.gov/grad/surfrad/problems.html", "sha256": "81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355", "source_line": 2094, "quote": "20 July 1997 through 02 June 1998"},
+        {"url": "https://gml.noaa.gov/grad/surfrad/problems.html", "sha256": "81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355", "source_line": 2100, "quote": "The replacement relative humidity (RH) chip installed at Goodwin during the 1997 maintenance and instrument exchange (on 7/10/97) was found to be faulty. All RH data from July 10, 1997 through June 2, 1998 (date of the 1998 instrument exchange) are erroneously low. Goodwin Creek data for this period were reprocessed and re-inserted into the archive on October 5, 1998. The RH values were retained in the processed data files, but they were flagged with bad QC values."}
+      ]
+    },
+    {
+      "evidence_id": "surfrad-bon-lightning-1999",
+      "station_id": "bon",
+      "provider_station_name": "Bondville",
+      "affected_channels": ["temperature_c", "relative_humidity_pct", "pressure_hpa"],
+      "documented_incident_type": "Lightning damage to barometer, temperature/RH probe and data logger; initial data loss",
+      "evidence_status": "provider_incident_documentation",
+      "provider_date_strings": {"affected_period": "June 4 - July 22, 1999", "instrument_exchange": "July 20-22, 1999", "follow_up_table_date": "July 26, 1999"},
+      "time_uncertainty": "Reported date ranges have no time of day. The July 26 follow-up table date is not treated as the repair completion time.",
+      "start_utc": null,
+      "end_utc": null,
+      "archive_treatment": "Provider reports all data after the June 4 strike through June 7 were lost. Per-channel remaining readings and corrections have not been inspected here.",
+      "benchmark_accepted": false,
+      "exclusion_reasons": ["outside_2023_2025_scope", "original_event_measurements_not_acquired", "data_loss_not_a_numeric_sensor_reading"],
+      "source_quotes": [
+        {"url": "https://gml.noaa.gov/grad/surfrad/problems.html", "sha256": "81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355", "source_line": 1990, "quote": "All data after the lightning strike on June 4, through June 7 were lost. By shifting connections on the data logger from blown channels to good ones, we were able to record data from all of the instruments. At that point it was determined that the pyranometer on the tower (measuring upwelling solar radiation) was damaged, and the barometer and temperature and relative humidity probe were destroyed."},
+        {"url": "https://gml.noaa.gov/grad/surfrad/problems.html", "sha256": "81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355", "source_line": 1960, "quote": "During the annual instrument exchange at the Bondville SURFRAD station, which took place on July 20-22, 1999, all problems caused by the June 4, 1999 lightning strike were fixed. Many of these problems were traced to the data logger."}
+      ]
+    },
+    {
+      "evidence_id": "surfrad-gwn-probe-short-outage-2004",
+      "station_id": "gwn",
+      "provider_station_name": "Goodwin Creek",
+      "affected_channels": ["temperature_c", "relative_humidity_pct", "pressure_hpa"],
+      "directly_faulted_instrument_channels": ["temperature_c", "relative_humidity_pct"],
+      "documented_incident_type": "Lightning-caused probe short drained logger power and prevented logging/communication",
+      "evidence_status": "provider_incident_documentation",
+      "provider_date_strings": {"table": "16 July 2004 to 26 August 2004", "onset_narrative": "mid-July, 2004", "collection_resumed": "26 August 2004"},
+      "time_uncertainty": "The document gives dates and mid-July language, not precise onset or recovery times.",
+      "start_utc": null,
+      "end_utc": null,
+      "archive_treatment": "All data collection was affected; a pressure sensor fault is not established by a logger outage caused by the T/RH probe.",
+      "benchmark_accepted": false,
+      "exclusion_reasons": ["outside_2023_2025_scope", "original_event_measurements_not_acquired", "telemetry_outage_requires_separate_availability_evaluation"],
+      "source_quotes": [
+        {"url": "https://gml.noaa.gov/grad/surfrad/problems.html", "sha256": "81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355", "source_line": 1632, "quote": "In mid-July, 2004, a power problem at the Goodwin Creek SURFRAD station prevented communication and data logging."},
+        {"url": "https://gml.noaa.gov/grad/surfrad/problems.html", "sha256": "81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355", "source_line": 1634, "quote": "The culprit was found to be a short circuit (caused by a lightning strike) in the temperature and RH probe that caused the probe to drain the data logger's power."},
+        {"url": "https://gml.noaa.gov/grad/surfrad/problems.html", "sha256": "81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355", "source_line": 1637, "quote": "After the temperature and RH probe was replaced, stable power returned to the data logger and normal data collection resumed on 26 August 2004."}
+      ]
+    },
+    {
+      "evidence_id": "surfrad-psu-pressure-drift-2003-2012",
+      "station_id": "psu",
+      "provider_station_name": "Penn State",
+      "affected_channels": ["pressure_hpa"],
+      "documented_incident_type": "Barometer drift downward by about 4 mb",
+      "evidence_status": "provider_incident_documentation",
+      "provider_date_strings": {"table": "11-April-2003 to 18-June-2012", "date_posted": "10 May 2013"},
+      "time_uncertainty": "Dates only; no precise onset/end UTC timestamps are asserted.",
+      "start_utc": null,
+      "end_utc": null,
+      "archive_treatment": "Provider explicitly corrected all affected station-pressure data and reprocessed daily files. Current files must not be labelled as containing the original 4 mb drift.",
+      "benchmark_accepted": false,
+      "exclusion_reasons": ["outside_2023_2025_scope", "station_outside_current_scope", "fault_values_replaced_by_provider_corrections", "uncorrected_originals_not_acquired"],
+      "source_quotes": [
+        {"url": "https://gml.noaa.gov/grad/surfrad/problems.html", "sha256": "81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355", "source_line": 913, "quote": "We recently discovered that the barometer at the Penn State station drifted linearly downward by about 4 mb from 11-April-2003 to 18-June-2012--that is about 0.4 mb/year,."},
+        {"url": "https://gml.noaa.gov/grad/surfrad/problems.html", "sha256": "81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355", "source_line": 915, "quote": "A correction was devised and applied to all Penn State station pressure data during the affected 10-year period. All Penn State SURFRAD daily files have been reprocessed and are now available at the SURFRAD FTP site, with corrected station pressure."}
+      ]
+    },
+    {
+      "evidence_id": "surfrad-psu-pressure-conversion-2016-2017",
+      "station_id": "psu",
+      "provider_station_name": "Penn State",
+      "affected_channels": ["pressure_hpa"],
+      "documented_incident_type": "Wrong barometer-signal conversion equation in logger program, about -10 mb error",
+      "evidence_status": "provider_incident_documentation",
+      "provider_date_strings": {"table": "13-July-2016 to 19-September-2017", "narrative_parenthesis": "13-sep-2016 to 19-Sep-2017", "reprogramming_date": "13 July 2016", "correction_dates": "19-20 Sept. 2017", "date_posted": "20 September 2017"},
+      "time_uncertainty": "The provider table/reprogramming date and narrative affected-period parenthesis disagree (July versus September). Preserve both rather than selecting a fabricated exact boundary.",
+      "start_utc": null,
+      "end_utc": null,
+      "archive_treatment": "All affected files/products were regenerated with corrected station pressure. The document describes a conversion/software error, not proof that the barometer hardware failed.",
+      "benchmark_accepted": false,
+      "exclusion_reasons": ["outside_2023_2025_scope", "station_outside_current_scope", "fault_values_replaced_by_provider_corrections", "conflicting_start_dates", "uncorrected_originals_not_acquired"],
+      "source_quotes": [
+        {"url": "https://gml.noaa.gov/grad/surfrad/problems.html", "sha256": "81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355", "source_line": 615, "quote": "13-July-2016 to 19-September-2017"},
+        {"url": "https://gml.noaa.gov/grad/surfrad/problems.html", "sha256": "81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355", "source_line": 629, "quote": "The atmospheric station pressure measurement at the Penn State SURRAD site was off by ~ -10 mb during the affected period (13-sep-2016 to 19-Sep-2017)."},
+        {"url": "https://gml.noaa.gov/grad/surfrad/problems.html", "sha256": "81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355", "source_line": 629, "quote": "All affected data files and products were regenerated with the corrected station pressure."}
+      ]
+    }
+  ],
+  "other_evidence_dispositions": [
+    {"kind": "surfrad_calibration_tables", "stations": ["bon", "fpk", "gwn"], "finding": "Saved CGI table headers list radiation instruments only; dates in 2023-2025 are not T/RH/pressure replacement or fault records.", "accepted_fault_labels": 0},
+    {"kind": "uscrn_2024_context_samples", "station_pairs": [{"surfrad_station_id": "bon", "uscrn_wban": "54808", "uscrn_location": "IL Champaign 9 SW"}, {"surfrad_station_id": "fpk", "uscrn_wban": "94060", "uscrn_location": "MT Wolf Point 29 ENE"}], "finding": "Provider location records identify nearby stations and real 2024 T/RH aggregates. Hourly02 contains no pressure column. No paired discrepancy or sensor-specific event was validated.", "accepted_fault_labels": 0},
+    {"kind": "radiation_instrument_temperature_problems", "finding": "Pyrgeometer case/dome thermistors and their swaps are not the ambient temperature_c input; exclude these notices from T/RH/P fault truth.", "accepted_fault_labels": 0},
+    {"kind": "historical_sensor_degradation_background", "finding": "The Goodwin notice also describes Campbell Scientific 207 RH degradation and replacement with CS500 probes. General degradation and replacement dates do not establish separate per-station fault intervals.", "accepted_fault_labels": 0}
+  ]
+}

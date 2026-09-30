@@ -1,0 +1,18 @@
+{
+  "id": "krishnagupta02468/skyguard-ai-minute-detection-sih26073",
+  "title": "SkyGuard AI - Minute Detection (SIH26073)",
+  "code_file": "aws_minute_detection.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "krishnagupta02468/skyguard-sih26073-processed"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": [],
+  "category_ids": []
+}

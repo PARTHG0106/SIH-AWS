@@ -70,6 +70,18 @@ def test_flatline_carries_exact_duration_across_file_boundaries():
         assert last[c][-1] == 499
 
 
+def test_flatline_calibration_rejects_any_unaccepted_context_across_chunks():
+    frame = fixture_frame(12)
+    frame.loc[:, list(CHANNELS)] = 7.
+    frame.loc[3, CHANNELS[0] + "__qc_accepted"] = False
+    frame.loc[10:, CHANNELS[0]] = 8.
+    _, state, q1 = flatline_durations(frame.iloc[:6], return_quality=True)
+    _, _, q2 = flatline_durations(frame.iloc[6:], state, return_quality=True)
+    assert q1[CHANNELS[0]].tolist() == [True, True, True, False, False, False]
+    assert q2[CHANNELS[0]].tolist() == [False, False, False, False, True, True]
+    assert q2[CHANNELS[1]].all()
+
+
 def test_qc_is_not_a_predictor_and_missing_qc_excludes_fitting():
     frame = fixture_frame()
     before = causal_features(frame, 1, MinuteConfig())

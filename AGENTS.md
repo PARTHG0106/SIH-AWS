@@ -1,5 +1,18 @@
 # AGENTS.md — project knowledge for coding agents
 
+## Explicit Indian demo exception (2026-09-29)
+- The latest user request authorizes synthetic Indian-station scenarios on a
+  separate dashboard page while retaining the US real-observation replay.
+- This exception is for a visibly labelled demonstration only. Keep source
+  records unchanged and simulated values in separate columns/artifacts. Never
+  feed them into real-observation training, calibration, evaluation or claims.
+- Use original Indian NOAA ISD reports as the scenario baseline. RH calculated
+  from temperature/dew point is derived; SLP is sea-level pressure. Neither
+  establishes three independently measured AWS inputs or IMD AWS validation.
+- Scenario markers describe deliberate software changes, not model detections
+  or confirmed real faults. Actual hardware-fault status remains unknown.
+- See `docs/INDIAN_STATION_DEMO.md`; do not revive the legacy injected pipeline.
+
 ## Current user requirement — real data only (2026-09-23)
 - The user explicitly forbids assumed/manufactured dataset observations and
   labels. This supersedes the legacy injected-data workflow documented below.
@@ -30,6 +43,24 @@ Detection reads ONLY: temperature_c, pressure_hpa, relative_humidity_pct
 package `src/awsad`, tests in `tests/`.
 
 ## How to run
+- Native-minute continuation (2026-09-29): see `docs/MINUTE_DETECTION_20260929.md`.
+  `scripts/run_minute_detection.py` uses verified native originals with separate
+  fit/selection/calibration before 2024-11; Goodwin Creek is held out. January
+  2025 has now been replayed: do not reuse it for further selection while calling
+  it untouched. Final artifacts: `artifacts_minute_20260928` and
+  `artifacts_minute_fresh_20260928`; fault labels remain unknown.
+- Active dashboard: **React + Vite + ECharts SPA** in `frontend/`, served with the
+  Starlette API `app/api.py` (reuses the verified data code; missing stays null,
+  candidates stay proposals, India stays synthetic). Build + run:
+  `npm --prefix frontend run build` then `python scripts/serve_dashboard.py [port]`
+  (default 8501). The legacy `streamlit run app/streamlit_app.py` still works but is
+  superseded by the SPA. Real minute replay artifacts back both. New Kaggle entry:
+  `kaggle/aws_minute_detection.ipynb`, generator `kaggle/build_minute_notebook.py`;
+  locally validated, not remotely published/run. Refresh its embedded hashes after
+  changing minute source.
+- Reviewed-event evaluation: `scripts/evaluate_real_events.py`. Never convert QC
+  or detector proposals into confirmed labels. Evidence registry is under
+  `docs/research/surfrad_events_20260928/`.
 - Real-data path: `scripts/fetch_real_surfrad.py`, then
   `awsad.data.surfrad.build_surfrad_dataset`; strict admission reconstructs every
   retained measurement from immutable originals. See `docs/KAGGLE_GUIDE.md`.

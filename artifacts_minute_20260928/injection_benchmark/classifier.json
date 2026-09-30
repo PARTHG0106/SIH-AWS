@@ -1,0 +1,328 @@
+{
+  "policy": "supervised_fault_type_on_synthetic_injection",
+  "n_train": 14095,
+  "n_test": 6041,
+  "labels": [
+    "bias",
+    "clipping",
+    "drift",
+    "dropout",
+    "noise_burst",
+    "normal",
+    "scale_error",
+    "sensor_swap",
+    "spike",
+    "stuck"
+  ],
+  "macro_f1_faults": 0.8936441569103031,
+  "accuracy": 0.91474921370634,
+  "confusion_matrix": [
+    [
+      225,
+      0,
+      0,
+      0,
+      3,
+      18,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      272,
+      2,
+      0,
+      0,
+      172,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      3,
+      1,
+      1165,
+      0,
+      0,
+      28,
+      8,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      70,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      152,
+      0,
+      2,
+      0,
+      0,
+      0
+    ],
+    [
+      18,
+      27,
+      15,
+      4,
+      0,
+      2934,
+      9,
+      2,
+      1,
+      10
+    ],
+    [
+      0,
+      3,
+      0,
+      0,
+      0,
+      135,
+      262,
+      2,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      0,
+      7,
+      1,
+      216,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      0,
+      6,
+      0,
+      0,
+      24,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      0,
+      33,
+      0,
+      0,
+      0,
+      206
+    ]
+  ],
+  "per_class": {
+    "bias": {
+      "precision": 0.9146341463414634,
+      "recall": 0.9146341463414634,
+      "f1-score": 0.9146341463414634,
+      "support": 246.0
+    },
+    "clipping": {
+      "precision": 0.8947368421052632,
+      "recall": 0.6098654708520179,
+      "f1-score": 0.7253333333333334,
+      "support": 446.0
+    },
+    "drift": {
+      "precision": 0.9839527027027027,
+      "recall": 0.966804979253112,
+      "f1-score": 0.9753034742570112,
+      "support": 1205.0
+    },
+    "dropout": {
+      "precision": 0.9459459459459459,
+      "recall": 0.9859154929577465,
+      "f1-score": 0.9655172413793104,
+      "support": 71.0
+    },
+    "noise_burst": {
+      "precision": 0.9743589743589743,
+      "recall": 0.987012987012987,
+      "f1-score": 0.9806451612903225,
+      "support": 154.0
+    },
+    "normal": {
+      "precision": 0.8802880288028803,
+      "recall": 0.971523178807947,
+      "f1-score": 0.9236581142767196,
+      "support": 3020.0
+    },
+    "scale_error": {
+      "precision": 0.9290780141843972,
+      "recall": 0.6501240694789082,
+      "f1-score": 0.7649635036496351,
+      "support": 403.0
+    },
+    "sensor_swap": {
+      "precision": 0.9818181818181818,
+      "recall": 0.96,
+      "f1-score": 0.9707865168539326,
+      "support": 225.0
+    },
+    "spike": {
+      "precision": 0.9230769230769231,
+      "recall": 0.7741935483870968,
+      "f1-score": 0.8421052631578947,
+      "support": 31.0
+    },
+    "stuck": {
+      "precision": 0.9537037037037037,
+      "recall": 0.8583333333333333,
+      "f1-score": 0.9035087719298246,
+      "support": 240.0
+    }
+  },
+  "feature_importances": [
+    {
+      "feature": "pressure_hpa__hour_residual",
+      "importance": 0.11332560834298955
+    },
+    {
+      "feature": "relative_humidity_pct__hour_residual",
+      "importance": 0.09217017050157257
+    },
+    {
+      "feature": "pressure_hpa__sustained_deviation",
+      "importance": 0.08306571759642441
+    },
+    {
+      "feature": "relative_humidity_pct__sustained_deviation",
+      "importance": 0.0733322297632842
+    },
+    {
+      "feature": "relative_humidity_pct__abrupt_change",
+      "importance": 0.07045191193511006
+    },
+    {
+      "feature": "temperature_c__sustained_deviation",
+      "importance": 0.06942559178943881
+    },
+    {
+      "feature": "temperature_c__hour_residual",
+      "importance": 0.05684489322959774
+    },
+    {
+      "feature": "temperature_c__flatline_minutes",
+      "importance": 0.0409865916239033
+    },
+    {
+      "feature": "pressure_hpa__abrupt_change",
+      "importance": 0.03555702698228771
+    },
+    {
+      "feature": "relative_humidity_pct__flatline_minutes",
+      "importance": 0.031153782486343307
+    },
+    {
+      "feature": "pressure_hpa__forecast_residual",
+      "importance": 0.030028141036252242
+    },
+    {
+      "feature": "pressure_hpa__flatline_minutes",
+      "importance": 0.027710643933123613
+    },
+    {
+      "feature": "temperature_c__abrupt_change",
+      "importance": 0.02251282900182088
+    },
+    {
+      "feature": "temperature_c__forecast_residual",
+      "importance": 0.010528058268498586
+    },
+    {
+      "feature": "relative_humidity_pct__forecast_residual",
+      "importance": 0.009501738122827308
+    }
+  ],
+  "shap_mean_abs": [
+    {
+      "feature": "pressure_hpa__hour_residual",
+      "mean_abs_shap": 0.4596763685422058
+    },
+    {
+      "feature": "pressure_hpa__sustained_deviation",
+      "mean_abs_shap": 0.39787269584247265
+    },
+    {
+      "feature": "temperature_c__sustained_deviation",
+      "mean_abs_shap": 0.3779612129508598
+    },
+    {
+      "feature": "temperature_c__hour_residual",
+      "mean_abs_shap": 0.3544534418661795
+    },
+    {
+      "feature": "relative_humidity_pct__sustained_deviation",
+      "mean_abs_shap": 0.34823164857915967
+    },
+    {
+      "feature": "relative_humidity_pct__hour_residual",
+      "mean_abs_shap": 0.28905162450305144
+    },
+    {
+      "feature": "relative_humidity_pct__abrupt_change",
+      "mean_abs_shap": 0.2566703200173947
+    },
+    {
+      "feature": "pressure_hpa__flatline_minutes",
+      "mean_abs_shap": 0.22380592487448628
+    },
+    {
+      "feature": "pressure_hpa__abrupt_change",
+      "mean_abs_shap": 0.19398629299309736
+    },
+    {
+      "feature": "temperature_c__flatline_minutes",
+      "mean_abs_shap": 0.17292177737352002
+    },
+    {
+      "feature": "relative_humidity_pct__forecast_residual",
+      "mean_abs_shap": 0.1397929091490813
+    },
+    {
+      "feature": "pressure_hpa__forecast_residual",
+      "mean_abs_shap": 0.12838645171702343
+    },
+    {
+      "feature": "relative_humidity_pct__flatline_minutes",
+      "mean_abs_shap": 0.11403832870233949
+    },
+    {
+      "feature": "temperature_c__forecast_residual",
+      "mean_abs_shap": 0.10449227328597807
+    },
+    {
+      "feature": "temperature_c__abrupt_change",
+      "mean_abs_shap": 0.08660671235342361
+    }
+  ],
+  "explainability": "permutation importances + SHAP mean|value| per feature (global); per-anomaly attribution uses the detector's own signal-to-threshold reason codes"
+}

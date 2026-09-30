@@ -1,5 +1,11 @@
 # Real-observation audit and source research
 
+**2026-09-29 demonstration exception:** the user subsequently requested a
+separate, explicitly synthetic Indian-station dashboard page while keeping the
+US real replay. This permits labelled software scenarios based on unchanged
+Indian source reports. It does not change the acceptance rules for real-data
+training or evaluation below. See [Indian station demo](INDIAN_STATION_DEMO.md).
+
 **2026-09-26 follow-up:** live access now works. A new SURFRAD adapter and
 real-observation forecasting path have been implemented; inspected primary
 documents establish measured temperature, independently measured RH and station

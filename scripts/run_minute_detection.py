@@ -11,6 +11,8 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 import json
 from pathlib import Path
+import platform
+import shutil
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -83,7 +85,7 @@ def build_cache(archive_dir, cache_dir, *, start=None, end=None):
     return manifest
 
 
-def walk_cache(cache, manifest, *, full=False):
+def walk_cache(cache, manifest, *, full=False, history_minutes=180):
     tail, previous = None, None
     for entry in manifest["shards"]:
         p = Path(cache) / entry["file"]
@@ -94,9 +96,9 @@ def walk_cache(cache, manifest, *, full=False):
         if group != previous:
             tail = None
         context = frame if tail is None else pd.concat([tail, frame], ignore_index=True)
-        # 180 actual minutes suffice for max forecast/context lag 120 plus 30
-        # residual-history minutes. This stores existing rows only, never a grid.
-        tail = context.loc[context.timestamp >= context.timestamp.iloc[-1] - pd.Timedelta(minutes=180)].copy()
+        # Retain enough actual history for both the longest forecast context
+        # and sustained residual window. Store existing rows only, never a grid.
+        tail = context.loc[context.timestamp >= context.timestamp.iloc[-1] - pd.Timedelta(minutes=history_minutes)].copy()
         previous = group
         yield entry, context.reset_index(drop=True), len(context) - len(frame)
 
@@ -108,6 +110,8 @@ def collect_samples(cache, manifest, cfg):
         if entry["station_id"] in cfg.holdout_station_ids:
             continue
         splits = split_names(frame, cfg)
+        if not np.isin(splits, ["train", "selection"]).any():
+            continue
         for h in cfg.horizons:
             f = causal_features(frame, h, cfg)
             for split in chunks:
@@ -125,19 +129,25 @@ def collect_samples(cache, manifest, cfg):
             for s, horizons in chunks.items()}
 
 
-def signal_walk(cache, manifest, models, cfg, *, full=False):
+def signal_walk(cache, manifest, models, cfg, *, full=False, selected=None):
     state, prior_group = None, None
-    for entry, frame, skip in walk_cache(cache, manifest, full=full):
+    history = max(cfg.horizons) + max(cfg.context_minutes) + cfg.sustained_minutes
+    for entry, frame, skip in walk_cache(cache, manifest, full=full, history_minutes=history):
         group = entry["station_id"] + "|" + entry["source"]
         if group != prior_group:
             state = None
-        signals, qc, predictions, features = compute_signals(frame, models, cfg)
         current = frame.iloc[skip:].reset_index(drop=True)
-        flats, state = flatline_durations(current, state)
+        flats, state, flat_quality = flatline_durations(current, state, return_quality=True)
+        prior_group = group
+        if selected is not None and not selected(entry):
+            continue
+        signals, qc, predictions, features = compute_signals(frame, models, cfg)
         signals = {c: {s: v[skip:] for s, v in vals.items()} for c, vals in signals.items()}
         for c in CHANNELS:
             signals[c]["flatline_minutes"] = flats[c]
         qc = {c: {s: v[skip:] for s, v in vals.items()} for c, vals in qc.items()}
+        for c in CHANNELS:
+            qc[c]["flatline_minutes"] = flat_quality[c]
         predictions = {h: p[skip:] for h, p in predictions.items()}
         features = {h: {"accepted": f["accepted"][skip:], "baseline": f["baseline"][skip:],
                         "context_ids": {k: a[skip:] for k, a in f["context_ids"].items()}} for h, f in features.items()}
@@ -149,7 +159,9 @@ def calibrate(cache, manifest, models, cfg):
     def empty():
         return {c: {s: [] for s in SIGNALS} for c in CHANNELS}
     reference = defaultdict(empty)
-    for entry, frame, signals, qc, _, _ in signal_walk(cache, manifest, models, cfg):
+    selected = lambda entry: (entry["station_id"] not in cfg.holdout_station_ids
+                               and pd.Timestamp(entry["end"]) >= pd.Timestamp(cfg.selection_end))
+    for entry, frame, signals, qc, _, _ in signal_walk(cache, manifest, models, cfg, selected=selected):
         if entry["station_id"] in cfg.holdout_station_ids:
             continue
         group = entry["station_id"] + "|" + entry["source"]
@@ -287,6 +299,8 @@ def main():
             blob[key] = tuple(blob[key])
     cfg = MinuteConfig(**blob)
     cfg.validate()
+    if not args.replay_only and args.end and pd.Timestamp(args.end) > pd.Timestamp(cfg.calibration_end):
+        raise ValueError("development replay cannot include previously examined test dates")
     if args.replay_only:
         detector = json.loads((args.replay_only / "detector.json").read_text())
         if config_fingerprint(cfg) != detector["config_sha256"]:
@@ -305,22 +319,27 @@ def main():
     if args.out is None:
         raise ValueError("--out is required")
     out = args.out.resolve()
-    if out.exists():
+    if out.exists() and any(out.iterdir()):
         raise FileExistsError("use a new artifact directory to preserve experiments")
-    out.mkdir(parents=True)
+    out.mkdir(parents=True, exist_ok=True)
     if args.replay_only:
         models = joblib.load(args.replay_only / "models.joblib")
+        shutil.copyfile(args.replay_only / "models.joblib", out / "models.joblib")
         write_json(out / "detector.json", detector)
     else:
         if args.end and pd.Timestamp(args.end) > pd.Timestamp(cfg.calibration_end):
             raise ValueError("development replay cannot include previously examined test dates")
+        print("Collecting original fit/selection examples; held-out station excluded", flush=True)
         samples = collect_samples(args.cache_dir, manifest, cfg)
+        print("Fitting and selecting six channel/horizon forecasters", flush=True)
         models, selection = fit_forecasters(samples, cfg)
         del samples
+        print("Calibrating separate empirical signal thresholds on later observations", flush=True)
         thresholds = calibrate(args.cache_dir, manifest, models, cfg)
         joblib.dump(models, out / "models.joblib")
-        files = ["src/awsad/minute_detection.py", "src/awsad/data/surfrad.py",
-                 "src/awsad/data/surfrad_native.py", "src/awsad/evaluation/real_events.py", "scripts/run_minute_detection.py"]
+        files = ["src/awsad/__init__.py", "src/awsad/minute_detection.py", "src/awsad/data/surfrad.py",
+                 "src/awsad/data/surfrad_native.py", "src/awsad/data/acquisition.py", "src/awsad/data/fetch_surfrad.py",
+                 "src/awsad/data/verify_surfrad.py", "src/awsad/evaluation/real_events.py", "scripts/run_minute_detection.py"]
         detector = {"dataset_policy": "real_observations_only", "config": asdict(cfg),
                     "config_sha256": config_fingerprint(cfg), "thresholds": thresholds, "model_selection": selection,
                     "frozen_at_utc": datetime.now(timezone.utc).isoformat(), "models_sha256": sha256_file(out / "models.joblib"),
@@ -328,8 +347,18 @@ def main():
                     "score_semantics": "Maximum signal/empirical-threshold ratio, not fault probability",
                     "calibration_semantics": "Provider-accepted original observations, not known-normal labels",
                     "forecast_features": "Only past original T/RH/station pressure and their differences",
-                    "forecast_context_minutes": list(cfg.context_minutes), "test_used_for_selection": False}
+                    "forecast_context_minutes": list(cfg.context_minutes), "test_used_for_selection": False,
+                    "runtime": {"python": platform.python_version(), "numpy": np.__version__, "pandas": pd.__version__,
+                                "sklearn": __import__("sklearn").__version__, "device": "CPU"}}
         write_json(out / "detector.json", detector)
+    for name, digest in detector["source_files"].items():
+        destination = out / "source_snapshot" / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / name, destination)
+        if sha256_file(destination) != digest:
+            raise ValueError("source changed during run; frozen source snapshot mismatch")
+    write_json(out / "config.json", asdict(cfg))
+    print("Detector frozen; exporting native replay and unknown event-review proposals", flush=True)
     metrics = replay(args.cache_dir, manifest, out, models, detector, cfg, fresh=bool(args.replay_only))
     print(json.dumps({k: metrics[k] for k in ("native_observations", "candidate_minutes", "candidate_event_proposals", "known_hardware_fault_labels")}, indent=2))
 

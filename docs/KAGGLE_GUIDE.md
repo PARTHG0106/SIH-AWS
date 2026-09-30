@@ -18,6 +18,21 @@ processed dataset attachment. The full provenance checks passed, and models
 and scored observations match the previous builder-output run exactly.
 See [the completed experiment](REAL_TRAINING_20260926.md).
 
+## Native-minute continuation (29 September 2026)
+
+The new `kaggle/aws_minute_detection.ipynb` uses the original daily files already
+retained in processed v9. It embeds/verifies updated minute source separately
+from that release's archived hourly code. It reconstructs native observations
+through October 2024, fits/selects/calibrates on separate dates and exports a
+real replay with unknown event-review proposals. Use CPU, with Internet off.
+
+Generate with `python kaggle/build_minute_notebook.py`; `kaggle_minute/` contains
+matching upload metadata and notebook. Attach
+`krishnagupta02468/skyguard-sih26073-processed`. This notebook was validated
+locally, not published or run on Kaggle. Existing hourly v14 is unchanged.
+See [minute results and reproduction](MINUTE_DETECTION_20260929.md). The remaining
+guide describes the existing source-builder-hourly workflow.
+
 ## Refresh source and notebooks
 
 After editing source, regenerate both notebooks and stage the source release:

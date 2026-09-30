@@ -1,167 +1,91 @@
-# SkyGuard AI 🛰️ — SIH26073
+# SkyGuard AI — SIH26073
 
-> **Real-data requirement (2026-09-23):** the user requires original real
-> observations and evidence-backed labels. The legacy dataset builders below
-> inject faults and interpolate gaps; the current processed data, model results
-> and simulated demos are **not approved for a real-only hackathon claim**.
-> Read [the real-data audit and acquisition plan](docs/REAL_DATA_RESEARCH.md)
-> before building, training or presenting results. The migration is unfinished.
-> `python scripts/audit_real_data.py` reproduces the local evidence inventory.
+Minute-level anomaly candidates from **original measured temperature, station
+pressure and relative humidity**. The active pipeline uses NOAA SURFRAD native
+one-minute observations, preserves missing data and source quality codes, and
+never invents readings or fault labels.
 
-**AI/ML-based intelligent anomaly detection for Automatic Weather Stations (AWS)**
-Ministry of Earth Sciences · India Meteorological Department · Disaster Management
+The detector combines one-minute and one-hour forecast residuals, abrupt changes,
+exact-repeat duration and sustained deviations. Outputs describe suspicious
+behaviour for review; they do not diagnose hardware causes or repair observations.
 
-SkyGuard AI watches the three AWS measurement channels mandated by the problem
-statement — **temperature (°C), pressure (hPa), relative humidity (%)** — and
-detects sensor faults, spikes, frozen values, drift, dropouts, clipping, scaling
-and wiring errors in near-real time, with explainable root-cause reasoning,
-confidence scores, corrected-value estimates and a live dashboard.
+The completed local run processed **2,836,536 development observations** and
+replayed **133,920 fresh January 2025 observations** using frozen models and
+thresholds. All 56 original columns matched the verified native inputs exactly.
+**228 tests and 6 subtests passed**, including the real dashboard.
 
----
+**Real hardware-fault accuracy remains unmeasured.** The fresh replay produced
+170 candidate intervals, not 170 confirmed failures. The reviewed official
+records do not establish fault labels for this 2023–2025 scope.
 
-## Why it's different
+- [Completed minute experiment and reproduction](docs/MINUTE_DETECTION_20260929.md)
+- [Official event-evidence research](docs/research/surfrad_events_20260928/VERIFICATION.md)
+- [Source verification](docs/research/surfrad_20260926/VERIFICATION.md)
+- [Real-data rules](docs/REAL_DATA_RESEARCH.md)
 
-| Gap in status quo | SkyGuard AI |
-|---|---|
-| Threshold QC alarms on real storms (false alarms) | Learns each station's climatology; season-aware residuals — real weather stays quiet |
-| Spikes caught, slow faults missed | 7 complementary detectors fuse: physics QC + robust per-channel statistics + Isolation Forest + 2× LSTM autoencoders + Transformer AE + LSTM forecaster + spatial buddy-check |
-| One threshold for the whole network | Per-station normalisation + per-station supervised thresholds (validation split), EVT/POT fallback |
-| "Anomaly" with no context | Root-cause classifier (9 fault types) + per-channel attribution + human-readable reason strings |
-| Dead sensors discovered late | Sensor-health index with maintenance forecast (degradation trend) |
-| Cloud-only | Bounded-state QC/statistical streaming path plus quantised deep models for edge hubs; benchmark on the actual target device |
-| No labeled AWS fault data exists | Verifiable fault-injection engine on real station data + NAB external benchmark + holdout-station generalisation |
+## Historical replay dashboard
 
-## Verified data foundation (no synthetic-only training)
-
-| Source | What | Verified access |
-|---|---|---|
-| NOAA ISD (global-hourly) | **~425 Indian surface-station records × 2013–2025 · 4.3 GB raw observations** | AWS-compatible proxy; NOAA metadata does not prove every record is an IMD AWS installation |
-| Open-Meteo Archive | co-located reanalysis reference for 21 anchor stations | 21 local raw API exports verified; not presented as sensor truth |
-| Numenta NAB | external labeled streaming-method benchmark | 58 local series + MIT license verified |
-| NCPOR (MoES) AWS | Maitri/Bharati Antarctic IMD AWS (hourly T/P/RH/wind) | direct link, CAPTCHA-gated → manual drop-in |
-| IMD Data Supply Portal | official Indian AWS hourly logs | registration/fee — documented fallback |
-| NASA SMAP/MSL (telemanom) | optional spacecraft-telemetry transfer benchmark | not bundled; add separately only if required |
-
-**Kaggle uses a strict two-stage flow:**
-1. `krishnagupta02468/skyguard-sih26073` is a small source-only bootstrap
-   dataset. It intentionally contains no processed Parquets.
-2. `krishnagupta02468/skyguard-ai-data-builder-sih26073` is the online,
-   CPU-only notebook that downloads, validates, and emits the authoritative
-   processed bundle. Attach only that saved notebook output to GPU training.
-
-## Quick start
-
-```bash
-# 1) environment
-python -m venv .venv && .venv\Scripts\activate        # or source .venv/bin/activate
+```powershell
 pip install -r requirements.txt
-
-# 2) data (for the full corpus, prefer the online Kaggle builder; local fallback:)
-python src/awsad/data/download_noaa_isd.py --all-india
-python src/awsad/data/download_openmeteo.py
-git clone --depth 1 https://github.com/numenta/NAB.git data/raw/nab/NAB
-
-# 3) build the labeled dataset (cleaning + injection of 9 fault types)
-python scripts/prepare_dataset.py
-
-# 4) train (CPU quick path shown; full GPU training on Kaggle)
-python scripts/run_local_train.py --no-lstm            # classical stack
-python scripts/run_local_train.py                      # + deep heads (long on CPU)
-
-# 5) artefacts land in artifacts/ → run the dashboard
 streamlit run app/streamlit_app.py
 ```
 
-### Kaggle training (recommended, offline-safe)
+The dashboard defaults to `artifacts_minute_20260928`. Enter
+`artifacts_minute_fresh_20260928` in its sidebar for the January replay.
+The **USA · Real observations** page shows original readings, separate
+predictions, alert reasons, gaps, provider QC and raw-file/row provenance.
 
-`kaggle/aws_anomaly_training.ipynb` runs everything offline on Kaggle GPU.
-First package and upload the source bootstrap:
+The separate **India · Synthetic scenarios** page provides the user-requested
+Indian demonstration based on archived Indian NOAA ISD reports. It compares
+unchanged source values with explicitly synthetic scenarios. Calculated RH and
+sea-level pressure keep their actual meanings. These scenarios are excluded
+from the real-data training and accuracy claims. See the
+[Indian station demo guide](docs/INDIAN_STATION_DEMO.md).
 
-```bash
-python scripts/prepare_kaggle_upload.py   # source-only bootstrap ZIP
+## Reproduce native training
+
+Use the existing verified raw archive or acquire it with
+`python scripts/fetch_real_surfrad.py`. Then use a new output directory:
+
+```powershell
+python scripts/run_minute_detection.py --archive-dir data/raw/surfrad_original --cache-dir data/native_minute_20260928 --out artifacts_minute_new
 ```
 
-Run `kaggle_builder/aws_data_builder.ipynb` with Internet on and CPU only,
-save its outputs, then attach only that output to the offline GPU notebook.
-See `docs/KAGGLE_GUIDE.md` for the exact UI sequence.
+The default protocol fits on Bondville/Fort Peck before July 2024, selects models
+in July–August, calibrates in September–October, and excludes Goodwin Creek from
+all fitting, selection and calibration. Previously examined November–December
+2024 test data are excluded. January 2025 has now been evaluated and must not be
+reused for further selection while calling it an untouched test.
 
-### Inference on a new CSV
+## Kaggle workflow
 
-```bash
-python scripts/run_inference.py --input my_station.csv --artifacts artifacts_smoke \
-    --out out_my_station
-# -> scored.csv (per-observation anomaly scores), alerts.csv (explained events)
+Keep the existing **source dataset → builder notebook → processed dataset**
+observation flow. The new `kaggle/aws_minute_detection.ipynb` uses the originals
+already retained in the processed release and embeds the exact updated minute
+source with integrity checks. `kaggle_minute/` is ready for upload; CPU is enough.
+
+```powershell
+python kaggle/build_minute_notebook.py
 ```
 
-## Historical development snapshot — Kaggle GPU run (v3, RTX Pro 6000, 129 min)
+The notebook is generated and validated locally; it has **not been published or
+run on Kaggle**. The previously completed hourly training v14 remains unchanged.
+See [the Kaggle guide](docs/KAGGLE_GUIDE.md).
 
-The numbers below are retained for debugging only. They were produced before the
-duplicate-report parser correction and must not be used as the SIH headline
-result. Rebuild the online bundle and use its new `artifacts/metrics.json`.
+## Evaluate independently reviewed events
 
-424 station-groups, 2,930 injected test events, all 7 detectors trained:
+Review the exported `review_template.csv` using actual maintenance, calibration,
+operator records or independent measurements. Leave unsupported cases unknown.
 
-- **Per-fault event recall:** bias 0.875 · drift 0.829 · noise_burst 0.914 ·
-  stuck 0.727 · spike 0.682 · sensor_swap 0.735 · dropout 0.581 ·
-  scale_error 0.473 · clipping 0.415
-- **Holdout stations** (excluded from ALL fitting): pointF1 **0.437**,
-  point-adjusted F1 **0.590**, recall 0.557
-- **NAB external benchmark:** ambient-temperature-failure F1 0.69,
-  machine-temperature-failure 0.98, nyc-taxi 0.76
-- Deep-head convergence logs: LSTM-AE(24h) val 0.114, LSTM-AE(168h) 0.158,
-  Transformer-AE 0.096, forecaster 0.081
-
-> Note: v3's report contains a cosmetic defect — a non-finite score poisoned the
-> pooled-threshold row and the LOO table (all-zero). That path is hardened in
-> dataset v5; single-component and per-fault rows from the v3 run are unaffected.
-
-## Evaluation contract
-
-The checked-in `artifacts_full_classical/` and `artifacts_deep_smoke/` predate the
-final leakage/alignment audit and are retained only as development snapshots.
-Do not cite their metrics in the SIH submission. Re-run the generated Kaggle
-notebook and use its new `artifacts/metrics.json` as the single source of truth.
-
-The corrected protocol reports strict point-wise F1, point-adjusted F1 (with its
-known inflation caveat), range-wise F1, PR-AUC, ROC-AUC, detection latency,
-per-fault event recall, leave-one-component-out ablation, and a station holdout
-score. The station-level holdout set is selected deterministically from the
-stations present in the built corpus (20% by default, while retaining the
-preferred legacy holdouts when they are available); the exact list and group
-coverage are recorded in `data/processed/splits.json`. Every matching
-station|source group is excluded from global IF/deep fitting, ensemble-weight
-selection, and supervised thresholds. Holdout station-local
-climatology/scaling and POT thresholds use clean history only, which is
-reported as unsupervised adaptation rather than zero-history cold start.
-
-See `docs/VERIFICATION_REPORT.md` for exact local source evidence and label
-limitations, and `docs/DATASET_AUDIT.md` for source-selection, provenance, and
-licensing decisions.
-
-## Repo map
-
-```
-configs/config.yaml         all knobs (channels, models, injection, thresholds)
-src/awsad/                  the library (single source of truth)
-  data/                     downloaders + parsers (NOAA ISD, Open-Meteo, NCPOR layout)
-  preprocessing/            physics QC · climatology · feature engineering · fault injection
-  models/                   qc_rules · statistical · isolation_forest · lstm_autoencoder
-                            · transformer_ae · lstm_forecaster · spatial · ensemble
-  evaluation/               pointwise/point-adjust/range-wise metrics · POT · NAB
-  explain.py · correction.py · health.py · streaming.py
-  train_pipeline.py         one pipeline for local + Kaggle
-scripts/                    prepare_dataset · run_local_train · prepare_kaggle_upload
-                            · run_inference · benchmark_latency · export_edge
-kaggle/                     notebook builder + generated offline training notebook
-app/streamlit_app.py        dashboard (network map · live sim · alerts · perf · edge)
-docs/                       sources · verification · architecture · Kaggle · licenses
-tests/test_smoke.py         offline unit tests
+```powershell
+python scripts/evaluate_real_events.py --artifacts artifacts_minute_fresh_20260928 --reviews artifacts_minute_fresh_20260928/review_template.csv --out reviewed_evaluation.json
 ```
 
-## Citation / methods
+The evaluator requires evidence references and a reviewer for accepted labels.
+It reports event recall/delay and false alarms only within independently reviewed
+intervals; unknown cases never become negative examples. Frozen single-signal
+comparisons are available via `--signal` on the same reviews.
 
-Core techniques with verified references: Telemanom LSTM+NDT (Hundman 2018),
-Isolation Forest (Liu 2008), Anomaly-Transformer (Xu 2022, 2110.02642),
-TranAD (Tuli 2022, 2201.07284), POT/EVT thresholding (Siffer 2017),
-Tatbul range-based metrics (NeurIPS 2018), Kim et al. evaluation rigor (AAAI 2022),
-MET Norway titanlib spatial-QC patterns, WMO CIMO sensor-guide fault taxonomy.
+The former injected-data design and commands are preserved in
+[the historical README](docs/LEGACY_README.md) for reference. They are excluded
+from the current real-only workflow and accuracy claims.

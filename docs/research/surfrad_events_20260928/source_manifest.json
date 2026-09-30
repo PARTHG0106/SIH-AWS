@@ -1,0 +1,502 @@
+{
+  "schema_version": 1,
+  "audit_at_utc": "2026-09-29T02:10:59.644901+00:00",
+  "scope": "Saved provider retrievals only; no completeness claim for all maintenance records",
+  "successful_retrievals": 23,
+  "failed_retrievals": 1,
+  "registry_quotes_verified": 12,
+  "sources": [
+    {
+      "requested_url": "https://gml.noaa.gov/grad/surfrad/getcals.html",
+      "retrieved_at_utc": "2026-09-28T11:48:40.915507+00:00",
+      "final_url": "https://gml.noaa.gov/grad/surfrad/getcals.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "05bcbae70f1e7e46ec39cfc2278982426807aee3b30c5ef5c4a3d77b41081b0d",
+      "bytes": 26300,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/05bcbae70f1e7e46ec39cfc2278982426807aee3b30c5ef5c4a3d77b41081b0d.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/03e7e72c5fd5345b6e1990db15193e53f5be0de317c3e1f2668ca9cce28245ce.receipt.json",
+      "receipt_sha256": "03e7e72c5fd5345b6e1990db15193e53f5be0de317c3e1f2668ca9cce28245ce",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/2024/",
+      "retrieved_at_utc": "2026-09-28T11:54:11.165838+00:00",
+      "final_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/2024/",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "2b898b49762a60c484212ffefe650df22115cd393baa775ef2cf13b97387011c",
+      "bytes": 30938,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/2b898b49762a60c484212ffefe650df22115cd393baa775ef2cf13b97387011c.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/071cbd23a119203861692ac70e46b7ffc75b8876e1c65f8541b88adcdd243101.receipt.json",
+      "receipt_sha256": "071cbd23a119203861692ac70e46b7ffc75b8876e1c65f8541b88adcdd243101",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/stations.tsv",
+      "retrieved_at_utc": "2026-09-28T11:50:40.068474+00:00",
+      "final_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/stations.tsv",
+      "status": 200,
+      "content_type": "text/tab-separated-values",
+      "last_modified": "Sun, 27 Sep 2026 14:23:01 GMT",
+      "sha256": "036cb5c72fa3623879c89a1bf88992291d0420dd74ab84a40229437b03c713e0",
+      "bytes": 37147,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/036cb5c72fa3623879c89a1bf88992291d0420dd74ab84a40229437b03c713e0.txt",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/0d893555441fe9b87affa0f52a2ba997491a82fc8c9c0f7e24e945477fcd6b80.receipt.json",
+      "receipt_sha256": "0d893555441fe9b87affa0f52a2ba997491a82fc8c9c0f7e24e945477fcd6b80",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/2024/CRNH0203-2024-MT_Wolf_Point_29_ENE.txt",
+      "retrieved_at_utc": "2026-09-28T11:55:04.402566+00:00",
+      "final_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/2024/CRNH0203-2024-MT_Wolf_Point_29_ENE.txt",
+      "status": 200,
+      "content_type": "text/plain",
+      "last_modified": "Fri, 21 Aug 2026 22:25:44 GMT",
+      "sha256": "8a937d345932f7e1b3f6cdc0c554f74b8d924da10845afca8b231fef1e3b8205",
+      "bytes": 2143296,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/8a937d345932f7e1b3f6cdc0c554f74b8d924da10845afca8b231fef1e3b8205.txt",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/1f591c64a050107de17fd36144e57165d78463352beb080ed778cef0bc6ee1fe.receipt.json",
+      "receipt_sha256": "1f591c64a050107de17fd36144e57165d78463352beb080ed778cef0bc6ee1fe",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Goodwin_Creek_MS/1998/gwn98152.dat",
+      "retrieved_at_utc": "2026-09-29T02:09:27.131638+00:00",
+      "final_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Goodwin_Creek_MS/1998/gwn98152.dat",
+      "status": 200,
+      "content_type": null,
+      "last_modified": "Tue, 07 Apr 2009 17:07:03 GMT",
+      "sha256": "016560ca5c2c987d2d2caa223fd2f49771a289b7b1b8c3e79fea2efc84ba366f",
+      "bytes": 113329,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/016560ca5c2c987d2d2caa223fd2f49771a289b7b1b8c3e79fea2efc84ba366f.txt",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/3d956a48f2683ec53213c1cecc2ed1c904df02b7b2ef1f3ad1183f070ca687e3.receipt.json",
+      "receipt_sha256": "3d956a48f2683ec53213c1cecc2ed1c904df02b7b2ef1f3ad1183f070ca687e3",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/grad/cgi-bin/surfcals?site=Fort%20Peck",
+      "retrieved_at_utc": "2026-09-28T11:50:00.741542+00:00",
+      "final_url": "https://gml.noaa.gov/grad/cgi-bin/surfcals?site=Fort%20Peck",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "fb4ddbd8add609746b0737538d4ee7709adefd6bdb9182d297e488176ec8ad34",
+      "bytes": 11827,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/fb4ddbd8add609746b0737538d4ee7709adefd6bdb9182d297e488176ec8ad34.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/489077fa5ba5ad812da3b9607b89b95d11f2e211e557b95f7fda315414897bb8.receipt.json",
+      "receipt_sha256": "489077fa5ba5ad812da3b9607b89b95d11f2e211e557b95f7fda315414897bb8",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Goodwin_Creek_MS/1998/",
+      "retrieved_at_utc": "2026-09-28T11:55:55.403474+00:00",
+      "final_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Goodwin_Creek_MS/1998/",
+      "status": 200,
+      "content_type": "text/html;charset=ISO-8859-1",
+      "last_modified": null,
+      "sha256": "9bbea158adad05eebc5bc94882add8ef48aeba767f24c5344ba88a4cd90ecd0f",
+      "bytes": 116056,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/9bbea158adad05eebc5bc94882add8ef48aeba767f24c5344ba88a4cd90ecd0f.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/5f4b6c3861909201a6e5b626882848f6bb6db0ac7fbfce47038d5a51441b742d.receipt.json",
+      "receipt_sha256": "5f4b6c3861909201a6e5b626882848f6bb6db0ac7fbfce47038d5a51441b742d",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/2024/CRNH0203-2024-IL_Champaign_9_SW.txt",
+      "retrieved_at_utc": "2026-09-28T11:55:07.592267+00:00",
+      "final_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/2024/CRNH0203-2024-IL_Champaign_9_SW.txt",
+      "status": 200,
+      "content_type": "text/plain",
+      "last_modified": "Mon, 29 Dec 2025 23:31:20 GMT",
+      "sha256": "fa979f970a630f23774ce14746711c6108992ed1d6e7843be8d4a43e40fd882e",
+      "bytes": 2143296,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/fa979f970a630f23774ce14746711c6108992ed1d6e7843be8d4a43e40fd882e.txt",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/6b333fb667ac78fea832f41360e1163f78535e4f53ad6393e749542d7ef40ea8.receipt.json",
+      "receipt_sha256": "6b333fb667ac78fea832f41360e1163f78535e4f53ad6393e749542d7ef40ea8",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/grad/cgi-bin/surfcals?site=Goodwin",
+      "retrieved_at_utc": "2026-09-28T11:50:01.781738+00:00",
+      "final_url": "https://gml.noaa.gov/grad/cgi-bin/surfcals?site=Goodwin",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "71e5c8d4f38a5b4515b223939f001970aea8e0f2143ec6f0f4271036619c74bd",
+      "bytes": 14574,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/71e5c8d4f38a5b4515b223939f001970aea8e0f2143ec6f0f4271036619c74bd.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/75ec208f7ebd074a41d8a7dc8fb2ae3726115b54a210ed9a4b0e7844256d6b59.receipt.json",
+      "receipt_sha256": "75ec208f7ebd074a41d8a7dc8fb2ae3726115b54a210ed9a4b0e7844256d6b59",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/grad/surfrad/problems.html",
+      "retrieved_at_utc": "2026-09-28T11:48:16.075258+00:00",
+      "final_url": "https://gml.noaa.gov/grad/surfrad/problems.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355",
+      "bytes": 83269,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/81e1fadfbef2259cc38b4aa0d4c4d72c6ad95dc2a06df02efd2b59ea11c41355.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/79925827e57126a2d4dde02d307597a62a12f07b4717aecafc4495fce0013790.receipt.json",
+      "receipt_sha256": "79925827e57126a2d4dde02d307597a62a12f07b4717aecafc4495fce0013790",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/grad/surfrad/",
+      "retrieved_at_utc": "2026-09-28T11:48:19.595750+00:00",
+      "final_url": "https://gml.noaa.gov/grad/surfrad/",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "b41b9c9b220ef685901ef44c4682228516d27cea004bda87db891f800f6f4062",
+      "bytes": 34646,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/b41b9c9b220ef685901ef44c4682228516d27cea004bda87db891f800f6f4062.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/7a8196ca6fac870a6c1eae2960c02d33e71a198ae379ae2c9eb88c79f19aa44c.receipt.json",
+      "receipt_sha256": "7a8196ca6fac870a6c1eae2960c02d33e71a198ae379ae2c9eb88c79f19aa44c",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/grad/cgi-bin/surfcals?site=Bondville",
+      "retrieved_at_utc": "2026-09-28T11:49:59.572732+00:00",
+      "final_url": "https://gml.noaa.gov/grad/cgi-bin/surfcals?site=Bondville",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "95a31b4bb0a6bd866befb7f2f9d18cd9795ca0585bdbb8176d7048d434f913f8",
+      "bytes": 17127,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/95a31b4bb0a6bd866befb7f2f9d18cd9795ca0585bdbb8176d7048d434f913f8.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/7ba5ee72503b05c3b4c7d37f63ad96529e045385118850b5d94cbf3461ea5eb2.receipt.json",
+      "receipt_sha256": "7ba5ee72503b05c3b4c7d37f63ad96529e045385118850b5d94cbf3461ea5eb2",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/grad/surfrad/overview.html",
+      "retrieved_at_utc": "2026-09-28T11:48:17.499926+00:00",
+      "final_url": "https://gml.noaa.gov/grad/surfrad/overview.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "c0f29ff21e4bd2d2c05a679a46435fdc627067f9f4280f2b8a00063c861f60fc",
+      "bytes": 38996,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/c0f29ff21e4bd2d2c05a679a46435fdc627067f9f4280f2b8a00063c861f60fc.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/7e9a97eff413473974154fcc05bc8f258128d10c9a30581fd201ea7f1b24222d.receipt.json",
+      "receipt_sha256": "7e9a97eff413473974154fcc05bc8f258128d10c9a30581fd201ea7f1b24222d",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/grad/surfrad/netlinks.html",
+      "retrieved_at_utc": "2026-09-28T11:48:45.195703+00:00",
+      "final_url": "https://gml.noaa.gov/grad/surfrad/netlinks.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "849242e2f2c66d1191448dd90091cd74e9ed5a6655bcca8efe7573f5eea57e4a",
+      "bytes": 27280,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/849242e2f2c66d1191448dd90091cd74e9ed5a6655bcca8efe7573f5eea57e4a.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/805a16902ae779e9d00cebac0888d9dc4e0d45ffc5f2413cbc1800fdcead3160.receipt.json",
+      "receipt_sha256": "805a16902ae779e9d00cebac0888d9dc4e0d45ffc5f2413cbc1800fdcead3160",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/README.txt",
+      "retrieved_at_utc": "2026-09-28T11:50:38.886851+00:00",
+      "final_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/README.txt",
+      "status": 200,
+      "content_type": "text/plain",
+      "last_modified": "Tue, 06 Oct 2020 20:40:28 GMT",
+      "sha256": "4ace9cbbb3d63c98d8bbcf909e626d98ee4cc2ab8c1e4e59eece88eeec665872",
+      "bytes": 21821,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/4ace9cbbb3d63c98d8bbcf909e626d98ee4cc2ab8c1e4e59eece88eeec665872.txt",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/9bb57a0fb89f02862266064d70f0c98735009011eb51c4d29b48b558ab707772.receipt.json",
+      "receipt_sha256": "9bb57a0fb89f02862266064d70f0c98735009011eb51c4d29b48b558ab707772",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/grad/surfrad/goodwin.html",
+      "retrieved_at_utc": "2026-09-28T11:48:41.987452+00:00",
+      "final_url": "https://gml.noaa.gov/grad/surfrad/goodwin.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "5dfa6f0c5cae10f653c4df0df806771202c322c128f8faf6a49178c3251bacb1",
+      "bytes": 23486,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/5dfa6f0c5cae10f653c4df0df806771202c322c128f8faf6a49178c3251bacb1.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/9e2bcac4a284d5434435ba127a5082076c71c0767dcc8856a5f419447fa87440.receipt.json",
+      "receipt_sha256": "9e2bcac4a284d5434435ba127a5082076c71c0767dcc8856a5f419447fa87440",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/grad/surfrad/ftpeck.html",
+      "retrieved_at_utc": "2026-09-28T11:48:43.053974+00:00",
+      "final_url": "https://gml.noaa.gov/grad/surfrad/ftpeck.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "0ea78f6d88cffc2834b902460452a5cea59653190078a721c93f6dc41ef84434",
+      "bytes": 22457,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/0ea78f6d88cffc2834b902460452a5cea59653190078a721c93f6dc41ef84434.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/a3c157f86d528ff0d6da5384ddd4db955ee787fc79d2bcc47cde5fed08e83796.receipt.json",
+      "receipt_sha256": "a3c157f86d528ff0d6da5384ddd4db955ee787fc79d2bcc47cde5fed08e83796",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Goodwin_Creek_MS/1997/gwn97202.dat",
+      "retrieved_at_utc": "2026-09-29T02:09:25.453735+00:00",
+      "final_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Goodwin_Creek_MS/1997/gwn97202.dat",
+      "status": 200,
+      "content_type": null,
+      "last_modified": "Tue, 07 Apr 2009 16:57:28 GMT",
+      "sha256": "a45967fb18ecc9c236d19f4021acf9e8cd58ae16adf5fbee61ed9c24bf4280a4",
+      "bytes": 113329,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/a45967fb18ecc9c236d19f4021acf9e8cd58ae16adf5fbee61ed9c24bf4280a4.txt",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/a8f93caf8c4ba812c7d01b0b64be0d161e694d77cc4012f1fc1397a3a4f3618d.receipt.json",
+      "receipt_sha256": "a8f93caf8c4ba812c7d01b0b64be0d161e694d77cc4012f1fc1397a3a4f3618d",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/grad/surfrad/sitepage.html",
+      "retrieved_at_utc": "2026-09-28T11:48:18.541872+00:00",
+      "final_url": "https://gml.noaa.gov/grad/surfrad/sitepage.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "9c99d41ea173b84272f31d3dd14de46e13928b5fa3ad16481c22529bd1d3e2af",
+      "bytes": 29070,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/9c99d41ea173b84272f31d3dd14de46e13928b5fa3ad16481c22529bd1d3e2af.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/ab708d43c30d13891a991d08c344b4af85ec00243128f8e31d33dca6029dda01.receipt.json",
+      "receipt_sha256": "ab708d43c30d13891a991d08c344b4af85ec00243128f8e31d33dca6029dda01",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Goodwin_Creek_MS/1997/",
+      "retrieved_at_utc": "2026-09-28T11:55:49.055805+00:00",
+      "final_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Goodwin_Creek_MS/1997/",
+      "status": 200,
+      "content_type": "text/html;charset=ISO-8859-1",
+      "last_modified": null,
+      "sha256": "12b942fb5d1cdd7f5a9ca065feae7cbc95d92acfc14281b33613ad211d20949a",
+      "bytes": 114802,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/12b942fb5d1cdd7f5a9ca065feae7cbc95d92acfc14281b33613ad211d20949a.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/b3674d824606b0d0ba308b74c574c83525999ba836dff7a3becea53df1d68773.receipt.json",
+      "receipt_sha256": "b3674d824606b0d0ba308b74c574c83525999ba836dff7a3becea53df1d68773",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/2024/USCRN_Hourly02_2024_MT_Wolf_Point_29_ENE.txt",
+      "retrieved_at_utc": "2026-09-28T11:50:41.177394+00:00",
+      "error": {
+        "type": "HTTPError",
+        "message": "HTTP Error 404: Not Found"
+      },
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/badf835fac73d1bcd78ac5827c17d2f79ee1c4f79fd216737be32c72fcc0adb3.receipt.json",
+      "receipt_sha256": "badf835fac73d1bcd78ac5827c17d2f79ee1c4f79fd216737be32c72fcc0adb3"
+    },
+    {
+      "requested_url": "https://www.ncei.noaa.gov/products/land-based-station/us-climate-reference-network",
+      "retrieved_at_utc": "2026-09-28T11:50:41.975335+00:00",
+      "final_url": "https://www.ncei.noaa.gov/products/land-based-station/us-climate-reference-network",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": "Mon, 28 Sep 2026 01:05:29 GMT",
+      "sha256": "e851c00cdbd57175d783e3d69dadb5771af82939e9872ebcf19a0191b86fcc34",
+      "bytes": 38359,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/e851c00cdbd57175d783e3d69dadb5771af82939e9872ebcf19a0191b86fcc34.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/bbb211749ac2b55fe7608715fd283e99a945b40d911fb8e454cb67d623359bbe.receipt.json",
+      "receipt_sha256": "bbb211749ac2b55fe7608715fd283e99a945b40d911fb8e454cb67d623359bbe",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/grad/surfrad/bondvill.html",
+      "retrieved_at_utc": "2026-09-28T11:48:44.107815+00:00",
+      "final_url": "https://gml.noaa.gov/grad/surfrad/bondvill.html",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "8061f5628db81ddde26861d650e322a6f2411082ad4998f80b5c277618428b0f",
+      "bytes": 22426,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/8061f5628db81ddde26861d650e322a6f2411082ad4998f80b5c277618428b0f.html",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/d91104f70bbdc302a8f7681849993d0b37b97ff347c2e09b6361531d1d66962e.receipt.json",
+      "receipt_sha256": "d91104f70bbdc302a8f7681849993d0b37b97ff347c2e09b6361531d1d66962e",
+      "saved_bytes_verified": true
+    },
+    {
+      "requested_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Bondville_IL/README_SURFRAD.txt",
+      "retrieved_at_utc": "2026-09-28T11:48:20.658984+00:00",
+      "final_url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Bondville_IL/README_SURFRAD.txt",
+      "status": 200,
+      "content_type": "text/plain; charset=UTF-8",
+      "last_modified": "Mon, 24 Jun 2024 16:50:45 GMT",
+      "sha256": "ed3e5c16f169a9def997877e6037735977f2761c9c3c39d493c8f3127e82f3a6",
+      "bytes": 24941,
+      "local_path": "docs/research/surfrad_events_20260928/downloads/ed3e5c16f169a9def997877e6037735977f2761c9c3c39d493c8f3127e82f3a6.txt",
+      "receipt_path": "docs/research/surfrad_events_20260928/downloads/f881cb63a1f83d04df34cf6b713123c6bb335d1ae8a505ba3101b13459e2b0c5.receipt.json",
+      "receipt_sha256": "f881cb63a1f83d04df34cf6b713123c6bb335d1ae8a505ba3101b13459e2b0c5",
+      "saved_bytes_verified": true
+    }
+  ],
+  "sample_checks": [
+    {
+      "url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/2024/CRNH0203-2024-MT_Wolf_Point_29_ENE.txt",
+      "sha256": "8a937d345932f7e1b3f6cdc0c554f74b8d924da10845afca8b231fef1e3b8205",
+      "kind": "uscrn_hourly_context_sample",
+      "rows": 8784,
+      "raw_first_date_time": [
+        "20240101",
+        "0100"
+      ],
+      "raw_last_date_time": [
+        "20250101",
+        "0000"
+      ],
+      "wban_ids": [
+        "94060"
+      ],
+      "temperature_hourly_average_c": {
+        "present": 8775,
+        "missing": 9,
+        "min_present": -39.4,
+        "max_present": 42.0
+      },
+      "relative_humidity_hourly_average_pct": {
+        "present": 8776,
+        "missing": 8,
+        "min_present": 6.0,
+        "max_present": 96.0,
+        "raw_qc_counts": {
+          "0": 8784
+        }
+      },
+      "pressure_field_available": false,
+      "benchmark_accepted": false,
+      "reason": "Provider aggregates for independent context, not same-minute/same-sensor fault truth"
+    },
+    {
+      "url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Goodwin_Creek_MS/1998/gwn98152.dat",
+      "sha256": "016560ca5c2c987d2d2caa223fd2f49771a289b7b1b8c3e79fea2efc84ba366f",
+      "kind": "historic_surfrad_sample",
+      "rows": 480,
+      "raw_header": [
+        " Goodwin Creek",
+        "   34.25  -89.87   98 m version 1"
+      ],
+      "first_timestamp_utc": "1998-06-01T00:00:00+00:00",
+      "last_timestamp_utc": "1998-06-01T23:57:00+00:00",
+      "observed_adjacent_differences_seconds": {
+        "180": 479
+      },
+      "temperature_c": {
+        "present": 480,
+        "missing": 0,
+        "min_present": 24.7,
+        "max_present": 33.7,
+        "raw_qc_counts": {
+          "0": 480
+        }
+      },
+      "relative_humidity_pct": {
+        "present": 480,
+        "missing": 0,
+        "min_present": 16.0,
+        "max_present": 62.0,
+        "raw_qc_counts": {
+          "1": 480
+        }
+      },
+      "pressure_hpa": {
+        "present": 480,
+        "missing": 0,
+        "min_present": 998.3,
+        "max_present": 1004.7,
+        "raw_qc_counts": {
+          "0": 480
+        }
+      },
+      "benchmark_accepted": false,
+      "reason": "Historic 3-minute sample outside 2023-2025 scope; evidence investigation only"
+    },
+    {
+      "url": "https://www.ncei.noaa.gov/pub/data/uscrn/products/hourly02/2024/CRNH0203-2024-IL_Champaign_9_SW.txt",
+      "sha256": "fa979f970a630f23774ce14746711c6108992ed1d6e7843be8d4a43e40fd882e",
+      "kind": "uscrn_hourly_context_sample",
+      "rows": 8784,
+      "raw_first_date_time": [
+        "20240101",
+        "0100"
+      ],
+      "raw_last_date_time": [
+        "20250101",
+        "0000"
+      ],
+      "wban_ids": [
+        "54808"
+      ],
+      "temperature_hourly_average_c": {
+        "present": 8776,
+        "missing": 8,
+        "min_present": -23.3,
+        "max_present": 33.5
+      },
+      "relative_humidity_hourly_average_pct": {
+        "present": 8779,
+        "missing": 5,
+        "min_present": 19.0,
+        "max_present": 100.0,
+        "raw_qc_counts": {
+          "0": 8784
+        }
+      },
+      "pressure_field_available": false,
+      "benchmark_accepted": false,
+      "reason": "Provider aggregates for independent context, not same-minute/same-sensor fault truth"
+    },
+    {
+      "url": "https://gml.noaa.gov/aftp/data/radiation/surfrad/Goodwin_Creek_MS/1997/gwn97202.dat",
+      "sha256": "a45967fb18ecc9c236d19f4021acf9e8cd58ae16adf5fbee61ed9c24bf4280a4",
+      "kind": "historic_surfrad_sample",
+      "rows": 480,
+      "raw_header": [
+        " Goodwin Creek",
+        "   34.25  -89.87   98 m version 1"
+      ],
+      "first_timestamp_utc": "1997-07-21T00:00:00+00:00",
+      "last_timestamp_utc": "1997-07-21T23:57:00+00:00",
+      "observed_adjacent_differences_seconds": {
+        "180": 479
+      },
+      "temperature_c": {
+        "present": 480,
+        "missing": 0,
+        "min_present": 24.1,
+        "max_present": 32.6,
+        "raw_qc_counts": {
+          "0": 480
+        }
+      },
+      "relative_humidity_pct": {
+        "present": 480,
+        "missing": 0,
+        "min_present": 58.6,
+        "max_present": 82.4,
+        "raw_qc_counts": {
+          "1": 480
+        }
+      },
+      "pressure_hpa": {
+        "present": 480,
+        "missing": 0,
+        "min_present": 1005.9,
+        "max_present": 1012.2,
+        "raw_qc_counts": {
+          "0": 480
+        }
+      },
+      "benchmark_accepted": false,
+      "reason": "Historic 3-minute sample outside 2023-2025 scope; evidence investigation only"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "injector_version": "sensor-swap-view-alias-fix-v3",
+  "policy": "synthetic_injection_into_real_holdout_frozen_detector",
+  "disclaimer": "Synthetic injected faults on real SURFRAD; not real hardware-fault labels or IMD accuracy.",
+  "seed": 26073,
+  "target_fraction": 0.06,
+  "stations": [
+    "bon_2025_01",
+    "fpk_2025_01",
+    "gwn_2025_01"
+  ],
+  "clean_candidate_rate": 0.007235663082437276,
+  "clean_candidate_rate_combined": 0.007235663082437276,
+  "point": {
+    "precision": 0.5259412985472873,
+    "recall": 0.5161478033168461,
+    "f1": 0.5209985315712189,
+    "tp": 5322,
+    "fp": 4797,
+    "fn": 4989,
+    "roc_auc": 0.8300730678404669
+  },
+  "point_combined": {
+    "precision": 0.5313599062133646,
+    "recall": 0.5274949083503055,
+    "f1": 0.5294203533362535,
+    "tp": 5439,
+    "fp": 4797,
+    "fn": 4872
+  },
+  "per_fault": {
+    "spike": {
+      "rows": 66,
+      "row_recall": 1.0,
+      "row_recall_combined": 1.0,
+      "events": 24,
+      "event_recall": 1.0,
+      "median_latency_min": 0.0
+    },
+    "drift": {
+      "rows": 3936,
+      "row_recall": 0.6923272357723578,
+      "row_recall_combined": 0.7141768292682927,
+      "events": 24,
+      "event_recall": 0.875,
+      "median_latency_min": 1.0
+    },
+    "bias": {
+      "rows": 1215,
+      "row_recall": 0.7522633744855967,
+      "row_recall_combined": 0.7777777777777778,
+      "events": 12,
+      "event_recall": 1.0,
+      "median_latency_min": 0.0
+    },
+    "stuck": {
+      "rows": 1554,
+      "row_recall": 0.38288288288288286,
+      "row_recall_combined": 0.38288288288288286,
+      "events": 15,
+      "event_recall": 0.7333333333333333,
+      "median_latency_min": 68.0
+    },
+    "dropout": {
+      "rows": 336,
+      "row_recall": 0.37797619047619047,
+      "row_recall_combined": 0.37797619047619047,
+      "events": 12,
+      "event_recall": 0.3333333333333333,
+      "median_latency_min": 0.0
+    },
+    "noise_burst": {
+      "rows": 432,
+      "row_recall": 0.9953703703703703,
+      "row_recall_combined": 0.9953703703703703,
+      "events": 9,
+      "event_recall": 1.0,
+      "median_latency_min": 0.0
+    },
+    "clipping": {
+      "rows": 909,
+      "row_recall": 0.1474147414741474,
+      "row_recall_combined": 0.1474147414741474,
+      "events": 9,
+      "event_recall": 0.4444444444444444,
+      "median_latency_min": 11.5
+    },
+    "scale_error": {
+      "rows": 1308,
+      "row_recall": 0.008409785932721712,
+      "row_recall_combined": 0.008409785932721712,
+      "events": 9,
+      "event_recall": 0.3333333333333333,
+      "median_latency_min": 108.0
+    },
+    "sensor_swap": {
+      "rows": 618,
+      "row_recall": 0.5566343042071198,
+      "row_recall_combined": 0.5566343042071198,
+      "events": 6,
+      "event_recall": 1.0,
+      "median_latency_min": 0.0
+    }
+  },
+  "point_semantics": "detector is_candidate (+physical for *_combined) vs any-injected-fault row; ROC-AUC over anomaly_score"
+}
