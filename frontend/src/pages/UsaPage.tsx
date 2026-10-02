@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import type { Palette } from "../palette";
 import { api } from "../api";
 import { EChart, timeSeriesOption } from "../Chart";
-import { Accordion, Banner, MetricTile, Segmented, Select, useAsync } from "../ui";
+import { Accordion, Banner, MaintenanceCard, MetricTile, Segmented, Select, useAsync } from "../ui";
+import { CorrectionsPanel, StreamPanel } from "../components/Panels";
 
 const iso = (ms: number) => new Date(ms).toISOString();
 
@@ -19,7 +20,7 @@ export default function UsaPage({ p }: { p: Palette }) {
   const stations = cat.data?.stations ?? [];
   useEffect(() => { if (!group && stations.length) setGroup(stations[0].group); }, [stations, group]);
   const station = stations.find((s) => s.group === group);
-  useEffect(() => { if (station && !day) setDay(station.last.slice(0, 10)); }, [station, day]);
+  useEffect(() => { if (station && (!day || day < station.first.slice(0, 10) || day > station.last.slice(0, 10))) setDay(station.last.slice(0, 10)); }, [station, day]);
 
   const ev = useAsync(() => (group ? api.usaEvents(group) : Promise.resolve({ group, events: [] })), [group]);
   const events = ev.data?.events ?? [];
@@ -40,12 +41,16 @@ export default function UsaPage({ p }: { p: Palette }) {
   }, [mode, events, eventId, ctx, day, days]);
 
   const win = useAsync(
-    () => (group && range ? api.usaWindow(group, range[0], range[1]) : Promise.resolve(null as any)),
+    () => (group && range ? api.usaWindow(group, range[0], range[1]) : Promise.resolve(null)),
     [group, range?.[0], range?.[1]],
   );
-  const health = useAsync(() => (group ? api.usaHealth(group) : Promise.resolve(null as any)), [group]);
+  const health = useAsync(() => (group ? api.usaHealth(group) : Promise.resolve(null)), [group]);
+  const spatial = useAsync(() => (group ? api.usaSpatial(group) : Promise.resolve(null)), [group]);
+  const corrections = useAsync(() => (group ? api.usaCorrections(group) : Promise.resolve(null)), [group]);
+  const [stream, setStream] = useState<{ playing: boolean; rows: any[]; summary: any; group: string | null }>(
+    { playing: false, rows: [], summary: null, group: null });
   const stateColor: Record<string, string> = {
-    healthy: p.accent2, watch: "#C79A3A", degraded: p.accent, critical: p.alert,
+    healthy: p.accent2, watch: "#C79A3A", degraded: p.accent, critical: p.alert, unknown: p.muted, unavailable: p.muted,
   };
   // __USA_BODY__
   if (cat.loading) return <div className="loading">Loading real-observation artifacts…</div>;
@@ -63,7 +68,7 @@ export default function UsaPage({ p }: { p: Palette }) {
           <p className="hint">{station.records.toLocaleString()} archived rows<br />
             {station.first.slice(0, 10)} → {station.last.slice(0, 10)}</p>
         )}
-        <Segmented label="Replay selection" value={mode} onChange={(v) => setMode(v as any)}
+        <Segmented label="Replay selection" value={mode} onChange={(v) => setMode(v === "event" ? "event" : "calendar")}
           options={[{ value: "event", label: "Candidate event" }, { value: "calendar", label: "Calendar window" }]} />
         {mode === "event" && events.length > 0 && (
           <>
@@ -76,8 +81,8 @@ export default function UsaPage({ p }: { p: Palette }) {
         {mode === "event" && events.length === 0 && <p className="hint">No candidate events for this stream.</p>}
         {mode === "calendar" && (
           <>
-            <div className="field"><label>Window start (UTC)</label>
-              <input type="date" value={day} min={station?.first.slice(0, 10)} max={station?.last.slice(0, 10)}
+            <div className="field"><label htmlFor="usa-day">Window start (UTC)</label>
+              <input id="usa-day" type="date" value={day} min={station?.first.slice(0, 10)} max={station?.last.slice(0, 10)}
                 onChange={(e) => setDay(e.target.value)} /></div>
             <Select label="Window length" value={String(days)} onChange={(v) => setDays(Number(v))}
               options={[1, 3, 7].map((n) => ({ value: String(n), label: `${n} day${n > 1 ? "s" : ""}` }))} />
@@ -97,16 +102,37 @@ export default function UsaPage({ p }: { p: Palette }) {
           unknown without independent review; provider QC is separate quality evidence.</Banner>
         {health.data?.health && (
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center", margin: "8px 0 2px" }}>
-            <span className="caption" style={{ margin: 0 }}>Sensor health · last {health.data.window_days}d:</span>
-            {Object.entries(health.data.health.channels).map(([ch, d]: any) => (
+            <span className="caption" style={{ margin: 0 }}>Candidate activity · latest {health.data.window_days ?? 30} archive days:</span>
+            {Object.entries(health.data.health.channels).map(([ch, d]) => (
               <span key={ch} style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "5px 11px",
                 borderRadius: 999, border: "1px solid var(--border)", background: "var(--surface)", fontSize: "0.82rem" }}>
                 <span style={{ width: 9, height: 9, borderRadius: "50%", background: stateColor[d.state] }} />
                 {ch.replace("_", " ").replace("_pct", "").replace("_c", "").replace("_hpa", "")}
-                <b style={{ color: stateColor[d.state], textTransform: "capitalize" }}>{d.state}</b>
-                <span style={{ color: "var(--muted)" }}>{(d.candidate_rate * 100).toFixed(1)}%{d.trend === "worsening" ? " ↑" : d.trend === "improving" ? " ↓" : ""}</span>
+                <b style={{ color: stateColor[d.state] ?? p.muted }}>{d.state === "healthy" ? "Low activity" : d.state}</b>
+                <span style={{ color: "var(--muted)" }}>{d.candidate_rate == null ? "No scores" : `${(d.candidate_rate * 100).toFixed(1)}%`}{d.trend === "worsening" ? " ↑" : d.trend === "improving" ? " ↓" : ""}</span>
               </span>
             ))}
+          </div>
+        )}
+        {health.data?.health && <p className="caption">Rates describe candidate rows in each channel’s scored records over the latest archive window, independently of the interval below. Activity bands do not establish hardware health.</p>}
+        {!health.loading && !health.data?.health && <p className="caption">Candidate activity unavailable. Hardware status: unknown.</p>}
+        <MaintenanceCard advisory={health.data?.health?.maintenance_advisory} />
+        {spatial.data && spatial.data.per_channel && (
+          <div className="chart-card" style={{ marginTop: 12 }}>
+            <h4>Spatial consistency (vs network median) · {spatial.data.snapshot_utc}</h4>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+              {Object.entries(spatial.data.per_channel).map(([ch, d]: any) => (
+                <div key={ch} style={{ padding: 10, border: "1px solid var(--border)", borderRadius: 12 }}>
+                  <div className="caption" style={{ margin: 0 }}>{ch.replace("_", " ")}</div>
+                  <div style={{ fontFamily: "Fraunces", fontSize: "1.3rem", marginTop: 2,
+                    color: d.consensus === "diverging" ? p.alert : d.consensus === "unknown" ? p.muted : p.accent2 }}>
+                    {d.consensus}
+                  </div>
+                  <div className="caption" style={{ margin: 0 }}>{d.trigger ?? "—"}</div>
+                </div>
+              ))}
+            </div>
+            <p className="caption" style={{ marginTop: 8 }}>{spatial.data.policy}</p>
           </div>
         )}
         {/* __USA_CHARTS__ */}
@@ -129,26 +155,28 @@ export default function UsaPage({ p }: { p: Palette }) {
                 <EChart option={timeSeriesOption(ch, p, show60)} height={250} />
               </div>
             ))}
+            {corrections.data?.candidates && corrections.data.candidates.length > 0 && (
+              <CorrectionsPanel corr={corrections.data} p={p} />
+            )}
             {win.data.candidates.length > 0 && (
               <>
                 <h4 style={{ fontFamily: "Inter", marginTop: 6 }}>Candidate reasons in this window</h4>
                 <div className="table-wrap">
                   <table className="data">
-                    <thead><tr><th>Time (UTC)</th><th>Reason codes</th><th>Score</th><th>Suggested type</th><th>Conf.</th></tr></thead>
+                    <thead><tr><th>Time (UTC)</th><th>Detector evidence</th><th>Score</th><th>Hardware status</th></tr></thead>
                     <tbody>
                       {win.data.candidates.slice(0, 200).map((r, i) => (
                         <tr key={i}>
                           <td>{(r.timestamp || "").replace("T", " ").replace("Z", "")}</td>
                           <td>{r.reason_codes ?? ""}</td>
                           <td>{r.anomaly_score == null ? "—" : Number(r.anomaly_score).toFixed(3)}</td>
-                          <td>{r.fault_type ?? "—"}</td>
-                          <td>{r.type_confidence == null ? "—" : `${(Number(r.type_confidence) * 100).toFixed(0)}%`}</td>
+                          <td>Unknown · review required</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
-                <p className="caption">Anomaly scores are detector evidence relative to calibrated thresholds — not probabilities of hardware failure. "Suggested type" is a classifier trained on synthetic injected faults; it's a triage hint, not a confirmed hardware fault.</p>
+                <p className="caption">Anomaly scores are detector evidence relative to calibrated thresholds. They are not probabilities of hardware failure; a reason code describes the detected pattern.</p>
               </>
             )}
             <Accordion title="What do these numbers mean?">
@@ -165,6 +193,8 @@ export default function UsaPage({ p }: { p: Palette }) {
             </Accordion>
           </>
         )}
+        <CorrectionsPanel corr={corrections.data} p={p} />
+        <StreamPanel stream={stream} setStream={setStream as any} group={group} p={p} />
       </main>
     </div>
   );

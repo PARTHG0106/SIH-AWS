@@ -7,17 +7,23 @@ Streamlit dashboard). Build the SPA first, then run this:
 The Starlette app (app/api.py) reads the same verified artifacts as before; set
 SKYGUARD_ARTIFACTS / SKYGUARD_INDIAN_DEMO to point at other bundles.
 """
+import argparse
 import sys
+from pathlib import Path
 
-sys.path.insert(0, ".")
-sys.path.insert(0, "src")
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "src"))
 
 
 def main() -> None:
     import uvicorn
 
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 8501
-    uvicorn.run("app.api:app", host="0.0.0.0", port=port, log_level="info")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("port", nargs="?", type=int, default=8501)
+    parser.add_argument("--host", default="127.0.0.1")
+    args = parser.parse_args()
+    uvicorn.run("app.api:app", host=args.host, port=args.port, log_level="info")
 
 
 if __name__ == "__main__":

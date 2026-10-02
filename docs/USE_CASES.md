@@ -1,5 +1,10 @@
 # Use cases — SkyGuard AI (SIH26073)
 
+> Historical scenario descriptions, including unvalidated confidence, correction
+> and maintenance claims. They are not observed fault cases or active-system
+> guarantees. Current operational use cases are documented in
+> `docs/SIH_USE_CASES.md`.
+
 Each maps to required outputs in the problem statement.
 
 ## 1 · Frozen temperature sensor during a cyclonic landfall (Bhubaneswar)

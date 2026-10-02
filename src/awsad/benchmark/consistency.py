@@ -1,7 +1,7 @@
-"""Multivariate / range consistency checks on the measured T, P, RH channels only.
+"""Gross range checks on measured T, P, RH; derived dew point is context only.
 
-Physical impossibilities (RH>100%, out-of-range pressure/temperature, dew point above
-air temperature) are ground-truth violations, not fabricated fault labels. This layer
+Out-of-range pressure/temperature/humidity are quality-review proposals, not
+ground-truth hardware labels. This layer
 complements the forecast-residual detector, which is weak on gross magnitude faults
 (clipping / scale_error) that a physical bound catches immediately. Uses only the three
 SIH parameters; no external or reanalysis data.
@@ -40,13 +40,14 @@ def physical_flags(frame: pd.DataFrame) -> dict:
         per_channel[channel] = bad
         any_flag |= bad
         _add(bad, f"{channel}:range")
-    # Cross-parameter: dew point cannot exceed air temperature (super-saturation / swap).
+    # Td derived from the same T/RH supplies no independent consistency evidence.
+    # Keep it as a derived display feature, never a swap/root-cause detector.
     t = frame["temperature_c"].to_numpy(float, na_value=np.nan)
     rh = frame["relative_humidity_pct"].to_numpy(float, na_value=np.nan)
     ok = np.isfinite(t) & np.isfinite(rh) & (rh > 0)
     dew = np.full(n, np.nan)
     dew[ok] = _dewpoint_c(t[ok], rh[ok])
-    inconsistent = ok & (dew > t + 0.5)
+    inconsistent = np.zeros(n, dtype=bool)
     per_channel["multivariate"] = inconsistent
     any_flag |= inconsistent
     _add(inconsistent, "dewpoint_gt_temperature")

@@ -14,3 +14,10 @@ matplotlib>=3.9
 
 # Demo dashboard
 streamlit>=1.36
+
+# Active JSON API and dashboard server
+starlette>=0.40
+uvicorn>=0.30
+
+# Verification
+pytest>=8

@@ -1,7 +1,13 @@
 import { useEffect, useRef } from "react";
-import * as echarts from "echarts";
+import * as echarts from "echarts/core";
+import { BarChart, HeatmapChart, LineChart, ScatterChart } from "echarts/charts";
+import { AriaComponent, DataZoomComponent, GridComponent, LegendComponent, TooltipComponent, VisualMapComponent } from "echarts/components";
+import { CanvasRenderer } from "echarts/renderers";
 import type { Palette } from "./palette";
-import type { UsaChannel, InChannel } from "./api";
+import type { UsaChannel, InChannel, Pair } from "./api";
+
+echarts.use([LineChart, ScatterChart, HeatmapChart, BarChart, GridComponent, TooltipComponent, LegendComponent,
+  DataZoomComponent, VisualMapComponent, AriaComponent, CanvasRenderer]);
 
 export function EChart({ option, height = 250 }: { option: echarts.EChartsCoreOption; height?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -13,7 +19,7 @@ export function EChart({ option, height = 250 }: { option: echarts.EChartsCoreOp
     ro.observe(ref.current);
     return () => { ro.disconnect(); chart.current?.dispose(); };
   }, []);
-  useEffect(() => { chart.current?.setOption(option, true); }, [option]);
+  useEffect(() => { chart.current?.setOption({ ...option, animation: !window.matchMedia("(prefers-reduced-motion: reduce)").matches }, true); }, [option]);
   return <div ref={ref} style={{ width: "100%", height }} />;
 }
 
@@ -49,9 +55,12 @@ function zoom(p: Palette) {
 // __CHART_MORE__
 
 
-export function timeSeriesOption(ch: UsaChannel, p: Palette, show60: boolean): echarts.EChartsCoreOption {
+export interface SeriesPresentation { inputLabel: string; baseline?: Pair[]; applied?: Pair[]; }
+
+export function timeSeriesOption(ch: UsaChannel, p: Palette, show60: boolean, presentation?: SeriesPresentation): echarts.EChartsCoreOption {
+  const inputLabel = presentation?.inputLabel ?? "Observed";
   const series: any[] = [
-    { name: "Observed", type: "line", data: ch.observed, showSymbol: false, connectNulls: false, sampling: "lttb",
+    { name: inputLabel, type: "line", data: ch.observed, showSymbol: false, connectNulls: false, sampling: "lttb",
       lineStyle: { width: 2, color: p.ink }, itemStyle: { color: p.ink }, z: 5,
       areaStyle: { opacity: 1, color: new echarts.graphic.LinearGradient(0, 0, 0, 1,
         [{ offset: 0, color: p.areaTop }, { offset: 1, color: p.areaBottom }]) } },
@@ -63,8 +72,15 @@ export function timeSeriesOption(ch: UsaChannel, p: Palette, show60: boolean): e
       sampling: "lttb", lineStyle: { width: 1.6, color: p.accent2, type: [2, 3] }, itemStyle: { color: p.accent2 }, z: 4 });
   series.push({ name: "Candidate", type: "scatter", data: ch.candidates.map((c) => [c[0], c[1]]), symbol: "circle",
     symbolSize: 9, itemStyle: { color: "transparent", borderColor: p.alert, borderWidth: 1.8 }, z: 6 });
-  const names = ["Observed", "Model · 1-min", ...(show60 ? ["Model · 60-min"] : []), "Candidate"];
+  if (presentation?.baseline) series.unshift({ name: "Original baseline", type: "line", data: presentation.baseline,
+    showSymbol: false, connectNulls: false, sampling: "lttb", lineStyle: { width: 1.5, color: p.faint }, itemStyle: { color: p.faint }, z: 3 });
+  if (presentation?.applied) series.push({ name: "Applied change", type: "scatter", data: presentation.applied, symbol: "diamond",
+    symbolSize: 6, itemStyle: { color: p.accent2, opacity: .8 }, z: 5 });
+  const names = [...(presentation?.baseline ? ["Original baseline"] : []), inputLabel, "Model · 1-min", ...(show60 ? ["Model · 60-min"] : []),
+    ...(presentation?.applied ? ["Applied change"] : []), "Candidate"];
   return {
+    useUTC: true,
+    aria: { enabled: true },
     grid: { left: 54, right: 16, top: 42, bottom: 58 },
     tooltip: tooltip(p, "axis"), legend: legend(p, names),
     xAxis: { type: "time", ...AXIS(p), splitLine: { show: false } },
@@ -119,6 +135,8 @@ export function scatterOption(ch: InChannel, p: Palette): echarts.EChartsCoreOpt
     itemStyle: { color, borderColor: color, opacity: 0.9 },
   });
   return {
+    useUTC: true,
+    aria: { enabled: true },
     grid: { left: 54, right: 16, top: 42, bottom: 58 },
     tooltip: tooltip(p, "axis"),
     legend: legend(p, [ch.source_label, "Synthetic scenario copy", "Applied scenario"]),

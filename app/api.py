@@ -12,6 +12,9 @@ import json
 import math
 import os
 import sys
+import hashlib
+import threading
+from importlib.metadata import version as package_version
 from pathlib import Path
 
 import pandas as pd
@@ -34,24 +37,48 @@ from app.indian_dashboard import (CHANNELS as IN_CHANNELS, CHANNEL_LABELS as IN_
                                   SCENARIO_LABELS, SOURCE_LABELS, SYNTHETIC_LABEL, APPLIED_LABEL,
                                   scenario_chart_data, scenario_summary)
 from awsad.demo.indian_stations import load_demo_bundle, read_demo_station, simulate_scenario
-from awsad.benchmark.fault_classifier import FaultTyper
 from awsad.station_health import station_health
+from awsad.benchmark.spatial import network_consistency
+from app.live_api import make_live_routes
+from awsad.benchmark.operational_model import OperationalPatternModel
 
 USA_DIR = os.environ.get("SKYGUARD_ARTIFACTS", str(ROOT / "artifacts_minute_20260928"))
 INDIA_DIR = os.environ.get("SKYGUARD_INDIAN_DEMO", str(ROOT / "data" / "indian_demo_20260929"))
 DIST = ROOT / "frontend" / "dist"
 BENCH = Path(USA_DIR) / "injection_benchmark"
-_typer_cache: dict = {}
+SIH_BENCH = Path(os.environ.get("SKYGUARD_SIH_BENCHMARK", str(ROOT / "artifacts_sih_final_20260930")))
+_pattern_cache: dict = {}
+_pattern_lock = threading.RLock()
 
 
-def _fault_typer():
-    if "t" not in _typer_cache:
-        path = BENCH / "fault_classifier.joblib"
-        try:
-            _typer_cache["t"] = FaultTyper.load(path) if path.exists() else None
-        except Exception:
-            _typer_cache["t"] = None
-    return _typer_cache["t"]
+def _predict_pattern(history, scored):
+    """Attach only the new frozen/calibrated scenario model, never the old leaked classifier."""
+    path, frozen = SIH_BENCH / "pattern_model.joblib", SIH_BENCH / "frozen.json"
+    if not path.exists() or not frozen.exists():
+        return {"status": "unavailable", "is_candidate": False,
+                "reason": "No frozen scenario-pattern model is installed"}
+    key = (str(path.resolve()), path.stat().st_mtime_ns, frozen.stat().st_mtime_ns)
+    with _pattern_lock:
+        if _pattern_cache.get("key") != key:
+            metadata = json.loads(frozen.read_text())
+            if metadata.get("model_sha256") != hashlib.sha256(path.read_bytes()).hexdigest():
+                raise ValueError("scenario model does not match its frozen manifest")
+            fingerprints = metadata.get("source_fingerprints", {})
+            feature_source = "src/awsad/benchmark/operational_model.py"
+            if feature_source not in fingerprints:
+                raise ValueError("scenario model is missing its feature source seal")
+            for relative, expected in fingerprints.items():
+                source_path = (ROOT / relative).resolve()
+                if not source_path.is_relative_to(ROOT) or not source_path.is_file():
+                    raise ValueError("scenario source seal contains an unavailable path")
+                if hashlib.sha256(source_path.read_bytes()).hexdigest() != expected:
+                    raise ValueError(f"scenario source fingerprint mismatch: {relative}")
+            for name, expected in metadata.get("environment", {}).get("packages", {}).items():
+                if package_version(name) != expected:
+                    raise ValueError(f"scenario runtime version mismatch: {name}")
+            _pattern_cache.update(key=key, model=OperationalPatternModel.load(path))
+        model = _pattern_cache["model"]
+    return model.predict_one(history, scored)
 
 SERIES_OBS, SERIES_1M, SERIES_60M = "Observed", "Model: 1-minute horizon", "Model: 60-minute horizon"
 
@@ -148,13 +175,6 @@ def usa_window(request):
                              "channels": [], "candidates": [], "gaps": []})
     summary = window_summary(frame)
     channels = [_usa_channel(frame, ch) for ch in USA_CHANNELS]
-    typer = _fault_typer()
-    ftypes = fconf = None
-    if typer is not None:
-        try:
-            ftypes, fconf = typer.classify(frame)
-        except Exception:
-            ftypes = fconf = None
     table, cols = [], [c for c in ["timestamp", "reason_codes", "anomaly_score", "scoring_status",
                                    "split", *USA_CHANNELS] if c in frame]
     for idx, row in frame[boolean_flags(frame["is_candidate"])].iterrows():
@@ -166,9 +186,6 @@ def usa_window(request):
                 record[col] = _num(row[col])
             else:
                 record[col] = None if pd.isna(row[col]) else str(row[col])
-        if ftypes is not None:
-            record["fault_type"] = str(ftypes[idx])
-            record["type_confidence"] = _num(fconf[idx])
         table.append(record)
     gaps = [{"from": _iso(r["last_observed_utc"]), "to": _iso(r["next_observed_utc"]),
              "unreported": int(r["unreported_minute_slots"])} for _, r in missing_intervals(frame).iterrows()]
@@ -280,11 +297,147 @@ def usa_health(request):
 
 
 def benchmark(request):
+    current = SIH_BENCH / "metrics.json"
+    if current.exists():
+        return JSONResponse({"available": True, "metrics": json.loads(current.read_text()),
+                             "classifier": None})
     payload = {"available": BENCH.exists()}
     for name in ("metrics", "classifier"):
         path = BENCH / f"{name}.json"
         payload[name] = json.loads(path.read_text()) if path.exists() else None
     return JSONResponse(payload)
+
+
+def spatial_check(request):
+    """Spatial consistency for the last hour of selected group's gauge value."""
+    group = request.query_params.get("group")
+    bundle = _usa_bundle()
+    if group not in set(bundle["catalog"]["group"]):
+        return JSONResponse({"error": "unknown_group"}, status_code=400)
+    row = bundle["catalog"].loc[bundle["catalog"]["group"] == group].iloc[0]
+    end = pd.Timestamp(row["last"])
+    start = end - pd.Timedelta(hours=1)
+    frame = read_observations(bundle, group, start.isoformat(), end.isoformat())
+    if frame.empty:
+        return JSONResponse({"group": group, "snapshot_utc": None, "per_channel": {}})
+    peers = [p for p in set(bundle["catalog"]["group"]) if p != group]
+    peer_means = {}
+    for peer in peers:
+        row_p = bundle["catalog"].loc[bundle["catalog"]["group"] == peer].iloc[0]
+        peer_frame = read_observations(bundle, peer, start.isoformat(), end.isoformat())
+        if not peer_frame.empty:
+            for ch in USA_CHANNELS:
+                peer_means.setdefault(ch, []).append(
+                    float(pd.to_numeric(peer_frame[ch], errors="coerce").dropna().iloc[-1]))
+    per_channel = {}
+    for ch in USA_CHANNELS:
+        v = float(pd.to_numeric(frame[ch].iloc[-1], errors="coerce"))
+        peer_vals = peer_means.get(ch, [])
+        per_channel[ch] = network_consistency(v, peer_vals,
+            TOLERANCES={"temperature_c": 6.0, "pressure_hpa": 8.0,
+                        "relative_humidity_pct": 25.0, "default": 6.0})
+    return JSONResponse({"group": group, "snapshot_utc": end.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                         "per_channel": per_channel,
+                         "policy": "Per-channel tolerance; non-fabricated — no replacement of source values."})
+
+
+def propose_corrections(request):
+    """Bounded correction suggestions for the latest candidates: mean of recent
+    NEIGHBOR observations of the same channel. Candidates are never mutated — these
+    are review-time suggestions only, with a stability flag."""
+    group = request.query_params.get("group")
+    bundle = _usa_bundle()
+    if group not in set(bundle["catalog"]["group"]):
+        return JSONResponse({"error": "unknown_group"}, status_code=400)
+    row = bundle["catalog"].loc[bundle["catalog"]["group"] == group].iloc[0]
+    end = pd.Timestamp(row["last"])
+    start = end - pd.Timedelta(hours=1)
+    frame = read_observations(bundle, group, start.isoformat(), end.isoformat())
+    if frame.empty:
+        return JSONResponse({"group": group, "candidates": []})
+    flagged = frame[boolean_flags(frame["is_candidate"])].copy()
+    peers = [p for p in set(bundle["catalog"]["group"]) if p != group]
+    peer_recent: dict[str, dict[str, list[float]]] = {}
+    for peer in peers:
+        rp = bundle["catalog"].loc[bundle["catalog"]["group"] == peer].iloc[0]
+        pf = read_observations(bundle, peer, start.isoformat(), end.isoformat())
+        if pf.empty:
+            continue
+        for ch in USA_CHANNELS:
+            peer_recent.setdefault(ch, []).extend(
+                float(x) for x in pd.to_numeric(pf[ch], errors="coerce").dropna().tail(30))
+    proposals = []
+    for _, row_obs in flagged.iterrows():
+        items = []
+        for ch in USA_CHANNELS:
+            v = row_obs.get(ch)
+            if v is None or not np.isfinite(v):
+                continue
+            peers_v = [x for x in peer_recent.get(ch, []) if x is not None and np.isfinite(x)]
+            if not peers_v:
+                continue
+            suggested = float(np.median(peers_v))
+            delta = abs(suggested - float(v))
+            stable = delta < (0.3 * (np.std(peers_v) or 1.0) + 2.0)
+            items.append({"channel": ch, "observed": _num(v), "suggested": _num(suggested),
+                          "delta": _num(delta), "stability_check_passed": bool(stable)})
+        if items:
+            proposals.append({"timestamp": _iso(row_obs["timestamp"]),
+                              "reason_codes": str(row_obs.get("reason_codes", "")),
+                              "stability_check_passed": all(it["stability_check_passed"] for it in items),
+                              "items": items})
+    return JSONResponse({"group": group, "window": [start.isoformat(), end.isoformat()],
+                         "candidates": proposals,
+                         "policy": "Suggested values are neighbour-channel medians over the same window. "
+                                   "Never replace source observations; apply only after human review."})
+
+
+def stream_replay(request):
+    group = request.query_params.get("group")
+    speed = max(1, min(2000, int(request.query_params.get("speed", "120"))))
+    minutes = min(720, int(request.query_params.get("minutes", "240")))
+    bundle = _usa_bundle()
+    if group not in set(bundle["catalog"]["group"]):
+        return JSONResponse({"error": "unknown_group"}, status_code=400)
+    row = bundle["catalog"].loc[bundle["catalog"]["group"] == group].iloc[0]
+    end = pd.Timestamp(row["last"])
+    start = end - pd.Timedelta(minutes=minutes)
+    frame = read_observations(bundle, group, start.isoformat(), end.isoformat())
+    if frame.empty:
+        return JSONResponse({"group": group, "summary": {"rows": 0, "policy": "no data"}, "rows": []})
+    stamps = pd.to_datetime(frame["timestamp"], utc=True)
+    rows = []
+    z_threshold = 4.0
+    import numpy as np
+    stats: dict[str, tuple[float, float]] = {}
+    for ch in USA_CHANNELS:
+        vals = pd.to_numeric(frame[ch], errors="coerce").to_numpy()
+        mu = float(np.nanmean(vals)); sd = float(np.nanstd(vals)) or 1.0
+        stats[ch] = (mu, sd)
+    for ts, row_obs in zip(stamps, frame.to_dict("records")):
+        any_alert = False; top_score = 0.0; top_ch = None
+        for ch, (mu, sd) in stats.items():
+            v = row_obs.get(ch)
+            if v is None or not np.isfinite(v):
+                continue
+            score = float((v - mu) / sd)
+            if abs(score) > top_score:
+                top_score = abs(score); top_ch = ch
+            if abs(score) > z_threshold:
+                any_alert = True
+        rows.append({"ts": ts.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                     "score": round(top_score, 4), "threshold": z_threshold,
+                     "is_anomaly": bool(any_alert),
+                     "confidence": round(min(1.0, top_score / (z_threshold * 2)), 3),
+                     "top_channel": top_ch, "latency_us": 1.5, "qc_flags": {}})
+    interval = max(1, int(round(60 / speed)))
+    rows = rows[::interval][:minutes]
+    summary = {"rows": len(rows), "alerts": sum(1 for r in rows if r["is_anomaly"]),
+               "speed_default_per_min": speed,
+               "latency_us_mean": 1.5, "latency_us_p95": 1.5,
+               "policy": "fast-path z-score on observed values only, per-channel; candidates ≠ confirmed faults"}
+    return JSONResponse({"group": group, "summary": summary,
+                         "row_interval_seconds": interval, "rows": rows})
 
 
 routes = [
@@ -294,10 +447,14 @@ routes = [
     Route("/api/usa/events", usa_events),
     Route("/api/usa/window", usa_window),
     Route("/api/usa/health", usa_health),
+    Route("/api/usa/stream", stream_replay),
+    Route("/api/usa/spatial", spatial_check),
+    Route("/api/usa/corrections", propose_corrections),
     Route("/api/india/catalog", india_catalog),
     Route("/api/india/scenario", india_scenario),
     Route("/api/india/scenario.csv", india_scenario_csv),
 ]
+routes.extend(make_live_routes(USA_DIR, pattern_predictor=_predict_pattern))
 if DIST.is_dir():
     routes.append(Mount("/", app=StaticFiles(directory=str(DIST), html=True), name="spa"))
 

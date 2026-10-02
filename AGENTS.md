@@ -1,5 +1,24 @@
 # AGENTS.md — project knowledge for coding agents
 
+## SIH improvement authorization (2026-09-30)
+- The latest user request authorizes researching public implementations and using
+  real data or a good data-generation pipeline to meet SIH26073 requirements.
+- A separate, explicitly synthetic scenario training/evaluation path is now
+  authorized. This supersedes the earlier demo-only restriction for that path.
+  Preserve original observations, raw quality flags, provenance and hashes.
+- Synthetic targets describe applied software scenarios, never confirmed real
+  hardware causes. Unmodified backgrounds mean no injected scenario, not known
+  fault-free hardware. Keep real replay metrics and synthetic benchmark metrics
+  separate, including all exported artifacts and dashboard claims.
+- Split source windows/stations/time before generating scenarios. Keep events
+  and overlapping history in one partition. Fit, selection, calibration and final
+  evaluation must remain separate; previously examined January 2025 is not an
+  untouched selection holdout.
+- Research and compare inspected public implementations with citations and
+  reproducible measurements; do not claim superiority over uninspected projects.
+- Do not revive the legacy dataset builder, which fills observations and
+  conflates derived RH/sea-level pressure with measured sensor channels.
+
 ## Explicit Indian demo exception (2026-09-29)
 - The latest user request authorizes synthetic Indian-station scenarios on a
   separate dashboard page while retaining the US real-observation replay.
@@ -43,6 +62,15 @@ Detection reads ONLY: temperature_c, pressure_hpa, relative_humidity_pct
 package `src/awsad`, tests in `tests/`.
 
 ## How to run
+- SIH continuation (2026-10-01): completed frozen synthetic evaluation is in
+  `artifacts_sih_final_20260930`; see `docs/SIH_FINAL_RESULTS_20261001.md`.
+  February 2025 was consumed once. Never retune on it or call it untouched again.
+  Learned-model temporal F1 is 0.689; held-out-station F1 is 0.374 with 49.65%
+  wholly unmodified background proposals. Reliable station transfer remains
+  unestablished; preserve this limitation in dashboard/submission claims.
+  `scripts/package_sih_release.py --pattern-dir artifacts_sih_final_20260930`
+  selects the completed run; packaging uses the stable `artifacts_sih_20260930`
+  alias inside the ZIP. One-click synthetic stream is in the live dashboard.
 - Native-minute continuation (2026-09-29): see `docs/MINUTE_DETECTION_20260929.md`.
   `scripts/run_minute_detection.py` uses verified native originals with separate
   fit/selection/calibration before 2024-11; Goodwin Creek is held out. January

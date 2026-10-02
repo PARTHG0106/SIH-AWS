@@ -1,5 +1,13 @@
 # Real-observation audit and source research
 
+**2026-09-30 SIH improvement authorization:** the user now permits a separate,
+explicitly synthetic scenario training and evaluation pipeline. Original real
+observations and their unknown hardware status remain unchanged. Scenario labels
+identify software interventions only. Independent source-window, event, temporal
+and station partitions are required before scenario generation; synthetic metrics
+must not be reported as real hardware-fault accuracy. The historical real-only
+audit below continues to govern the original-observation path.
+
 **2026-09-29 demonstration exception:** the user subsequently requested a
 separate, explicitly synthetic Indian-station dashboard page while keeping the
 US real replay. This permits labelled software scenarios based on unchanged

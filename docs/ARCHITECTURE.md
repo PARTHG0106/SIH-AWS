@@ -1,5 +1,10 @@
 # Architecture — SkyGuard AI
 
+> Historical architecture of the superseded injected/hourly pipeline. This is
+> not a description of the active September 30 system or evidence for its
+> performance. See `README.md`, `docs/LIVE_DETECTION_20260930.md` and
+> `docs/SIH_COMPLETION_PLAN.md` for the current measured/synthetic separation.
+
 ```
                      ┌─────────────────────────────────────────────────────┐
                      │                 DATA FOUNDATION                     │

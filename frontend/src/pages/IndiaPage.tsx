@@ -18,7 +18,7 @@ export default function IndiaPage({ p }: { p: Palette }) {
   const stations = cat.data?.stations ?? [];
   const st = stations.find((s) => s.station_id === station);
   useEffect(() => { if (!station && stations.length) setStation(stations[0].station_id); }, [stations, station]);
-  useEffect(() => { if (st && !day) setDay(st.start.slice(0, 10)); }, [st, day]);
+  useEffect(() => { if (st && (!day || day < st.start.slice(0, 10) || day > st.end.slice(0, 10))) setDay(st.start.slice(0, 10)); }, [st, day]);
   useEffect(() => { setStartTs(""); }, [station, day, days, scenario, channel]);
 
   const params = useMemo<Record<string, string>>(() => {
@@ -29,7 +29,7 @@ export default function IndiaPage({ p }: { p: Palette }) {
   }, [station, day, days, scenario, channel, duration, magnitude, startTs]);
 
   const sc = useAsync(
-    () => (station && day ? api.indiaScenario(params) : Promise.resolve(null as any)),
+    () => (station && day ? api.indiaScenario(params) : Promise.resolve(null)),
     [JSON.stringify(params)],
   );
   const summary = sc.data?.summary;
@@ -50,8 +50,8 @@ export default function IndiaPage({ p }: { p: Palette }) {
         <Select label="Source station" value={station} onChange={setStation}
           options={stations.map((s) => ({ value: s.station_id, label: `${s.name} · ${s.station_id}` }))} />
         {st && <p className="hint">{(st.rows ?? 0).toLocaleString()} source records<br />{st.start.slice(0, 10)} → {st.end.slice(0, 10)}</p>}
-        <div className="field"><label>Window start (UTC)</label>
-          <input type="date" value={day} min={st?.start.slice(0, 10)} max={st?.end.slice(0, 10)}
+        <div className="field"><label htmlFor="india-day">Window start (UTC)</label>
+          <input id="india-day" type="date" value={day} min={st?.start.slice(0, 10)} max={st?.end.slice(0, 10)}
             onChange={(e) => setDay(e.target.value)} /></div>
         <Select label="Window length" value={String(days)} onChange={(v) => setDays(Number(v))}
           options={[3, 1, 7].map((n) => ({ value: String(n), label: `${n} day${n > 1 ? "s" : ""}` }))} />
@@ -68,8 +68,8 @@ export default function IndiaPage({ p }: { p: Palette }) {
             options={[1, 3, 6, 12, 24, 48].map((n) => ({ value: String(n), label: `${n} h` }))} />
         )}
         {(scenario === "spike" || scenario === "drift") && (
-          <div className="field"><label>{scenario === "spike" ? "Spike offset" : "Offset at interval end"}</label>
-            <input type="number" value={magnitude} step={1} min={-100} max={100}
+          <div className="field"><label htmlFor="india-magnitude">{scenario === "spike" ? "Spike offset" : "Offset at interval end"}</label>
+            <input id="india-magnitude" type="number" value={magnitude} step={1} min={-100} max={100}
               onChange={(e) => setMagnitude(Number(e.target.value))} /></div>
         )}
       </aside>
