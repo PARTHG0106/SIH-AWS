@@ -1,0 +1,1037 @@
+{
+  "research_date": "2026-09-30",
+  "source_receipts_sha256": "47190f02e74d251a289c90d350a41764ccdb35fb8dd9e25c7ad94d4655672e20",
+  "scope": "Citation and response-hash metadata only. Inspected third-party source bodies are not redistributed in the submission package.",
+  "sources": {
+    "search:SIH26073": {
+      "requested_url": "https://api.github.com/search/repositories?q=SIH26073&per_page=100",
+      "final_url": "https://api.github.com/search/repositories?q=SIH26073&per_page=100",
+      "retrieved_at_utc": "2026-09-30T11:34:03.715927+00:00",
+      "status": 200,
+      "sha256": "1fb2daef7a9499faee164eab42554dd30d368c998fae7135c26755bd4773a7f1",
+      "bytes": 128466,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "search:\"automatic weather\" anomaly": {
+      "requested_url": "https://api.github.com/search/repositories?q=%22automatic%20weather%22%20anomaly&per_page=100",
+      "final_url": "https://api.github.com/search/repositories?q=%22automatic%20weather%22%20anomaly&per_page=100",
+      "retrieved_at_utc": "2026-09-30T11:34:05.298968+00:00",
+      "status": 200,
+      "sha256": "c88f03e941dceb8fb9009d8ce3d5e47f41f97a0cb1a14d36f15b05641f99e88e",
+      "bytes": 443408,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "search:\"SkyGuard\" weather": {
+      "requested_url": "https://api.github.com/search/repositories?q=%22SkyGuard%22%20weather&per_page=100",
+      "final_url": "https://api.github.com/search/repositories?q=%22SkyGuard%22%20weather&per_page=100",
+      "retrieved_at_utc": "2026-09-30T11:34:05.397256+00:00",
+      "status": 200,
+      "sha256": "d89492ddc10c6f7b775e60c838729c281be10d700a92a64e67ad61464080007d",
+      "bytes": 428895,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "official:sih2026PS": {
+      "requested_url": "https://www.sih.gov.in/sih2026PS",
+      "final_url": "https://www.sih.gov.in/sih2026PS",
+      "retrieved_at_utc": "2026-09-30T11:34:04.255519+00:00",
+      "status": 200,
+      "sha256": "de0374415b7f27079de88b868905518d423550d569efcb46c2ba591042913ba7",
+      "bytes": 2808407,
+      "content_type": "text/html; charset=UTF-8",
+      "text_encoding": "utf-8"
+    },
+    "repo:Luciefer-555/SIH26073-Weather": {
+      "requested_url": "https://api.github.com/repos/Luciefer-555/SIH26073-Weather",
+      "final_url": "https://api.github.com/repos/Luciefer-555/SIH26073-Weather",
+      "retrieved_at_utc": "2026-09-30T11:34:24.126427+00:00",
+      "status": 200,
+      "sha256": "30ca473d4e7f5879870ee6587ed86411992ea9c0db407e5e854c328d1455bfff",
+      "bytes": 5866,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "repo:Aditya-Murugan1/SIH26073": {
+      "requested_url": "https://api.github.com/repos/Aditya-Murugan1/SIH26073",
+      "final_url": "https://api.github.com/repos/Aditya-Murugan1/SIH26073",
+      "retrieved_at_utc": "2026-09-30T11:34:24.101334+00:00",
+      "status": 200,
+      "sha256": "48ebe3fb8c2726f23ebf765c5feff8759d286b6f6e56080fa1c4449661d7f9b0",
+      "bytes": 5353,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "repo:D-Tharun/SIH26073-Team-Kestrel": {
+      "requested_url": "https://api.github.com/repos/D-Tharun/SIH26073-Team-Kestrel",
+      "final_url": "https://api.github.com/repos/D-Tharun/SIH26073-Team-Kestrel",
+      "retrieved_at_utc": "2026-09-30T11:34:24.113862+00:00",
+      "status": 200,
+      "sha256": "79ed2217f05c870a74e7c9cce337058fe5b62d77378ecf60da5d50fb1485f4ed",
+      "bytes": 5718,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "repo:anshrah-shaikh/AWS-Sentinel": {
+      "requested_url": "https://api.github.com/repos/anshrah-shaikh/AWS-Sentinel",
+      "final_url": "https://api.github.com/repos/anshrah-shaikh/AWS-Sentinel",
+      "retrieved_at_utc": "2026-09-30T11:34:24.107468+00:00",
+      "status": 200,
+      "sha256": "e524deca49ce02a351e2d2d4ce51f4c4bc1e22f30101b7ee408bb9a278ce5ee8",
+      "bytes": 5560,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "repo:aditya0si/skyguard": {
+      "requested_url": "https://api.github.com/repos/aditya0si/skyguard",
+      "final_url": "https://api.github.com/repos/aditya0si/skyguard",
+      "retrieved_at_utc": "2026-09-30T11:34:24.112691+00:00",
+      "status": 200,
+      "sha256": "d4efff94c43f5ac5cba1a683400a5944721e79348f9d27502274ce4729169978",
+      "bytes": 5240,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "repo:Devansh-66/skyguard": {
+      "requested_url": "https://api.github.com/repos/Devansh-66/skyguard",
+      "final_url": "https://api.github.com/repos/Devansh-66/skyguard",
+      "retrieved_at_utc": "2026-09-30T11:34:24.909080+00:00",
+      "status": 200,
+      "sha256": "159f2bbe72d642ef1c0a29a777b4557bc7aed8147d4d69da15f8cfb19998d949",
+      "bytes": 5296,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "repo:MET-Norway/titanlib": {
+      "requested_url": "https://api.github.com/repos/MET-Norway/titanlib",
+      "final_url": "https://api.github.com/repos/MET-Norway/titanlib",
+      "retrieved_at_utc": "2026-09-30T11:34:24.843346+00:00",
+      "status": 404,
+      "sha256": "4f50e254a719a6b1b06b529bdaa08980e4acf0878aad0090cba7771f6ebdf0b9",
+      "bytes": 118,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "repo:TheDatumOrg/TSB-AD": {
+      "requested_url": "https://api.github.com/repos/TheDatumOrg/TSB-AD",
+      "final_url": "https://api.github.com/repos/TheDatumOrg/TSB-AD",
+      "retrieved_at_utc": "2026-09-30T11:34:24.931513+00:00",
+      "status": 200,
+      "sha256": "013774886c548d29973b0be3d766ad3e7ce8d17069c4dd1bdfad395b8827d0df",
+      "bytes": 6362,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "head:Luciefer-555/SIH26073-Weather": {
+      "requested_url": "https://api.github.com/repos/Luciefer-555/SIH26073-Weather/commits/main",
+      "final_url": "https://api.github.com/repos/Luciefer-555/SIH26073-Weather/commits/main",
+      "retrieved_at_utc": "2026-09-30T11:34:26.153060+00:00",
+      "status": 200,
+      "sha256": "473e952301a2d5104c3d5d64730697d6c2b4a0631bbc72e86aa9f3d476cd1ca9",
+      "bytes": 10506,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "head:Aditya-Murugan1/SIH26073": {
+      "requested_url": "https://api.github.com/repos/Aditya-Murugan1/SIH26073/commits/main",
+      "final_url": "https://api.github.com/repos/Aditya-Murugan1/SIH26073/commits/main",
+      "retrieved_at_utc": "2026-09-30T11:34:26.452131+00:00",
+      "status": 200,
+      "sha256": "53eea051c2129410984b4f18bcee094a4ed82791c337ee2d8f3cc30093a77215",
+      "bytes": 1205393,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "head:D-Tharun/SIH26073-Team-Kestrel": {
+      "requested_url": "https://api.github.com/repos/D-Tharun/SIH26073-Team-Kestrel/commits/master",
+      "final_url": "https://api.github.com/repos/D-Tharun/SIH26073-Team-Kestrel/commits/master",
+      "retrieved_at_utc": "2026-09-30T11:34:26.214761+00:00",
+      "status": 200,
+      "sha256": "f9769240f90c53eb0ff5171e9996aec22f9d4048f7d6bd92c3c728da65926039",
+      "bytes": 5722,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "head:anshrah-shaikh/AWS-Sentinel": {
+      "requested_url": "https://api.github.com/repos/anshrah-shaikh/AWS-Sentinel/commits/main",
+      "final_url": "https://api.github.com/repos/anshrah-shaikh/AWS-Sentinel/commits/main",
+      "retrieved_at_utc": "2026-09-30T11:34:26.423905+00:00",
+      "status": 200,
+      "sha256": "b06f054c9f45fcc106c537630353b5ec2682c05be87a31509abde150547daaf1",
+      "bytes": 18675,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "head:aditya0si/skyguard": {
+      "requested_url": "https://api.github.com/repos/aditya0si/skyguard/commits/master",
+      "final_url": "https://api.github.com/repos/aditya0si/skyguard/commits/master",
+      "retrieved_at_utc": "2026-09-30T11:34:26.114084+00:00",
+      "status": 200,
+      "sha256": "c45656b86f92873fee6e4b2b4776986932be5f9e3d500bacc06b7f0466dce61f",
+      "bytes": 14739,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "head:Devansh-66/skyguard": {
+      "requested_url": "https://api.github.com/repos/Devansh-66/skyguard/commits/main",
+      "final_url": "https://api.github.com/repos/Devansh-66/skyguard/commits/main",
+      "retrieved_at_utc": "2026-09-30T11:34:27.340805+00:00",
+      "status": 200,
+      "sha256": "78c20c4d5728d9160930bcd138c4a6468e63d7e4ef3d434cb63163188697d585",
+      "bytes": 55130,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "head:MET-Norway/titanlib": {
+      "requested_url": "https://api.github.com/repos/MET-Norway/titanlib/commits/main",
+      "final_url": "https://api.github.com/repos/MET-Norway/titanlib/commits/main",
+      "retrieved_at_utc": "2026-09-30T11:34:27.166197+00:00",
+      "status": 404,
+      "sha256": "c391981e33b3d73d489d22c8ae4da47417d407010e28de24ee4b1a1673554ba5",
+      "bytes": 118,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "head:TheDatumOrg/TSB-AD": {
+      "requested_url": "https://api.github.com/repos/TheDatumOrg/TSB-AD/commits/main",
+      "final_url": "https://api.github.com/repos/TheDatumOrg/TSB-AD/commits/main",
+      "retrieved_at_utc": "2026-09-30T11:34:27.444965+00:00",
+      "status": 200,
+      "sha256": "7c0d406fe336dd7d75f52b40d0dea7eb9800250f553edd07fac129e20b9a26f6",
+      "bytes": 181391,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "tree:Luciefer-555/SIH26073-Weather": {
+      "requested_url": "https://api.github.com/repos/Luciefer-555/SIH26073-Weather/git/trees/8c56ccaaff67d45ffea4039567c78674313929e4?recursive=1",
+      "final_url": "https://api.github.com/repos/Luciefer-555/SIH26073-Weather/git/trees/8c56ccaaff67d45ffea4039567c78674313929e4?recursive=1",
+      "retrieved_at_utc": "2026-09-30T11:34:28.923760+00:00",
+      "status": 200,
+      "sha256": "dcf5bb9bbc0bbc60c15f66b20d695249600eebc6f219ce1bd37c39dab91cd5a7",
+      "bytes": 3248,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "tree:Aditya-Murugan1/SIH26073": {
+      "requested_url": "https://api.github.com/repos/Aditya-Murugan1/SIH26073/git/trees/268ef29cca1c596045670454a1b150071777c145?recursive=1",
+      "final_url": "https://api.github.com/repos/Aditya-Murugan1/SIH26073/git/trees/268ef29cca1c596045670454a1b150071777c145?recursive=1",
+      "retrieved_at_utc": "2026-09-30T11:34:28.959137+00:00",
+      "status": 200,
+      "sha256": "ff2384afe88f941823e351cbcd7472e6e65ae3d2dde9b27a4e7bdbde6938853d",
+      "bytes": 53569,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "tree:D-Tharun/SIH26073-Team-Kestrel": {
+      "requested_url": "https://api.github.com/repos/D-Tharun/SIH26073-Team-Kestrel/git/trees/26346f85721b90a034ae0148acf999e80dbbad89?recursive=1",
+      "final_url": "https://api.github.com/repos/D-Tharun/SIH26073-Team-Kestrel/git/trees/26346f85721b90a034ae0148acf999e80dbbad89?recursive=1",
+      "retrieved_at_utc": "2026-09-30T11:34:28.988555+00:00",
+      "status": 200,
+      "sha256": "dc4842f439b6237817736ecfec7e54161f1643b79070995834ef6e05ab8d130d",
+      "bytes": 33377,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "tree:anshrah-shaikh/AWS-Sentinel": {
+      "requested_url": "https://api.github.com/repos/anshrah-shaikh/AWS-Sentinel/git/trees/9a37af74938933c6530e5f0a9e6ba49309739173?recursive=1",
+      "final_url": "https://api.github.com/repos/anshrah-shaikh/AWS-Sentinel/git/trees/9a37af74938933c6530e5f0a9e6ba49309739173?recursive=1",
+      "retrieved_at_utc": "2026-09-30T11:34:29.032955+00:00",
+      "status": 200,
+      "sha256": "ebacb13768cedc33d0ff3890606b573f94d08dfba975e00ef8240f0df0e8bb59",
+      "bytes": 5900,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "tree:aditya0si/skyguard": {
+      "requested_url": "https://api.github.com/repos/aditya0si/skyguard/git/trees/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1?recursive=1",
+      "final_url": "https://api.github.com/repos/aditya0si/skyguard/git/trees/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1?recursive=1",
+      "retrieved_at_utc": "2026-09-30T11:34:28.918119+00:00",
+      "status": 200,
+      "sha256": "3f6bbc7644908267f62fea2a88f6116182bd097090ac34eac02035df085df92c",
+      "bytes": 17246,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "tree:Devansh-66/skyguard": {
+      "requested_url": "https://api.github.com/repos/Devansh-66/skyguard/git/trees/584d15966337ea897cc564e6df378a1ed4d30f5a?recursive=1",
+      "final_url": "https://api.github.com/repos/Devansh-66/skyguard/git/trees/584d15966337ea897cc564e6df378a1ed4d30f5a?recursive=1",
+      "retrieved_at_utc": "2026-09-30T11:34:30.052316+00:00",
+      "status": 200,
+      "sha256": "c79404cf4d4235fb5da79b935b0cc77e2c954e062b6fff81403c22dcd05d0767",
+      "bytes": 54513,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "tree:TheDatumOrg/TSB-AD": {
+      "requested_url": "https://api.github.com/repos/TheDatumOrg/TSB-AD/git/trees/6beac72e11d1155ade40870492c00d0d1cfdcaaf?recursive=1",
+      "final_url": "https://api.github.com/repos/TheDatumOrg/TSB-AD/git/trees/6beac72e11d1155ade40870492c00d0d1cfdcaaf?recursive=1",
+      "retrieved_at_utc": "2026-09-30T11:34:30.081795+00:00",
+      "status": 200,
+      "sha256": "53b12699dd0ccdf09b701a2369b01e92c4453642ef1a4408b35688c21a9313e8",
+      "bytes": 41018,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Aditya-Murugan1/SIH26073:README.md": {
+      "requested_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/README.md",
+      "final_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/README.md",
+      "retrieved_at_utc": "2026-09-30T11:35:09.881099+00:00",
+      "status": 200,
+      "sha256": "aabf95d137a1f4f496018d04dc9aefd4a6b1d4372b3c567fcef320a530129dbf",
+      "bytes": 10955,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Aditya-Murugan1/SIH26073:scripts/build_benchmark.py": {
+      "requested_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/scripts/build_benchmark.py",
+      "final_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/scripts/build_benchmark.py",
+      "retrieved_at_utc": "2026-09-30T11:35:09.886130+00:00",
+      "status": 200,
+      "sha256": "dc060a6ef2462979fb601d40fddcde51593c32da2846b032cd18f7f3a8f91a20",
+      "bytes": 5690,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Aditya-Murugan1/SIH26073:scripts/build_dataset.py": {
+      "requested_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/scripts/build_dataset.py",
+      "final_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/scripts/build_dataset.py",
+      "retrieved_at_utc": "2026-09-30T11:35:09.979202+00:00",
+      "status": 200,
+      "sha256": "5991c42dec0b0e97f1665a96de6c79ffbb6c6d8920d18b255e9570f5789ec475",
+      "bytes": 5217,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Aditya-Murugan1/SIH26073:scripts/train.py": {
+      "requested_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/scripts/train.py",
+      "final_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/scripts/train.py",
+      "retrieved_at_utc": "2026-09-30T11:35:09.876840+00:00",
+      "status": 200,
+      "sha256": "9e2a688ad18ca1543a185e1e930e0b8d27e16a2f62e6594d8a8e8c696b18ed10",
+      "bytes": 9359,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Aditya-Murugan1/SIH26073:scripts/evaluate_final.py": {
+      "requested_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/scripts/evaluate_final.py",
+      "final_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/scripts/evaluate_final.py",
+      "retrieved_at_utc": "2026-09-30T11:35:09.873972+00:00",
+      "status": 200,
+      "sha256": "f353ea55c7d079be70e3f033784ad7c6d495a015c4231c1dd8f64bd4f3ae1cff",
+      "bytes": 1391,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Aditya-Murugan1/SIH26073:injection/injector.py": {
+      "requested_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/injection/injector.py",
+      "final_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/injection/injector.py",
+      "retrieved_at_utc": "2026-09-30T11:35:10.826141+00:00",
+      "status": 200,
+      "sha256": "417cb428e2ddd013ba4c891bdc810403a63f7853f85fc7ac84e68e0cff4111f5",
+      "bytes": 15448,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Aditya-Murugan1/SIH26073:ml/evaluation.py": {
+      "requested_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/ml/evaluation.py",
+      "final_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/ml/evaluation.py",
+      "retrieved_at_utc": "2026-09-30T11:35:10.826759+00:00",
+      "status": 200,
+      "sha256": "18523efe166036827dd29808790a7b5c54b1e694101c67d7764076e9cbcdc177",
+      "bytes": 5666,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Aditya-Murugan1/SIH26073:ml/features.py": {
+      "requested_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/ml/features.py",
+      "final_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/ml/features.py",
+      "retrieved_at_utc": "2026-09-30T11:35:10.825912+00:00",
+      "status": 200,
+      "sha256": "4ce870da2a868215670756409a7c204873fd0062dd1d185b6ef73c4ded4de4d6",
+      "bytes": 11796,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Aditya-Murugan1/SIH26073:ml/models.py": {
+      "requested_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/ml/models.py",
+      "final_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/ml/models.py",
+      "retrieved_at_utc": "2026-09-30T11:35:10.831513+00:00",
+      "status": 200,
+      "sha256": "8f11d318c84f3e50360b4685dd76a9cacd35524972f5c3f9d5166decd7091bd2",
+      "bytes": 15229,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Aditya-Murugan1/SIH26073:ml/stream.py": {
+      "requested_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/ml/stream.py",
+      "final_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/ml/stream.py",
+      "retrieved_at_utc": "2026-09-30T11:35:10.829638+00:00",
+      "status": 200,
+      "sha256": "806e8918c8c847bc1b36e75875d1056d65061711a3342cf497eddf6446ee9a51",
+      "bytes": 23073,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Aditya-Murugan1/SIH26073:artifacts/final_evaluation/metrics.json": {
+      "requested_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/artifacts/final_evaluation/metrics.json",
+      "final_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/artifacts/final_evaluation/metrics.json",
+      "retrieved_at_utc": "2026-09-30T11:35:11.806030+00:00",
+      "status": 200,
+      "sha256": "8dff8a57be81e40c249fda555a97893f6a8ef9bbdc7937f46070109fc7cea89a",
+      "bytes": 49146,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Aditya-Murugan1/SIH26073:artifacts/edge/edge_metrics.json": {
+      "requested_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/artifacts/edge/edge_metrics.json",
+      "final_url": "https://raw.githubusercontent.com/Aditya-Murugan1/SIH26073/268ef29cca1c596045670454a1b150071777c145/artifacts/edge/edge_metrics.json",
+      "retrieved_at_utc": "2026-09-30T11:35:11.853433+00:00",
+      "status": 200,
+      "sha256": "842a53f958cb1da74ade215bd03a6b0273b6597e99d06e9e9e3b00e1c9d0bf3a",
+      "bytes": 1185,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Devansh-66/skyguard:README.md": {
+      "requested_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/README.md",
+      "final_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/README.md",
+      "retrieved_at_utc": "2026-09-30T11:35:14.065597+00:00",
+      "status": 200,
+      "sha256": "db8e69f1989ebb9721d925b03a247d3bca5167356c7c0e5ba1b55c87095c31fb",
+      "bytes": 4325,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Devansh-66/skyguard:LICENSE": {
+      "requested_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/LICENSE",
+      "final_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/LICENSE",
+      "retrieved_at_utc": "2026-09-30T11:35:14.097504+00:00",
+      "status": 200,
+      "sha256": "f1e516d45af06c4f7ce1687ff9750b8d6c33d715b2c550e1287477ae857c685e",
+      "bytes": 1071,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Devansh-66/skyguard:scripts/prepare.py": {
+      "requested_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/scripts/prepare.py",
+      "final_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/scripts/prepare.py",
+      "retrieved_at_utc": "2026-09-30T11:35:14.080031+00:00",
+      "status": 200,
+      "sha256": "38202823432881ad9764888e602001807f95bb1427f516e49fd1149862c7ad4c",
+      "bytes": 7209,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Devansh-66/skyguard:simulate/network.py": {
+      "requested_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/simulate/network.py",
+      "final_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/simulate/network.py",
+      "retrieved_at_utc": "2026-09-30T11:35:14.091256+00:00",
+      "status": 200,
+      "sha256": "26cb94d956632d462efc9ee9f0857f9c13f846a5406fb4f858c50b0b807d928a",
+      "bytes": 11474,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Devansh-66/skyguard:inject/faults.py": {
+      "requested_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/inject/faults.py",
+      "final_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/inject/faults.py",
+      "retrieved_at_utc": "2026-09-30T11:35:14.092226+00:00",
+      "status": 200,
+      "sha256": "113c0d517f057eb258e9e353ffb0a963f78195ab22f2b48276fba52c668e3cc7",
+      "bytes": 17745,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Devansh-66/skyguard:evaluation/run_full.py": {
+      "requested_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/evaluation/run_full.py",
+      "final_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/evaluation/run_full.py",
+      "retrieved_at_utc": "2026-09-30T11:35:14.986804+00:00",
+      "status": 200,
+      "sha256": "763f38dc878d52c1eb475f558db47a756a4f82c90ddb437abb643ff41242b779",
+      "bytes": 14951,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Devansh-66/skyguard:evaluation/metrics.py": {
+      "requested_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/evaluation/metrics.py",
+      "final_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/evaluation/metrics.py",
+      "retrieved_at_utc": "2026-09-30T11:35:15.012973+00:00",
+      "status": 200,
+      "sha256": "c56058471eed737fda9daf7a16c7604f5782b8a67d8b8286083e2c724f9e3310",
+      "bytes": 9911,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Devansh-66/skyguard:evaluation/results.json": {
+      "requested_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/evaluation/results.json",
+      "final_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/evaluation/results.json",
+      "retrieved_at_utc": "2026-09-30T11:35:15.039695+00:00",
+      "status": 200,
+      "sha256": "86e780465bdb8775114abd74cee703ad96e0effcc454e050b3cfdcf2425de75a",
+      "bytes": 18733,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Devansh-66/skyguard:models/edge/report.json": {
+      "requested_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/models/edge/report.json",
+      "final_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/models/edge/report.json",
+      "retrieved_at_utc": "2026-09-30T11:35:15.037589+00:00",
+      "status": 200,
+      "sha256": "b16a7fa6e7681807cfa2a9b40c777d016dd2b0d87ec0245622f2471d612565b2",
+      "bytes": 2844,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Devansh-66/skyguard:detect/checkers.py": {
+      "requested_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/detect/checkers.py",
+      "final_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/detect/checkers.py",
+      "retrieved_at_utc": "2026-09-30T11:35:15.035569+00:00",
+      "status": 200,
+      "sha256": "c1dc37708355f4139ad8c39258f486f024592846fe7b249579d2524ed916df1e",
+      "bytes": 14091,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Devansh-66/skyguard:firmware/README.md": {
+      "requested_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/firmware/README.md",
+      "final_url": "https://raw.githubusercontent.com/Devansh-66/skyguard/584d15966337ea897cc564e6df378a1ed4d30f5a/firmware/README.md",
+      "retrieved_at_utc": "2026-09-30T11:35:15.594195+00:00",
+      "status": 200,
+      "sha256": "6738a59e508a4ea45ab26ecbfc9d15802c73037538238d786460beeef76e3a52",
+      "bytes": 10120,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:aditya0si/skyguard:README.md": {
+      "requested_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/README.md",
+      "final_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/README.md",
+      "retrieved_at_utc": "2026-09-30T11:35:17.807777+00:00",
+      "status": 200,
+      "sha256": "875288f3c6965631f10093bf95044eec221fcc67aa183ba48cfc78e97faad70a",
+      "bytes": 10756,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:aditya0si/skyguard:LICENSE": {
+      "requested_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/LICENSE",
+      "final_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/LICENSE",
+      "retrieved_at_utc": "2026-09-30T11:35:17.775900+00:00",
+      "status": 200,
+      "sha256": "a68bd88046e4ea1b48917ddebcce6db7c95ee7db02b173281a47f9dc2a0ced07",
+      "bytes": 1073,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:aditya0si/skyguard:src/skyguard/benchmark/dataset.py": {
+      "requested_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/src/skyguard/benchmark/dataset.py",
+      "final_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/src/skyguard/benchmark/dataset.py",
+      "retrieved_at_utc": "2026-09-30T11:35:17.769680+00:00",
+      "status": 200,
+      "sha256": "846c5416867d8a805789eed6c5297da0084a4848889ed18b12e9a676b02228ab",
+      "bytes": 8920,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:aditya0si/skyguard:src/skyguard/benchmark/metrics.py": {
+      "requested_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/src/skyguard/benchmark/metrics.py",
+      "final_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/src/skyguard/benchmark/metrics.py",
+      "retrieved_at_utc": "2026-09-30T11:35:17.759065+00:00",
+      "status": 200,
+      "sha256": "4b32b910b74a87df2021357bb5c63acb66bdcb09c985c4b4ae1e0151a30ec3e5",
+      "bytes": 6042,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:aditya0si/skyguard:src/skyguard/data/synthetic.py": {
+      "requested_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/src/skyguard/data/synthetic.py",
+      "final_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/src/skyguard/data/synthetic.py",
+      "retrieved_at_utc": "2026-09-30T11:35:17.773537+00:00",
+      "status": 200,
+      "sha256": "45b1baf10163d8cdf6580e9711cb44a0c1e6c4b05c12f43b68807c27c6a5b95b",
+      "bytes": 12150,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:aditya0si/skyguard:src/skyguard/models/ensemble.py": {
+      "requested_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/src/skyguard/models/ensemble.py",
+      "final_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/src/skyguard/models/ensemble.py",
+      "retrieved_at_utc": "2026-09-30T11:35:18.568715+00:00",
+      "status": 200,
+      "sha256": "43d3dc64ae8f4ab3e4fd0146ba9ca93de016b19aa80d3cc857cdfe1504f7596b",
+      "bytes": 7117,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:aditya0si/skyguard:evals/run_eval.py": {
+      "requested_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/evals/run_eval.py",
+      "final_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/evals/run_eval.py",
+      "retrieved_at_utc": "2026-09-30T11:35:18.555855+00:00",
+      "status": 200,
+      "sha256": "ae8d17b19f788ac494aa0565af93a5bde3dbcce1977c0e29dd036b5c7a59efdb",
+      "bytes": 5956,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:aditya0si/skyguard:evals/results.json": {
+      "requested_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/evals/results.json",
+      "final_url": "https://raw.githubusercontent.com/aditya0si/skyguard/66f0b9d861957d1e6c7a20e9f1b0e4d6d3e053e1/evals/results.json",
+      "retrieved_at_utc": "2026-09-30T11:35:18.718524+00:00",
+      "status": 200,
+      "sha256": "12696f95ab5c8a025c6ca94e4939d6bfb5d184fbeaf2b68a374ddc2199782549",
+      "bytes": 2444,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:D-Tharun/SIH26073-Team-Kestrel:README.md": {
+      "requested_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/README.md",
+      "final_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/README.md",
+      "retrieved_at_utc": "2026-09-30T11:35:21.005659+00:00",
+      "status": 200,
+      "sha256": "551fb3d93697361f7405a866a79a2ea8de6207c4f9897c1d4852c95ad3d82d2a",
+      "bytes": 9591,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:D-Tharun/SIH26073-Team-Kestrel:LICENSE": {
+      "requested_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/LICENSE",
+      "final_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/LICENSE",
+      "retrieved_at_utc": "2026-09-30T11:35:21.002114+00:00",
+      "status": 200,
+      "sha256": "fa6ae320455df0549ce6b47f935e9229b33f3dad78739f98dbe8929aeae0ed1a",
+      "bytes": 42,
+      "content_type": "text/plain; charset=utf-16",
+      "text_encoding": "utf-16"
+    },
+    "file:D-Tharun/SIH26073-Team-Kestrel:server/training/train.py": {
+      "requested_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/server/training/train.py",
+      "final_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/server/training/train.py",
+      "retrieved_at_utc": "2026-09-30T11:35:20.998535+00:00",
+      "status": 200,
+      "sha256": "2b3e91b9a47a5ec47fca33f85e9bbfe8afc49ac7d67b6307a190c482f131f694",
+      "bytes": 20374,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:D-Tharun/SIH26073-Team-Kestrel:server/training/evaluate.py": {
+      "requested_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/server/training/evaluate.py",
+      "final_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/server/training/evaluate.py",
+      "retrieved_at_utc": "2026-09-30T11:35:21.016809+00:00",
+      "status": 200,
+      "sha256": "4748a6cc5ebf7c3efbf5cc255f8d118b8c7d98b2310342dd597838633031bd70",
+      "bytes": 11224,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:D-Tharun/SIH26073-Team-Kestrel:server/training/final_benchmark.py": {
+      "requested_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/server/training/final_benchmark.py",
+      "final_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/server/training/final_benchmark.py",
+      "retrieved_at_utc": "2026-09-30T11:35:20.985288+00:00",
+      "status": 200,
+      "sha256": "4ae6f12fa9bf3350ea8cca1ee45b3768df865c5565244dc00be443f83a6c0399",
+      "bytes": 11951,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:D-Tharun/SIH26073-Team-Kestrel:server/engine/decision_engine.py": {
+      "requested_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/server/engine/decision_engine.py",
+      "final_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/server/engine/decision_engine.py",
+      "retrieved_at_utc": "2026-09-30T11:35:21.747565+00:00",
+      "status": 200,
+      "sha256": "075ec9658b1196efe01c0e783a5b62295859722fe896a7e6ec11c36ca7b00f72",
+      "bytes": 20939,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:D-Tharun/SIH26073-Team-Kestrel:server/streaming/simulator.py": {
+      "requested_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/server/streaming/simulator.py",
+      "final_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/server/streaming/simulator.py",
+      "retrieved_at_utc": "2026-09-30T11:35:21.773473+00:00",
+      "status": 200,
+      "sha256": "68040244379e9dc518a58397ecd6c1c3eb9ab1a7faf3bb7c394ba437f4ef86e8",
+      "bytes": 11423,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:D-Tharun/SIH26073-Team-Kestrel:server/artifacts/evaluation_results.json": {
+      "requested_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/server/artifacts/evaluation_results.json",
+      "final_url": "https://raw.githubusercontent.com/D-Tharun/SIH26073-Team-Kestrel/26346f85721b90a034ae0148acf999e80dbbad89/server/artifacts/evaluation_results.json",
+      "retrieved_at_utc": "2026-09-30T11:35:21.779923+00:00",
+      "status": 200,
+      "sha256": "a9155c914a5b83f261a3dabab83fc1043d040638f787eeb3fcaa672b5a5de63a",
+      "bytes": 380,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Luciefer-555/SIH26073-Weather:README.md": {
+      "requested_url": "https://raw.githubusercontent.com/Luciefer-555/SIH26073-Weather/8c56ccaaff67d45ffea4039567c78674313929e4/README.md",
+      "final_url": "https://raw.githubusercontent.com/Luciefer-555/SIH26073-Weather/8c56ccaaff67d45ffea4039567c78674313929e4/README.md",
+      "retrieved_at_utc": "2026-09-30T11:35:24.062401+00:00",
+      "status": 200,
+      "sha256": "eb881022ad5798e40f92b8f5339fa930d01fd55a5663ef2526d59f4beec2fc8a",
+      "bytes": 4626,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Luciefer-555/SIH26073-Weather:generate_dataset.py": {
+      "requested_url": "https://raw.githubusercontent.com/Luciefer-555/SIH26073-Weather/8c56ccaaff67d45ffea4039567c78674313929e4/generate_dataset.py",
+      "final_url": "https://raw.githubusercontent.com/Luciefer-555/SIH26073-Weather/8c56ccaaff67d45ffea4039567c78674313929e4/generate_dataset.py",
+      "retrieved_at_utc": "2026-09-30T11:35:24.031307+00:00",
+      "status": 200,
+      "sha256": "0c6fc6606e9afef9678e2ea183f7ea89b756f811c374bc36b09fef0c4fe5edfd",
+      "bytes": 3057,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Luciefer-555/SIH26073-Weather:ml-detector/detector.py": {
+      "requested_url": "https://raw.githubusercontent.com/Luciefer-555/SIH26073-Weather/8c56ccaaff67d45ffea4039567c78674313929e4/ml-detector/detector.py",
+      "final_url": "https://raw.githubusercontent.com/Luciefer-555/SIH26073-Weather/8c56ccaaff67d45ffea4039567c78674313929e4/ml-detector/detector.py",
+      "retrieved_at_utc": "2026-09-30T11:35:24.120355+00:00",
+      "status": 200,
+      "sha256": "ec6ea6247d6313ff18235fc4bdb8cd67482510086bac91140b14cf35f24d73ea",
+      "bytes": 9935,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Luciefer-555/SIH26073-Weather:ml-classifier/classifier.py": {
+      "requested_url": "https://raw.githubusercontent.com/Luciefer-555/SIH26073-Weather/8c56ccaaff67d45ffea4039567c78674313929e4/ml-classifier/classifier.py",
+      "final_url": "https://raw.githubusercontent.com/Luciefer-555/SIH26073-Weather/8c56ccaaff67d45ffea4039567c78674313929e4/ml-classifier/classifier.py",
+      "retrieved_at_utc": "2026-09-30T11:35:24.034789+00:00",
+      "status": 200,
+      "sha256": "aa3e158596de2362b3ebd2b8f1d33c0b32cf3834fc8eb8f7af9938a7b300a2e3",
+      "bytes": 8593,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Luciefer-555/SIH26073-Weather:run_on_dataset.py": {
+      "requested_url": "https://raw.githubusercontent.com/Luciefer-555/SIH26073-Weather/8c56ccaaff67d45ffea4039567c78674313929e4/run_on_dataset.py",
+      "final_url": "https://raw.githubusercontent.com/Luciefer-555/SIH26073-Weather/8c56ccaaff67d45ffea4039567c78674313929e4/run_on_dataset.py",
+      "retrieved_at_utc": "2026-09-30T11:35:24.027190+00:00",
+      "status": 200,
+      "sha256": "c66db03121f14340619cb8334c5093a1edc35f10fa127474fb9810a89d2591df",
+      "bytes": 6116,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:Luciefer-555/SIH26073-Weather:tests/test_fault_types.py": {
+      "requested_url": "https://raw.githubusercontent.com/Luciefer-555/SIH26073-Weather/8c56ccaaff67d45ffea4039567c78674313929e4/tests/test_fault_types.py",
+      "final_url": "https://raw.githubusercontent.com/Luciefer-555/SIH26073-Weather/8c56ccaaff67d45ffea4039567c78674313929e4/tests/test_fault_types.py",
+      "retrieved_at_utc": "2026-09-30T11:35:24.657176+00:00",
+      "status": 200,
+      "sha256": "0f1d13dfdb401e5b45fb45677f1e70b19315995f8de13339588bbe099be060a4",
+      "bytes": 4726,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "repo:metno/titanlib": {
+      "requested_url": "https://api.github.com/repos/metno/titanlib",
+      "final_url": "https://api.github.com/repos/metno/titanlib",
+      "retrieved_at_utc": "2026-09-30T11:35:37.548965+00:00",
+      "status": 200,
+      "sha256": "d9c1646a77d414cf0f3fbad7721e0fc921b14ad7044188601a72420af64015fd",
+      "bytes": 6044,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "repo:HPI-Information-Systems/TimeEval": {
+      "requested_url": "https://api.github.com/repos/HPI-Information-Systems/TimeEval",
+      "final_url": "https://api.github.com/repositories/436653339",
+      "retrieved_at_utc": "2026-09-30T11:35:37.851879+00:00",
+      "status": 200,
+      "sha256": "4240e371cb360962698cd322a53fc040a332c1faa95f72e0d2013aeb0572b3f0",
+      "bytes": 6392,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "repo:TUW-GEO/pytesmo": {
+      "requested_url": "https://api.github.com/repos/TUW-GEO/pytesmo",
+      "final_url": "https://api.github.com/repos/TUW-GEO/pytesmo",
+      "retrieved_at_utc": "2026-09-30T11:35:37.607144+00:00",
+      "status": 200,
+      "sha256": "7e6edbb5036fffe81e56f31eeba00bc92a448c70454256b9b80727a1eb60ec36",
+      "bytes": 6164,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "head:metno/titanlib": {
+      "requested_url": "https://api.github.com/repos/metno/titanlib/commits/master",
+      "final_url": "https://api.github.com/repos/metno/titanlib/commits/master",
+      "retrieved_at_utc": "2026-09-30T11:35:38.850625+00:00",
+      "status": 200,
+      "sha256": "1f5a74f9ff9a01a4f8b70ecd6b32d54025130340eb28b4f9d6149af0fb11d09e",
+      "bytes": 9527,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "head:HPI-Information-Systems/TimeEval": {
+      "requested_url": "https://api.github.com/repos/HPI-Information-Systems/TimeEval/commits/main",
+      "final_url": "https://api.github.com/repositories/436653339/commits/main",
+      "retrieved_at_utc": "2026-09-30T11:35:39.230145+00:00",
+      "status": 200,
+      "sha256": "a585ee50c784c61fa485a6427483092de264f44954dabbf425ee0ece9f75956b",
+      "bytes": 6698,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "head:TUW-GEO/pytesmo": {
+      "requested_url": "https://api.github.com/repos/TUW-GEO/pytesmo/commits/master",
+      "final_url": "https://api.github.com/repos/TUW-GEO/pytesmo/commits/master",
+      "retrieved_at_utc": "2026-09-30T11:35:38.945475+00:00",
+      "status": 200,
+      "sha256": "4ed353fde41759a2bdaf20a41f3f10c91af01cc73278253f38045fcb2fdb4125",
+      "bytes": 10436,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "tree:metno/titanlib": {
+      "requested_url": "https://api.github.com/repos/metno/titanlib/git/trees/18a4fac903a0ae474a318acacf8af91057490f03?recursive=1",
+      "final_url": "https://api.github.com/repos/metno/titanlib/git/trees/18a4fac903a0ae474a318acacf8af91057490f03?recursive=1",
+      "retrieved_at_utc": "2026-09-30T11:35:40.223619+00:00",
+      "status": 200,
+      "sha256": "a6fccf6f82d674829424bd82ec6cd8337aa53f2886bb25e91ce85ae69d76ef0b",
+      "bytes": 21340,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "tree:HPI-Information-Systems/TimeEval": {
+      "requested_url": "https://api.github.com/repos/HPI-Information-Systems/TimeEval/git/trees/7c3622757b1a3afa9a84cbc97ce132d9e379f715?recursive=1",
+      "final_url": "https://api.github.com/repositories/436653339/git/trees/7c3622757b1a3afa9a84cbc97ce132d9e379f715?recursive=1",
+      "retrieved_at_utc": "2026-09-30T11:35:40.542489+00:00",
+      "status": 200,
+      "sha256": "34fc8633da5662e12748334f82af190218af41eaf8881ce2625e5e9d60a5d3dd",
+      "bytes": 113421,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "tree:TUW-GEO/pytesmo": {
+      "requested_url": "https://api.github.com/repos/TUW-GEO/pytesmo/git/trees/054e2c4d2915d5e762af7a919a2b521476c21415?recursive=1",
+      "final_url": "https://api.github.com/repos/TUW-GEO/pytesmo/git/trees/054e2c4d2915d5e762af7a919a2b521476c21415?recursive=1",
+      "retrieved_at_utc": "2026-09-30T11:35:40.189676+00:00",
+      "status": 200,
+      "sha256": "64592a88f84fa20716d304154d6466a21e3c6cb482e9c86dfa57c10cbb01ef84",
+      "bytes": 33249,
+      "content_type": "application/json; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:TheDatumOrg/TSB-AD:README.md": {
+      "requested_url": "https://raw.githubusercontent.com/TheDatumOrg/TSB-AD/6beac72e11d1155ade40870492c00d0d1cfdcaaf/README.md",
+      "final_url": "https://raw.githubusercontent.com/TheDatumOrg/TSB-AD/6beac72e11d1155ade40870492c00d0d1cfdcaaf/README.md",
+      "retrieved_at_utc": "2026-09-30T11:37:22.199575+00:00",
+      "status": 200,
+      "sha256": "84cc2d4143065df08c51add82a204693746648a2f10100bae8874c347c721064",
+      "bytes": 16586,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:TheDatumOrg/TSB-AD:LICENSE": {
+      "requested_url": "https://raw.githubusercontent.com/TheDatumOrg/TSB-AD/6beac72e11d1155ade40870492c00d0d1cfdcaaf/LICENSE",
+      "final_url": "https://raw.githubusercontent.com/TheDatumOrg/TSB-AD/6beac72e11d1155ade40870492c00d0d1cfdcaaf/LICENSE",
+      "retrieved_at_utc": "2026-09-30T11:37:22.173926+00:00",
+      "status": 200,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:TheDatumOrg/TSB-AD:benchmark_exp/HP_Tuning_M.py": {
+      "requested_url": "https://raw.githubusercontent.com/TheDatumOrg/TSB-AD/6beac72e11d1155ade40870492c00d0d1cfdcaaf/benchmark_exp/HP_Tuning_M.py",
+      "final_url": "https://raw.githubusercontent.com/TheDatumOrg/TSB-AD/6beac72e11d1155ade40870492c00d0d1cfdcaaf/benchmark_exp/HP_Tuning_M.py",
+      "retrieved_at_utc": "2026-09-30T11:37:22.196675+00:00",
+      "status": 200,
+      "sha256": "e5dba585966b9c7e007360a0e24497317445dea0781a105d5b97b8e2cebe3921",
+      "bytes": 3169,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:TheDatumOrg/TSB-AD:benchmark_exp/Run_Detector_M.py": {
+      "requested_url": "https://raw.githubusercontent.com/TheDatumOrg/TSB-AD/6beac72e11d1155ade40870492c00d0d1cfdcaaf/benchmark_exp/Run_Detector_M.py",
+      "final_url": "https://raw.githubusercontent.com/TheDatumOrg/TSB-AD/6beac72e11d1155ade40870492c00d0d1cfdcaaf/benchmark_exp/Run_Detector_M.py",
+      "retrieved_at_utc": "2026-09-30T11:37:22.190481+00:00",
+      "status": 200,
+      "sha256": "f9e77ac272b56b7625387f589f88f98cfbea9b2928e9ce9fe683987dfa02405b",
+      "bytes": 4029,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:TheDatumOrg/TSB-AD:TSB_AD/evaluation/metrics.py": {
+      "requested_url": "https://raw.githubusercontent.com/TheDatumOrg/TSB-AD/6beac72e11d1155ade40870492c00d0d1cfdcaaf/TSB_AD/evaluation/metrics.py",
+      "final_url": "https://raw.githubusercontent.com/TheDatumOrg/TSB-AD/6beac72e11d1155ade40870492c00d0d1cfdcaaf/TSB_AD/evaluation/metrics.py",
+      "retrieved_at_utc": "2026-09-30T11:37:22.158346+00:00",
+      "status": 200,
+      "sha256": "13957d15d3ebb2b743a4bebfa3a68af31e82a58ecc568557b4081ad90e38094d",
+      "bytes": 2340,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:TheDatumOrg/TSB-AD:TSB_AD/evaluation/basic_metrics.py": {
+      "requested_url": "https://raw.githubusercontent.com/TheDatumOrg/TSB-AD/6beac72e11d1155ade40870492c00d0d1cfdcaaf/TSB_AD/evaluation/basic_metrics.py",
+      "final_url": "https://raw.githubusercontent.com/TheDatumOrg/TSB-AD/6beac72e11d1155ade40870492c00d0d1cfdcaaf/TSB_AD/evaluation/basic_metrics.py",
+      "retrieved_at_utc": "2026-09-30T11:37:22.785839+00:00",
+      "status": 200,
+      "sha256": "1fcddedf5ada1d5221f39ee568c7fddb9e7181bd7e1c19636c2cbecf40c97707",
+      "bytes": 29267,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:HPI-Information-Systems/TimeEval:README.md": {
+      "requested_url": "https://raw.githubusercontent.com/HPI-Information-Systems/TimeEval/7c3622757b1a3afa9a84cbc97ce132d9e379f715/README.md",
+      "final_url": "https://raw.githubusercontent.com/HPI-Information-Systems/TimeEval/7c3622757b1a3afa9a84cbc97ce132d9e379f715/README.md",
+      "retrieved_at_utc": "2026-09-30T11:37:24.743940+00:00",
+      "status": 200,
+      "sha256": "711256c236789de80d72272f6aaf4f5dce37e36013b0b5441d5ce986479507b0",
+      "bytes": 6328,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:HPI-Information-Systems/TimeEval:LICENSE": {
+      "requested_url": "https://raw.githubusercontent.com/HPI-Information-Systems/TimeEval/7c3622757b1a3afa9a84cbc97ce132d9e379f715/LICENSE",
+      "final_url": "https://raw.githubusercontent.com/HPI-Information-Systems/TimeEval/7c3622757b1a3afa9a84cbc97ce132d9e379f715/LICENSE",
+      "retrieved_at_utc": "2026-09-30T11:37:24.760979+00:00",
+      "status": 200,
+      "sha256": "f047d8cf14baad94ec3d585efc35ec17ec9cecd4f95d2d95721d9bfcb91cf453",
+      "bytes": 1097,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:HPI-Information-Systems/TimeEval:timeeval/resource_constraints.py": {
+      "requested_url": "https://raw.githubusercontent.com/HPI-Information-Systems/TimeEval/7c3622757b1a3afa9a84cbc97ce132d9e379f715/timeeval/resource_constraints.py",
+      "final_url": "https://raw.githubusercontent.com/HPI-Information-Systems/TimeEval/7c3622757b1a3afa9a84cbc97ce132d9e379f715/timeeval/resource_constraints.py",
+      "retrieved_at_utc": "2026-09-30T11:37:24.755708+00:00",
+      "status": 200,
+      "sha256": "88788ff6fada44ce1ace722744258b92c560b433477fa75b57e5c060ab195cbb",
+      "bytes": 7894,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:HPI-Information-Systems/TimeEval:timeeval/_core/experiments.py": {
+      "requested_url": "https://raw.githubusercontent.com/HPI-Information-Systems/TimeEval/7c3622757b1a3afa9a84cbc97ce132d9e379f715/timeeval/_core/experiments.py",
+      "final_url": "https://raw.githubusercontent.com/HPI-Information-Systems/TimeEval/7c3622757b1a3afa9a84cbc97ce132d9e379f715/timeeval/_core/experiments.py",
+      "retrieved_at_utc": "2026-09-30T11:37:24.760619+00:00",
+      "status": 200,
+      "sha256": "ee07c7f8a1b6181eeec223269d5b07cc53ac07e829ec423488808da2624e3348",
+      "bytes": 14523,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:HPI-Information-Systems/TimeEval:timeeval/metrics/auc_metrics.py": {
+      "requested_url": "https://raw.githubusercontent.com/HPI-Information-Systems/TimeEval/7c3622757b1a3afa9a84cbc97ce132d9e379f715/timeeval/metrics/auc_metrics.py",
+      "final_url": "https://raw.githubusercontent.com/HPI-Information-Systems/TimeEval/7c3622757b1a3afa9a84cbc97ce132d9e379f715/timeeval/metrics/auc_metrics.py",
+      "retrieved_at_utc": "2026-09-30T11:37:24.746659+00:00",
+      "status": 200,
+      "sha256": "dcf1c0cfe11cfed7b7b6acb1fc32e5d1041145da0bfb361768fc1d3b291b0feb",
+      "bytes": 3136,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:metno/titanlib:README.md": {
+      "requested_url": "https://raw.githubusercontent.com/metno/titanlib/18a4fac903a0ae474a318acacf8af91057490f03/README.md",
+      "final_url": "https://raw.githubusercontent.com/metno/titanlib/18a4fac903a0ae474a318acacf8af91057490f03/README.md",
+      "retrieved_at_utc": "2026-09-30T11:37:26.665070+00:00",
+      "status": 200,
+      "sha256": "68d3347ec34e395b315db38a4055334a288996d5314669f16abab90454c5cf06",
+      "bytes": 3447,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:metno/titanlib:LICENSE": {
+      "requested_url": "https://raw.githubusercontent.com/metno/titanlib/18a4fac903a0ae474a318acacf8af91057490f03/LICENSE",
+      "final_url": "https://raw.githubusercontent.com/metno/titanlib/18a4fac903a0ae474a318acacf8af91057490f03/LICENSE",
+      "retrieved_at_utc": "2026-09-30T11:37:26.701599+00:00",
+      "status": 200,
+      "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
+      "bytes": 7652,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:metno/titanlib:src/buddy_check.cpp": {
+      "requested_url": "https://raw.githubusercontent.com/metno/titanlib/18a4fac903a0ae474a318acacf8af91057490f03/src/buddy_check.cpp",
+      "final_url": "https://raw.githubusercontent.com/metno/titanlib/18a4fac903a0ae474a318acacf8af91057490f03/src/buddy_check.cpp",
+      "retrieved_at_utc": "2026-09-30T11:37:26.672704+00:00",
+      "status": 200,
+      "sha256": "bde019fd4ada476bf6fc160a61cf7ede5fc6152b6fea13ca95c19c00aafdc807",
+      "bytes": 7648,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:metno/titanlib:src/sct.cpp": {
+      "requested_url": "https://raw.githubusercontent.com/metno/titanlib/18a4fac903a0ae474a318acacf8af91057490f03/src/sct.cpp",
+      "final_url": "https://raw.githubusercontent.com/metno/titanlib/18a4fac903a0ae474a318acacf8af91057490f03/src/sct.cpp",
+      "retrieved_at_utc": "2026-09-30T11:37:26.699038+00:00",
+      "status": 200,
+      "sha256": "cbc61a8121ffdc6db7864fed1a8def0a8872a6507a4bd48a075e579db5ac03a5",
+      "bytes": 12665,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:TUW-GEO/pytesmo:README.rst": {
+      "requested_url": "https://raw.githubusercontent.com/TUW-GEO/pytesmo/054e2c4d2915d5e762af7a919a2b521476c21415/README.rst",
+      "final_url": "https://raw.githubusercontent.com/TUW-GEO/pytesmo/054e2c4d2915d5e762af7a919a2b521476c21415/README.rst",
+      "retrieved_at_utc": "2026-09-30T11:37:28.718922+00:00",
+      "status": 200,
+      "sha256": "06de079cf947e8da9d6494aa1a89861db1c20b6da124f520edc7013b9875deae",
+      "bytes": 5047,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:TUW-GEO/pytesmo:LICENSE.txt": {
+      "requested_url": "https://raw.githubusercontent.com/TUW-GEO/pytesmo/054e2c4d2915d5e762af7a919a2b521476c21415/LICENSE.txt",
+      "final_url": "https://raw.githubusercontent.com/TUW-GEO/pytesmo/054e2c4d2915d5e762af7a919a2b521476c21415/LICENSE.txt",
+      "retrieved_at_utc": "2026-09-30T11:37:28.715892+00:00",
+      "status": 200,
+      "sha256": "90dae3c953485da4e54d9e43a178c0c29d3a4be63cad4bd886d6a0946fc3e393",
+      "bytes": 1669,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:TUW-GEO/pytesmo:src/pytesmo/temporal_matching.py": {
+      "requested_url": "https://raw.githubusercontent.com/TUW-GEO/pytesmo/054e2c4d2915d5e762af7a919a2b521476c21415/src/pytesmo/temporal_matching.py",
+      "final_url": "https://raw.githubusercontent.com/TUW-GEO/pytesmo/054e2c4d2915d5e762af7a919a2b521476c21415/src/pytesmo/temporal_matching.py",
+      "retrieved_at_utc": "2026-09-30T11:37:28.742183+00:00",
+      "status": 200,
+      "sha256": "ad5b1b77a22445a41f2e60ec1679b6c2efcbf49c15c00845f616c53e2683c26d",
+      "bytes": 21311,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:TUW-GEO/pytesmo:src/pytesmo/time_series/anomaly.py": {
+      "requested_url": "https://raw.githubusercontent.com/TUW-GEO/pytesmo/054e2c4d2915d5e762af7a919a2b521476c21415/src/pytesmo/time_series/anomaly.py",
+      "final_url": "https://raw.githubusercontent.com/TUW-GEO/pytesmo/054e2c4d2915d5e762af7a919a2b521476c21415/src/pytesmo/time_series/anomaly.py",
+      "retrieved_at_utc": "2026-09-30T11:37:28.722401+00:00",
+      "status": 200,
+      "sha256": "0b10eebd5ddc3e2d8f0390a5e526e3ad9cc7f41e40c873998bcd7d383d4dfa13",
+      "bytes": 10578,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "file:TUW-GEO/pytesmo:src/pytesmo/metrics/confidence_intervals.py": {
+      "requested_url": "https://raw.githubusercontent.com/TUW-GEO/pytesmo/054e2c4d2915d5e762af7a919a2b521476c21415/src/pytesmo/metrics/confidence_intervals.py",
+      "final_url": "https://raw.githubusercontent.com/TUW-GEO/pytesmo/054e2c4d2915d5e762af7a919a2b521476c21415/src/pytesmo/metrics/confidence_intervals.py",
+      "retrieved_at_utc": "2026-09-30T11:37:28.726575+00:00",
+      "status": 200,
+      "sha256": "d58023d1e52a4bc3851f6fbbc8ac8f1b7c3d6448dc322ac9724dc9c9f175a351",
+      "bytes": 12732,
+      "content_type": "text/plain; charset=utf-8",
+      "text_encoding": "utf-8"
+    },
+    "official:iem_metar": {
+      "requested_url": "https://mesonet.agron.iastate.edu/info/datasets/metar.html",
+      "final_url": "https://mesonet.agron.iastate.edu/info/datasets/metar.html",
+      "retrieved_at_utc": "2026-09-30T11:39:56.110034+00:00",
+      "status": 200,
+      "sha256": "36d1426f58cfcc702ddc6029fcb0ffe93678d33a1a7ff351877ecfd7d985cae4",
+      "bytes": 36989,
+      "content_type": "text/html; charset=UTF-8",
+      "text_encoding": "utf-8"
+    },
+    "official:iem_download": {
+      "requested_url": "https://mesonet.agron.iastate.edu/request/download.phtml",
+      "final_url": "https://mesonet.agron.iastate.edu/request/download.phtml",
+      "retrieved_at_utc": "2026-09-30T11:40:23.552355+00:00",
+      "status": 200,
+      "sha256": "9488fff00b397a6766a7a2b1a99dad28f1b87ce7d56dc6dbe323e809aa3df72f",
+      "bytes": 70364,
+      "content_type": "text/html; charset=UTF-8",
+      "text_encoding": "utf-8"
+    }
+  }
+}
